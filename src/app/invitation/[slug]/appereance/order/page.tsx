@@ -61,9 +61,6 @@ export default function OrderPage() {
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
 
-    console.log(active.id);
-    console.log(over.id);
-
     if (over) {
       if (active.id !== over.id) {
         setItems((items) => {
