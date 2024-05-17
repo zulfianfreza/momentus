@@ -9,10 +9,10 @@ const useScrollspy = (ids: string[], offset: number = 0) => {
   const [activeId, setActiveId] = useState("");
 
   useLayoutEffect(() => {
-    const invitationContainer = document.querySelector("#invitation-container");
+    const container = document.querySelector("#invitation-container");
     const listener = () => {
-      if (invitationContainer) {
-        const scroll = invitationContainer.scrollTop;
+      if (container) {
+        const scroll = container.scrollTop;
 
         const position = ids
           .map((id) => {
@@ -34,15 +34,15 @@ const useScrollspy = (ids: string[], offset: number = 0) => {
 
     listener();
 
-    if (invitationContainer) {
-      invitationContainer.addEventListener("resize", listener);
-      invitationContainer.addEventListener("scroll", listener);
+    if (container) {
+      container.addEventListener("resize", listener);
+      container.addEventListener("scroll", listener);
     }
 
     return () => {
-      if (invitationContainer) {
-        invitationContainer.removeEventListener("resize", listener);
-        invitationContainer.removeEventListener("scroll", listener);
+      if (container) {
+        container.removeEventListener("resize", listener);
+        container.removeEventListener("scroll", listener);
       }
     };
   }, [ids, offset]);

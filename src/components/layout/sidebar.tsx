@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/tooltip";
 import { SIDEBAR_MENU } from "@/constant/common.constant";
 import { cn } from "@/lib/utils";
+import { ArrowLeft } from "iconsax-react";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -25,7 +26,12 @@ export default function Sidebar() {
     [pathname]
   );
   return (
-    <aside className=" flex h-screen fixed z-[11] left-0 w-fit bg-white border-r shadow-sm pt-20">
+    <aside className=" flex h-screen fixed z-[12] left-0 w-fit bg-white border-r shadow-sm flex-col">
+      <div className=" h-[72px] p-4 w-full">
+        <Button variant="ghost" size="icon">
+          <ArrowLeft />
+        </Button>
+      </div>
       <div className=" h-full p-4 w-full">
         <div className="flex flex-col gap-2">
           {SIDEBAR_MENU.map((menu) => (
@@ -36,13 +42,13 @@ export default function Sidebar() {
                     size="icon"
                     variant={activeMenu(menu.path) ? "default" : "ghost"}
                     asChild
-                    className=" rounded-xl"
+                    className=" rounded-lg"
                   >
                     <Link href={menu.path}>
                       <menu.icon
                         size={20}
                         variant={activeMenu(menu.path) ? "Outline" : "Outline"}
-                        className={cn(" text-neutral-500", {
+                        className={cn(" text-neutral-900", {
                           "text-white": activeMenu(menu.path),
                         })}
                       />
