@@ -68,9 +68,9 @@ export const SIDEBAR_MENU: Array<TMenu> = [
         path: "/invitation/xyz/data/quote",
       },
       {
-        title: "Profil",
+        title: "Pasangan",
         icon: Lovely,
-        path: "/invitation/xyz/data/profile",
+        path: "/invitation/xyz/data/couple",
       },
       {
         title: "Detail Acara",
@@ -78,9 +78,9 @@ export const SIDEBAR_MENU: Array<TMenu> = [
         path: "/invitation/xyz/data/detail",
       },
       {
-        title: "Album",
+        title: "Galeri",
         icon: Gallery,
-        path: "/invitation/xyz/data/album",
+        path: "/invitation/xyz/data/gallery",
       },
       {
         title: "Cerita",

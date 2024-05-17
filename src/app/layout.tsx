@@ -21,7 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(font.className, "antialiased tracking-tight")}>
+      <body
+        className={cn(
+          font.className,
+          "antialiased tracking-tight from-neutral-900"
+        )}
+      >
         <Provider>{children}</Provider>
       </body>
     </html>
