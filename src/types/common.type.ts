@@ -41,5 +41,17 @@ export type TImage = {
   type: string;
 };
 
+export type IFaq = {
+  item: number;
+  trigger: string;
+  content: string;
+};
+
+export type IFeature = {
+  icon: Icon;
+  feature_name: string;
+  feature_description: string;
+};
+
 export type TId = Pick<TImage, "id">;
 export type TImageWithoutId = Omit<TImage, "id">;
