@@ -14,6 +14,8 @@ import { ArrowLeft } from "iconsax-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback } from "react";
+import { BsTablet } from "react-icons/bs";
+import { IoPhonePortraitOutline } from "react-icons/io5";
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -27,12 +29,12 @@ export default function Sidebar() {
   );
   return (
     <aside className=" flex h-screen fixed z-[12] left-0 w-fit bg-white border-r shadow-sm flex-col">
-      <div className=" h-[72px] p-4 w-full">
+      <div className=" h-14 lg:h-[72px] p-2 lg:p-4 w-full">
         <Button variant="ghost" size="icon">
           <ArrowLeft />
         </Button>
       </div>
-      <div className=" h-full p-4 w-full">
+      <div className=" h-full p-2 lg:p-4 w-full">
         <div className="flex flex-col gap-2">
           {SIDEBAR_MENU.map((menu) => (
             <TooltipProvider key={menu.path} delayDuration={0}>
@@ -87,6 +89,20 @@ export default function Sidebar() {
               </Tooltip>
             </TooltipProvider>
           ))}
+          <div className=" block lg:hidden">
+            <TooltipProvider delayDuration={0}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button size="icon" variant="ghost" className=" rounded-lg">
+                    <BsTablet size={20} />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="right" align="start" className=" p-2">
+                  <p className=" text-neutral-900">Preview</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
         </div>
       </div>
     </aside>

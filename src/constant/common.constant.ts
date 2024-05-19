@@ -11,8 +11,10 @@ import {
   Gallery,
   GalleryFavorite,
   Gift,
-  HambergerMenu,
+  Global,
   Home,
+  Instagram,
+  Location,
   Lovely,
   Magicpen,
   MessageFavorite,
@@ -73,9 +75,14 @@ export const SIDEBAR_MENU: Array<TMenu> = [
         path: "/invitation/xyz/data/couple",
       },
       {
-        title: "Detail Acara",
+        title: "Tanggal",
         icon: Calendar,
-        path: "/invitation/xyz/data/detail",
+        path: "/invitation/xyz/data/date",
+      },
+      {
+        title: "Lokasi",
+        icon: Location,
+        path: "/invitation/xyz/data/location",
       },
       {
         title: "Galeri",
@@ -130,6 +137,18 @@ export const SIDEBAR_MENU: Array<TMenu> = [
     title: "Extra",
     icon: ArchiveAdd,
     path: "/invitation/xyz/extra",
+    submenu: [
+      {
+        title: "Subdomain",
+        icon: Global,
+        path: "invitation/extra/domain",
+      },
+      {
+        title: "Filter Instagram",
+        icon: Instagram,
+        path: "invitation/extra/filter-instagram",
+      },
+    ],
   },
   {
     title: "Pengaturan",

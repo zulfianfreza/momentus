@@ -13,12 +13,15 @@ export type TInvitation = {
   wedding_location: string;
   wedding_reception_date: Date;
   wedding_reception_location: string;
+  plan_expired_date: Date | string;
+  plan: string;
 };
 
 export type TInvitationStyle = {
   theme: string;
   groom_first: boolean;
   hide_logo: boolean;
+  gallery_style: TInvitationGalleryType;
 };
 
 export type TInvitationGallery = {
@@ -38,3 +41,8 @@ export type TInvitationWish = {
   location: string;
   message: string;
 };
+
+export type TInvitationGalleryType =
+  | "grid"
+  | "slideshow"
+  | "slideshow-with-thumbnail";

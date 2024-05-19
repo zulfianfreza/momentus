@@ -4,6 +4,7 @@ import SimpleClean from "@/components/theme/simple-clean";
 import TraditionalJava from "@/components/theme/traditional-java";
 import {
   INVITATION_FAKER,
+  INVITATION_GALLERY_FAKER,
   INVITATION_STYLE_FAKER,
 } from "@/constant/faker.constant";
 import {
@@ -31,44 +32,7 @@ export default function DemoPage({ searchParams }: TPageParams) {
 
   const [invitationGalleries, setInvitationGalleries] = useState<
     TInvitationGallery[]
-  >([
-    {
-      id: 1,
-      url: "/images/dummy/gallery-1.jpg",
-    },
-    {
-      id: 2,
-      url: "/images/dummy/gallery-2.jpg",
-    },
-    {
-      id: 3,
-      url: "/images/dummy/gallery-3.jpg",
-    },
-    {
-      id: 4,
-      url: "/images/dummy/gallery-4.jpg",
-    },
-    {
-      id: 5,
-      url: "/images/dummy/gallery-5.jpg",
-    },
-    {
-      id: 6,
-      url: "/images/dummy/gallery-6.jpg",
-    },
-    {
-      id: 7,
-      url: "/images/dummy/gallery-7.jpg",
-    },
-    {
-      id: 8,
-      url: "/images/dummy/gallery-8.jpg",
-    },
-    {
-      id: 9,
-      url: "/images/dummy/gallery-9.jpg",
-    },
-  ]);
+  >(INVITATION_GALLERY_FAKER);
 
   const [invitationStories, setInvitationStories] = useState<
     TInvitationStory[]
@@ -174,6 +138,7 @@ export default function DemoPage({ searchParams }: TPageParams) {
         }
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (invitationStyle.theme === "traditional-java") {

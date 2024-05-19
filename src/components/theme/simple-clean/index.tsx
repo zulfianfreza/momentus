@@ -52,6 +52,9 @@ import "swiper/css/effect-fade";
 import { EffectFade, Autoplay } from "swiper/modules";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import InvitationGallery from "../shared/invitation-gallery";
+import { format } from "date-fns";
+import { id } from "date-fns/locale";
 
 type TSimpleCleanProps = {
   invitation: TInvitation;
@@ -396,30 +399,10 @@ export default function SimpleClean({
                     </div>
 
                     <div className=" w-full mt-8">
-                      <Swiper
-                        spaceBetween={24}
-                        effect="fade"
-                        loop
-                        autoplay={{ delay: 3000, disableOnInteraction: false }}
-                        modules={[EffectFade, Autoplay]}
-                      >
-                        {invitationGalleries.map((image, i) => (
-                          <SwiperSlide
-                            key={i}
-                            className=" w-full aspect-video relative"
-                            onClick={() => {
-                              setPhotoActiveIndex(i);
-                            }}
-                          >
-                            <Image
-                              src={image.url}
-                              fill
-                              alt=""
-                              className=" object-cover object-center"
-                            />
-                          </SwiperSlide>
-                        ))}
-                      </Swiper>
+                      <InvitationGallery
+                        galleries={invitationGalleries}
+                        type={invitationStyle.gallery_style}
+                      />
                     </div>
                   </div>
                 </section>
@@ -483,7 +466,15 @@ export default function SimpleClean({
                         </h1>
                       </div>
                       <div className="">
-                        <p>Jumat, 2 April 2023</p>
+                        <p>
+                          {format(
+                            invitation.wedding_date,
+                            "EEEE, dd MMMM yyyy",
+                            {
+                              locale: id,
+                            }
+                          )}
+                        </p>
                         <p className=" whitespace-pre-wrap">
                           <Clock size={16} className=" inline-block" />
                           &nbsp;pukul 09:00 WIB - selesai
