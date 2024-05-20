@@ -1,3 +1,22 @@
+import { IFaq, IFeature, ITestimonial } from "@/types/common.type";
+import {
+  TBackgroundMusic,
+  TInvitation,
+  TInvitationGallery,
+  TInvitationStyle,
+} from "@/types/invitation.type";
+import {
+  ArchiveBook,
+  Designtools,
+  Image,
+  Map,
+  Personalcard,
+  QuoteUp,
+  Send2,
+  Share,
+  VideoOctagon,
+} from "iconsax-react";
+
 export const THEME_FAKER = [
   {
     thumbnail: "/images/theme/auto-scrolled-cinematic.jpg",
