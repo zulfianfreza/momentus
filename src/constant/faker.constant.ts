@@ -1,17 +1,3 @@
-import { IFaq, IFeature, ITestimonial } from "@/types/common.type";
-import { TInvitation, TInvitationStyle } from "@/types/invitation.type";
-import {
-  Designtools,
-  Personalcard,
-  QuoteUp,
-  Send2,
-  Share,
-  VideoOctagon,
-  Image,
-  Map,
-  ArchiveBook,
-} from "iconsax-react";
-
 export const THEME_FAKER = [
   {
     thumbnail: "/images/theme/auto-scrolled-cinematic.jpg",
@@ -85,6 +71,7 @@ export const INVITATION_STYLE_FAKER: TInvitationStyle = {
   theme: "simple-clean",
   groom_first: true,
   hide_logo: false,
+  gallery_style: "slideshow",
 };
 
 export const INVITATION_FAKER: TInvitation = {
@@ -104,7 +91,62 @@ export const INVITATION_FAKER: TInvitation = {
   wedding_reception_date: new Date("2024-10-26T10:00:00+07:00"),
   wedding_reception_location:
     "DoubleTree by Hilton Jakarta - Diponegoro Jakarta Pusat",
+  plan: "Free Trial",
+  plan_expired_date: "2024-05-31T10:00:00+07:00",
+  background_music: 1,
 };
+
+export const MUSIC_FAKER: TBackgroundMusic[] = [
+  {
+    id: 1,
+    name: "Luther Vandross - Endless Love",
+    url: "/audio/luther-vandross-endless-love.mp3",
+  },
+  {
+    id: 2,
+    name: "Tiara Andini, Arsy Widianto - Lagu Pernikahan Kita",
+    url: "/audio/tiara-andini-arsy-widianto-lagu-pernikahan-kita.mp3",
+  },
+];
+
+export const INVITATION_GALLERY_FAKER: TInvitationGallery[] = [
+  {
+    id: 1,
+    url: "/images/dummy/gallery-1.jpg",
+  },
+  {
+    id: 2,
+    url: "/images/dummy/gallery-2.jpg",
+  },
+  {
+    id: 3,
+    url: "/images/dummy/gallery-3.jpg",
+  },
+  {
+    id: 4,
+    url: "/images/dummy/gallery-4.jpg",
+  },
+  {
+    id: 5,
+    url: "/images/dummy/gallery-5.jpg",
+  },
+  {
+    id: 6,
+    url: "/images/dummy/gallery-6.jpg",
+  },
+  {
+    id: 7,
+    url: "/images/dummy/gallery-7.jpg",
+  },
+  {
+    id: 8,
+    url: "/images/dummy/gallery-8.jpg",
+  },
+  {
+    id: 9,
+    url: "/images/dummy/gallery-9.jpg",
+  },
+];
 
 export const QUOTES_FAKER = [
   {
