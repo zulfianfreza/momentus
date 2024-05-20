@@ -1,6 +1,16 @@
-import { IFaq, IFeature } from "@/types/common.type";
+import { IFaq, IFeature, ITestimonial } from "@/types/common.type";
 import { TInvitation, TInvitationStyle } from "@/types/invitation.type";
-import { Designtools } from "iconsax-react";
+import {
+  Designtools,
+  Personalcard,
+  QuoteUp,
+  Send2,
+  Share,
+  VideoOctagon,
+  Image,
+  Map,
+  ArchiveBook,
+} from "iconsax-react";
 
 export const THEME_FAKER = [
   {
@@ -176,50 +186,88 @@ export const FAQ_FAKER: Array<IFaq> = [
 export const FEATURE_WEB_FAKER: Array<IFeature> = [
   {
     icon: Designtools,
-    feature_name: "Desain Kustom dan Personal",
+    feature_name: "Desain Kreatif",
+    feature_description:
+      "Menyediakan beragam desain undangan pernikahan digital yang menarik dan kreatif sesuai dengan tema atau keinginan pengantin.",
+  },
+  {
+    icon: Personalcard,
+    feature_name: "Personalisasi",
+    feature_description:
+      "Memungkinkan untuk menyesuaikan teks, gambar, dan detail lainnya sesuai dengan preferensi pengantin, seperti nama pengantin, dan lain-lain.",
+  },
+  {
+    icon: Share,
+    feature_name: "Berbagai Format",
     feature_description:
       "Tersedia berbagai template yang dapat disesuaikan dengan mudah, mulai dari tema klasik hingga modern.",
   },
   {
-    icon: Designtools,
-    feature_name: "Desain Kustom dan Personal",
+    icon: Send2,
+    feature_name: "Sistem Pengiriman Massal",
     feature_description:
-      "Tersedia berbagai template yang dapat disesuaikan dengan mudah, mulai dari tema klasik hingga modern.",
+      "Memungkinkan pengiriman undangan secara massal kepada daftar tamu melalui email atau pesan teks untuk efisiensi dan kenyamanan.",
   },
   {
-    icon: Designtools,
-    feature_name: "Desain Kustom dan Personal",
+    icon: VideoOctagon,
+    feature_name: "Animasi dan Video",
     feature_description:
-      "Tersedia berbagai template yang dapat disesuaikan dengan mudah, mulai dari tema klasik hingga modern.",
+      "Menyediakan opsi animasi atau video pendek untuk membuat undangan lebih interaktif dan menarik.",
   },
   {
-    icon: Designtools,
-    feature_name: "Desain Kustom dan Personal",
+    icon: Image,
+    feature_name: "Galeri Foto",
     feature_description:
-      "Tersedia berbagai template yang dapat disesuaikan dengan mudah, mulai dari tema klasik hingga modern.",
+      "Menyediakan fitur galeri foto yang memungkinkan pengantin untuk membagikan foto pre-wedding atau cerita perjalanan cinta mereka kepada tamu.",
   },
   {
-    icon: Designtools,
-    feature_name: "Desain Kustom dan Personal",
+    icon: ArchiveBook,
+    feature_name: "RSVP Online",
     feature_description:
-      "Tersedia berbagai template yang dapat disesuaikan dengan mudah, mulai dari tema klasik hingga modern.",
+      "Menyediakan fitur RSVP online yang memudahkan tamu untuk mengkonfirmasi kehadiran mereka secara digital melalui formulir atau tautan RSVP.",
   },
   {
-    icon: Designtools,
-    feature_name: "Desain Kustom dan Personal",
+    icon: Map,
+    feature_name: "Integrasi Peta Lokasi",
     feature_description:
-      "Tersedia berbagai template yang dapat disesuaikan dengan mudah, mulai dari tema klasik hingga modern.",
+      "Memasukkan peta lokasi acara pernikahan secara digital, sehingga tamu dapat dengan mudah menemukan lokasi pernikahan anda.",
+  },
+];
+
+export const TESTIMONIAL_FAKER: Array<ITestimonial> = [
+  {
+    tesimonial_image: "/images/dummy/gallery-2.jpg",
+    icon_quotation: QuoteUp,
+    testimonial_name: "Ado & Ayu",
+    testimonial:
+      "Desainnya simpel tapi aesthethik, pngerjaan jugaa cepet. Kalo kita kurang ngerti juga di kasih tau cara caranya",
   },
   {
-    icon: Designtools,
-    feature_name: "Desain Kustom dan Personal",
-    feature_description:
-      "Tersedia berbagai template yang dapat disesuaikan dengan mudah, mulai dari tema klasik hingga modern.",
+    tesimonial_image: "/images/dummy/gallery-2.jpg",
+    icon_quotation: QuoteUp,
+    testimonial_name: "Ado & Ayu",
+    testimonial:
+      "Desainnya simpel tapi aesthethik, pngerjaan jugaa cepet. Kalo kita kurang ngerti juga di kasih tau cara caranya",
   },
   {
-    icon: Designtools,
-    feature_name: "Desain Kustom dan Personal",
-    feature_description:
-      "Tersedia berbagai template yang dapat disesuaikan dengan mudah, mulai dari tema klasik hingga modern.",
+    tesimonial_image: "/images/dummy/gallery-2.jpg",
+    icon_quotation: QuoteUp,
+    testimonial_name: "Ado & Ayu",
+    testimonial:
+      "Desainnya simpel tapi aesthethik, pngerjaan jugaa cepet. Kalo kita kurang ngerti juga di kasih tau cara caranya",
+  },
+  {
+    tesimonial_image: "/images/dummy/gallery-2.jpg",
+    icon_quotation: QuoteUp,
+    testimonial_name: "Ado & Ayu",
+    testimonial:
+      "Desainnya simpel tapi aesthethik, pngerjaan jugaa cepet. Kalo kita kurang ngerti juga di kasih tau cara caranya",
+  },
+  {
+    tesimonial_image: "/images/dummy/gallery-2.jpg",
+    icon_quotation: QuoteUp,
+    testimonial_name: "Ado & Ayu",
+    testimonial:
+      "Desainnya simpel tapi aesthethik, pngerjaan jugaa cepet. Kalo kita kurang ngerti juga di kasih tau cara caranya",
   },
 ];

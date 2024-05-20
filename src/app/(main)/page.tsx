@@ -1,18 +1,23 @@
 import Container from "@/components/common/container";
 import { Button } from "@/components/ui/button";
-import { FAQ_FAKER, FEATURE_WEB_FAKER } from "@/constant/faker.constant";
-import { Designtools } from "iconsax-react";
+import {
+  FAQ_FAKER,
+  FEATURE_WEB_FAKER,
+  TESTIMONIAL_FAKER,
+} from "@/constant/faker.constant";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { LuCheck } from "react-icons/lu";
-import FaqPage from "./faq/page";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { QuoteUp } from "iconsax-react";
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
+import TestimonialsSection from "@/components/common/testimonials";
 
 export default function HomePage() {
   const FEATURE_FAKER = [
@@ -26,10 +31,11 @@ export default function HomePage() {
     "Kirim Ucapan",
     "RSVP",
   ];
+
   return (
     <>
       {/* begin: hero */}
-      <div className=" grid lg:grid-cols-2 w-full items-center justify-between mx-auto lg:px-56 px-5 lg:py-24">
+      <div className=" flex w-full items-center justify-between mx-auto xl:px-56 lg:px-10 md:px-10 px-5 lg:py-24">
         <div className=" w-full py-24 flex flex-col justify-center gap-6">
           {/* <div className=" px-4 py-1.5 w-full rounded-full border">
             <p className=" text-sm font-medium text-neutral-500">
@@ -56,7 +62,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className=" w-full max-w-lg aspect-[6/7] items-center justify-self-end overflow-hidden">
+        <div className=" w-full lg:max-w-lg aspect-[6/7] items-center justify-self-end overflow-hidden">
           <Image
             src="/images/state/backdrop-mockup.png"
             alt=""
@@ -103,7 +109,7 @@ export default function HomePage() {
               <span className=" font-bold text-pink-600">momentus</span>.
             </h1>
             <div className=" flex w-full mt-4 gap-4">
-              <div className=" flex w-full relative h-80 rounded-2xl">
+              <div className=" flex w-full relative xl:h-80 h-auto md:h-60 rounded-2xl">
                 <Image
                   src="/images/dummy/gallery-10.jpg"
                   alt=" fill"
@@ -111,7 +117,7 @@ export default function HomePage() {
                   fill
                 />
               </div>
-              <div className=" flex w-full relative h-80 rounded-2xl">
+              <div className=" flex w-full relative xl:h-80 h-auto md:h-60 rounded-2xl">
                 <Image
                   src="/images/dummy/gallery-11.jpg"
                   alt=" fill"
@@ -119,7 +125,7 @@ export default function HomePage() {
                   fill
                 />
               </div>
-              <div className=" flex w-full relative h-80 rounded-2xl">
+              <div className=" flex w-full relative xl:h-80 h-auto md:h-60 rounded-2xl">
                 <Image
                   src="/images/dummy/gallery-12.jpg"
                   alt=" fill"
@@ -127,7 +133,7 @@ export default function HomePage() {
                   fill
                 />
               </div>
-              <div className=" flex w-full relative h-80 rounded-2xl">
+              <div className=" flex w-full relative xl:h-80 h-auto md:h-60 rounded-2xl">
                 <Image
                   src="/images/dummy/gallery-13.jpg"
                   alt=" fill"
@@ -153,7 +159,11 @@ export default function HomePage() {
             {FEATURE_WEB_FAKER.map((feature, i) => (
               <>
                 <div className=" flex flex-col w-full aspect-[4/3] bg-pink-200/50 p-10 gap-1 rounded-2xl shadow-lg">
-                  <feature.icon size="56" color="rgb(219 39 119)" />
+                  <feature.icon
+                    size="56"
+                    color="rgb(219 39 119)"
+                    variant="Bulk"
+                  />
                   <h3 className=" text-lg mt-3">{feature.feature_name}</h3>
                   <p className=" text-neutral-800">
                     {feature.feature_description}
@@ -244,21 +254,38 @@ export default function HomePage() {
         </div>
         {/* end: pricing */}
 
-        {/* begin: faq */}
-        <Container>
-          <div className=" flex-1 w-full my-20">
-            <Accordion type="single" collapsible>
-              {FAQ_FAKER.map((faq, i) => (
-                <>
-                  <AccordionItem value={"item-" + faq.item} key={i}>
-                    <AccordionTrigger>{faq.trigger}</AccordionTrigger>
-                    <AccordionContent>{faq.content}</AccordionContent>
-                  </AccordionItem>
-                </>
-              ))}
-            </Accordion>
+        {/* begin: testimonial */}
+        <div className=" flex flex-col w-full items-center justify-center my-20">
+          <div className=" text-center">
+            <h1 className=" text-3xl font-semibold leading-relaxed">
+              Apa Kata Mereka?
+            </h1>
           </div>
-        </Container>
+          <TestimonialsSection />
+        </div>
+        {/* end: testimonial */}
+
+        {/* begin: faq */}
+
+        <div className=" flex-1 w-full my-20">
+          <div className=" text-center">
+            <h1 className=" text-3xl font-semibold leading-relaxed">FAQ</h1>
+            <p className=" text-neutral-500">
+              Pertanyaan yang sering ditanyakan
+            </p>
+          </div>
+          <Accordion type="single" collapsible className=" mt-16">
+            {FAQ_FAKER.map((faq, i) => (
+              <>
+                <AccordionItem value={"item-" + faq.item} key={i}>
+                  <AccordionTrigger>{faq.trigger}</AccordionTrigger>
+                  <AccordionContent>{faq.content}</AccordionContent>
+                </AccordionItem>
+              </>
+            ))}
+          </Accordion>
+        </div>
+
         {/* end: faq */}
       </Container>
     </>

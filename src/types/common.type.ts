@@ -53,5 +53,12 @@ export type IFeature = {
   feature_description: string;
 };
 
+export type ITestimonial = {
+  tesimonial_image: string;
+  icon_quotation: Icon;
+  testimonial_name: string;
+  testimonial: string;
+};
+
 export type TId = Pick<TImage, "id">;
 export type TImageWithoutId = Omit<TImage, "id">;
