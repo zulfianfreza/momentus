@@ -9,15 +9,19 @@ import {
 } from "@/components/ui/tooltip";
 import { SIDEBAR_MENU } from "@/constant/common.constant";
 import { cn } from "@/lib/utils";
-import { ArrowLeft } from "iconsax-react";
+import Image from "next/image";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Circle } from "rc-progress";
 import { useCallback } from "react";
+import { BsTablet } from "react-icons/bs";
 
 export default function Sidebar() {
+  // hooks
   const pathname = usePathname();
 
+  // active menu
   const activeMenu = useCallback(
     (menu: string) =>
       menu === "/invitation/xyz"
@@ -27,12 +31,20 @@ export default function Sidebar() {
   );
   return (
     <aside className=" flex h-screen fixed z-[12] left-0 w-fit bg-white border-r shadow-sm flex-col">
-      <div className=" h-[72px] p-4 w-full">
-        <Button variant="ghost" size="icon">
+      <div className=" h-14 lg:h-[72px] p-2 lg:p-4 w-full">
+        {/* <Button variant="ghost" size="icon">
           <ArrowLeft />
-        </Button>
+        </Button> */}
+        <div className=" w-10 aspect-square relative">
+          <Image
+            src="/images/logo.png"
+            fill
+            alt=""
+            className=" object-contain object-center"
+          />
+        </div>
       </div>
-      <div className=" h-full p-4 w-full">
+      <div className=" h-full p-2 lg:p-4 w-full flex-1">
         <div className="flex flex-col gap-2">
           {SIDEBAR_MENU.map((menu) => (
             <TooltipProvider key={menu.path} delayDuration={0}>
@@ -87,6 +99,41 @@ export default function Sidebar() {
               </Tooltip>
             </TooltipProvider>
           ))}
+          <div className=" block lg:hidden">
+            <TooltipProvider delayDuration={0}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button size="icon" variant="ghost" className=" rounded-lg">
+                    <BsTablet size={20} />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="right" align="start" className=" p-2">
+                  <p className=" text-neutral-900">Preview</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col p-2 lg:p-4 gap-2">
+        <div className=" relative">
+          <Circle
+            strokeWidth={6}
+            percent={10}
+            strokeColor="#db2777"
+            trailWidth={6}
+          />
+          <p className=" absolute text-sm text-pink-600 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">
+            10%
+          </p>
+        </div>
+        <div className=" w-10 aspect-square rounded-[50%] relative overflow-hidden">
+          <Image
+            src="/images/51.png"
+            fill
+            alt=""
+            className=" object-cover object-center"
+          />
         </div>
       </div>
     </aside>
