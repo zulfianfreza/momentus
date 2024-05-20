@@ -34,7 +34,7 @@ export default function GalleryPage() {
     },
   ];
 
-  //
+  // handle change gallery style
   const handleChangeGalleryStyle = useCallback(
     (type: TInvitationGalleryType) => {
       const invitationStyle: TInvitationStyle = {
@@ -89,7 +89,7 @@ export default function GalleryPage() {
                       className={cn(
                         " w-full p-2 pb-0 border-[1.5px] bg-neutral-100 rounded-lg flex justify-center items-center",
                         {
-                          " ring-[1.5px] ring-offset-1 ring-blue-600 border-blue-500":
+                          " ring-[1.5px] ring-offset-1 ring-pink-500 border-pink-500":
                             invitationStyle.gallery_style === "grid",
                         }
                       )}
@@ -109,9 +109,9 @@ export default function GalleryPage() {
                     <div
                       onClick={() => handleChangeGalleryStyle("slideshow")}
                       className={cn(
-                        " w-full p-2 pb-0 border bg-neutral-100 rounded-lg flex justify-center items-center",
+                        " w-full p-2 pb-0 border-[1.5px] bg-neutral-100 rounded-lg flex justify-center items-center",
                         {
-                          "border-4 border-double border-blue-500":
+                          " ring-[1.5px] ring-offset-1 ring-pink-500 border-pink-500":
                             invitationStyle.gallery_style === "slideshow",
                         }
                       )}
@@ -133,9 +133,9 @@ export default function GalleryPage() {
                         handleChangeGalleryStyle("slideshow-with-thumbnail")
                       }
                       className={cn(
-                        " w-full p-2 pb-0 border bg-neutral-100 rounded-lg flex justify-center items-center",
+                        " w-full p-2 pb-0 border-[1.5px] bg-neutral-100 rounded-lg flex justify-center items-center",
                         {
-                          "border-4 border-double border-blue-500":
+                          " ring-[1.5px] ring-offset-1 ring-pink-500 border-pink-500":
                             invitationStyle.gallery_style ===
                             "slideshow-with-thumbnail",
                         }

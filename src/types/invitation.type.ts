@@ -15,6 +15,7 @@ export type TInvitation = {
   wedding_reception_location: string;
   plan_expired_date: Date | string;
   plan: string;
+  background_music: number;
 };
 
 export type TInvitationStyle = {
@@ -46,3 +47,9 @@ export type TInvitationGalleryType =
   | "grid"
   | "slideshow"
   | "slideshow-with-thumbnail";
+
+export type TBackgroundMusic = {
+  id: number;
+  name: string;
+  url: string;
+};

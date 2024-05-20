@@ -30,13 +30,9 @@ export default function DataPage() {
             <DialogTrigger asChild>
               <Button className=" w-full">Daftar Quote</Button>
             </DialogTrigger>
-            <DialogContent className=" max-h-[80vh] overflow-hidden flex flex-col p-0">
+            <DialogContent className=" max-h-[80vh] overflow-hidden flex flex-col p-0 gap-0">
               <DialogHeader className=" p-6">
-                <DialogTitle>Are you absolutely sure?</DialogTitle>
-                <DialogDescription>
-                  This action cannot be undone. This will permanently delete
-                  your account and remove your data from our servers.
-                </DialogDescription>
+                <DialogTitle>Quote Pilihan</DialogTitle>
               </DialogHeader>
               <div className=" flex flex-col gap-4 flex-1 overflow-y-scroll px-6 pb-6">
                 {QUOTES_FAKER.map((quote, i) => (

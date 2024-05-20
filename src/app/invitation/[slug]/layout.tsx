@@ -26,12 +26,12 @@ export default function InvitationLayout({
             <Badge className=" bg-green-100 text-green-500 h-8 px-4 font-normal">
               Free Trial
             </Badge>
-            {/* <CountdownDisplay
+            <CountdownDisplay
               days={days}
               hours={hours}
               minutes={minutes}
               seconds={seconds}
-            /> */}
+            />
           </div>
           <div className="flex items-center">
             <Button className=" rounded-lg" asChild>

@@ -18,6 +18,7 @@ import {
   Lovely,
   Magicpen,
   MessageFavorite,
+  Music,
   People,
   Profile2User,
   QuoteDown,
@@ -75,14 +76,9 @@ export const SIDEBAR_MENU: Array<TMenu> = [
         path: "/invitation/xyz/data/couple",
       },
       {
-        title: "Tanggal",
+        title: "Detail Acara",
         icon: Calendar,
-        path: "/invitation/xyz/data/date",
-      },
-      {
-        title: "Lokasi",
-        icon: Location,
-        path: "/invitation/xyz/data/location",
+        path: "/invitation/xyz/data/detail",
       },
       {
         title: "Galeri",
@@ -98,6 +94,11 @@ export const SIDEBAR_MENU: Array<TMenu> = [
         title: "Penutup",
         icon: Book,
         path: "/invitation/xyz/data/closing",
+      },
+      {
+        title: "Latar Musik",
+        icon: Music,
+        path: "/invitation/xyz/data/music",
       },
     ],
   },
@@ -139,7 +140,7 @@ export const SIDEBAR_MENU: Array<TMenu> = [
     path: "/invitation/xyz/extra",
     submenu: [
       {
-        title: "Subdomain",
+        title: "Domain",
         icon: Global,
         path: "invitation/extra/domain",
       },

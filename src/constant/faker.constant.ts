@@ -1,4 +1,5 @@
 import {
+  TBackgroundMusic,
   TInvitation,
   TInvitationGallery,
   TInvitationStyle,
@@ -99,7 +100,21 @@ export const INVITATION_FAKER: TInvitation = {
     "DoubleTree by Hilton Jakarta - Diponegoro Jakarta Pusat",
   plan: "Free Trial",
   plan_expired_date: "2024-05-31T10:00:00+07:00",
+  background_music: 1,
 };
+
+export const MUSIC_FAKER: TBackgroundMusic[] = [
+  {
+    id: 1,
+    name: "Luther Vandross - Endless Love",
+    url: "/audio/luther-vandross-endless-love.mp3",
+  },
+  {
+    id: 2,
+    name: "Tiara Andini, Arsy Widianto - Lagu Pernikahan Kita",
+    url: "/audio/tiara-andini-arsy-widianto-lagu-pernikahan-kita.mp3",
+  },
+];
 
 export const INVITATION_GALLERY_FAKER: TInvitationGallery[] = [
   {
