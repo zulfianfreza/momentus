@@ -60,5 +60,20 @@ export type ITestimonial = {
   testimonial: string;
 };
 
+export type IPortofolio = {
+  background_image: string;
+  bride_icon: string;
+  groom_icon: string;
+  name: string;
+  date: Date;
+  theme: string;
+};
+
+export type IAbout = {
+  thumbnail: string;
+  title: string;
+  description: string;
+};
+
 export type TId = Pick<TImage, "id">;
 export type TImageWithoutId = Omit<TImage, "id">;

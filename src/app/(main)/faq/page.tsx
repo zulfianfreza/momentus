@@ -16,8 +16,10 @@ export default function FaqPage() {
         <Container>
           <div className=" flex w-full items-center justify-between">
             <div className=" flex flex-col w-full gap-2">
-              <h1 className=" text-5xl font-semibold text-pink-600">FAQ</h1>
-              <p>
+              <h1 className=" text-5xl font-semibold leading-relaxed text-pink-600">
+                FAQ
+              </h1>
+              <p className=" text-neutral-500">
                 Punya pertanyaan tentang layanan kami? Ini adalah beberapa hal
                 yang mungkin dapat membantu.
               </p>

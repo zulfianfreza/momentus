@@ -1,4 +1,10 @@
-import { IFaq, IFeature, ITestimonial } from "@/types/common.type";
+import {
+  IAbout,
+  IFaq,
+  IFeature,
+  IPortofolio,
+  ITestimonial,
+} from "@/types/common.type";
 import { TInvitation, TInvitationStyle } from "@/types/invitation.type";
 import {
   Designtools,
@@ -236,38 +242,110 @@ export const FEATURE_WEB_FAKER: Array<IFeature> = [
 
 export const TESTIMONIAL_FAKER: Array<ITestimonial> = [
   {
-    tesimonial_image: "/images/dummy/gallery-2.jpg",
+    tesimonial_image: "/images/dummy/gallery-11.jpg",
     icon_quotation: QuoteUp,
-    testimonial_name: "Ado & Ayu",
+    testimonial_name: "Sari & Dion",
     testimonial:
       "Desainnya simpel tapi aesthethik, pngerjaan jugaa cepet. Kalo kita kurang ngerti juga di kasih tau cara caranya",
   },
   {
-    tesimonial_image: "/images/dummy/gallery-2.jpg",
+    tesimonial_image: "/images/dummy/gallery-1.jpg",
     icon_quotation: QuoteUp,
-    testimonial_name: "Ado & Ayu",
+    testimonial_name: "Linda & Arya",
     testimonial:
-      "Desainnya simpel tapi aesthethik, pngerjaan jugaa cepet. Kalo kita kurang ngerti juga di kasih tau cara caranya",
+      "Undangan digital kami sangat indah dan praktis! Kami bisa mengirimnya dengan mudah dan cepat kepada semua teman dan keluarga. Desainnya juga modern dan elegan.",
   },
   {
-    tesimonial_image: "/images/dummy/gallery-2.jpg",
+    tesimonial_image: "/images/dummy/gallery-12.jpg",
     icon_quotation: QuoteUp,
-    testimonial_name: "Ado & Ayu",
+    testimonial_name: "Rina & Budi",
     testimonial:
-      "Desainnya simpel tapi aesthethik, pngerjaan jugaa cepet. Kalo kita kurang ngerti juga di kasih tau cara caranya",
+      "Menggunakan undangan digital sangat memudahkan kami. Tidak perlu repot dengan percetakan dan pengiriman, cukup beberapa klik dan semuanya beres!",
   },
   {
-    tesimonial_image: "/images/dummy/gallery-2.jpg",
+    tesimonial_image: "/images/dummy/gallery-4.jpg",
     icon_quotation: QuoteUp,
-    testimonial_name: "Ado & Ayu",
+    testimonial_name: "Dewi & Andi",
     testimonial:
-      "Desainnya simpel tapi aesthethik, pngerjaan jugaa cepet. Kalo kita kurang ngerti juga di kasih tau cara caranya",
+      "Kami sangat puas dengan undangan digital kami. Bisa menambahkan video pesan singkat untuk tamu adalah fitur yang luar biasa!",
   },
   {
-    tesimonial_image: "/images/dummy/gallery-2.jpg",
+    tesimonial_image: "/images/dummy/gallery-10.jpg",
     icon_quotation: QuoteUp,
-    testimonial_name: "Ado & Ayu",
+    testimonial_name: "Maya & Fajar",
     testimonial:
-      "Desainnya simpel tapi aesthethik, pngerjaan jugaa cepet. Kalo kita kurang ngerti juga di kasih tau cara caranya",
+      "Undangan digital ini sangat eco-friendly. Kami merasa lebih baik karena mengurangi penggunaan kertas dan membantu lingkungan.",
+  },
+];
+
+export const PORTOFOLIO_FAKER: Array<IPortofolio> = [
+  {
+    background_image: "/images/dummy/gallery-10.jpg",
+    bride_icon: "/images/dummy/gallery-7.jpg",
+    groom_icon: "/images/dummy/gallery-8.jpg",
+    name: "Ado & Ayu",
+    date: new Date("2024-10-23T10:00:00+07:00"),
+    theme: "Dark Boho",
+  },
+  {
+    background_image: "/images/dummy/gallery-11.jpg",
+    bride_icon: "/images/dummy/gallery-7.jpg",
+    groom_icon: "/images/dummy/gallery-8.jpg",
+    name: "Ado & Ayu",
+    date: new Date("2024-10-23T10:00:00+07:00"),
+    theme: "Simple Clean",
+  },
+  {
+    background_image: "/images/dummy/gallery-12.jpg",
+    bride_icon: "/images/dummy/gallery-7.jpg",
+    groom_icon: "/images/dummy/gallery-8.jpg",
+    name: "Ado & Ayu",
+    date: new Date("2024-10-23T10:00:00+07:00"),
+    theme: "Olive Flower Ornament",
+  },
+  {
+    background_image: "/images/dummy/gallery-13.jpg",
+    bride_icon: "/images/dummy/gallery-7.jpg",
+    groom_icon: "/images/dummy/gallery-8.jpg",
+    name: "Ado & Ayu",
+    date: new Date("2024-10-23T10:00:00+07:00"),
+    theme: "Minimmalist Style",
+  },
+  {
+    background_image: "/images/dummy/gallery-3.jpg",
+    bride_icon: "/images/dummy/gallery-7.jpg",
+    groom_icon: "/images/dummy/gallery-8.jpg",
+    name: "Ado & Ayu",
+    date: new Date("2024-10-23T10:00:00+07:00"),
+    theme: "Elegant Leaves",
+  },
+  {
+    background_image: "/images/dummy/gallery-5.jpg",
+    bride_icon: "/images/dummy/gallery-7.jpg",
+    groom_icon: "/images/dummy/gallery-8.jpg",
+    name: "Ado & Ayu",
+    date: new Date("2024-10-23T10:00:00+07:00"),
+    theme: "Calm Blue",
+  },
+];
+
+export const ABOUT_FAKER: Array<IAbout> = [
+  {
+    thumbnail: "/images/state/about-state-1.png",
+    title: "100% Youth",
+    description:
+      "Momentus 100% terdiri dari anak muda yang mempunyai passion di dunia kreatif industri, baik wedding, design dan web development, sehingga kami senantiasa memberikan ide-ide baru untuk kita.",
+  },
+  {
+    thumbnail: "/images/state/about-state-2.png",
+    title: "Privacy First",
+    description:
+      "Momentus memberikan keleluasaan untuk kamu mengisi informasi undangan online yang akan dibagikan secara mandiri. Seperti tamu undangan, waktu, alamat, foto, video dan quote. Sehingga membuat privasimu dapat terjaga.",
+  },
+  {
+    thumbnail: "/images/state/about-state-3.png",
+    title: "Technology Innovation",
+    description:
+      "Momentus sangat fokus pada teknologi untuk memastikan undangan dapat di akses pada mobile dan desktop dengan cepat dan sesuai harapan.",
   },
 ];
