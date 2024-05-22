@@ -38,6 +38,7 @@ import "yet-another-react-lightbox/plugins/counter.css";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "yet-another-react-lightbox/styles.css";
+import InvitationGallery from "../shared/invitation-gallery";
 
 type TTraditionalJavaProps = {
   invitation: TInvitation;
@@ -364,27 +365,10 @@ export default function TraditionalJava({
                     </div>
 
                     <div className=" mt-8 grid grid-cols-3 gap-2">
-                      {invitationGalleries.map((image, i) => (
-                        <div
-                          key={image.id}
-                          className={cn(
-                            " w-full h-full aspect-square relative cursor-pointer",
-                            {
-                              "row-span-2 aspect-[1/2]": i % 3 === 0,
-                            }
-                          )}
-                        >
-                          <Image
-                            src={image.url}
-                            alt=""
-                            fill
-                            className=" object-cover object-center"
-                            onClick={() => {
-                              setPhotoActiveIndex(i);
-                            }}
-                          />
-                        </div>
-                      ))}
+                      <InvitationGallery
+                        galleries={invitationGalleries}
+                        type={invitationStyle.gallery_style}
+                      />
                     </div>
                   </div>
                 </section>
