@@ -1,6 +1,8 @@
 "use client";
 
+/* eslint-disable @next/next/no-img-element */
 import HeadingConfigurationSection from "@/components/common/heading-configuration-section";
+import InputItem from "@/components/common/input-item";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -15,38 +17,22 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  INVITATION_FAKER,
-  INVITATION_STYLE_FAKER,
-} from "@/constant/faker.constant";
-import { TInvitation, TInvitationStyle } from "@/types/invitation.type";
-import { reloadIframe } from "@/utils/iframe";
 import { GalleryAdd } from "iconsax-react";
-import Image from "next/image";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import Dropzone from "react-dropzone";
 import ReactCrop, { type Crop } from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 
-export default function ProfilePage() {
-  // state
-  const [invitationStyle, setInvitationStyle] = useState<TInvitationStyle>(
-    INVITATION_STYLE_FAKER
-  );
+type TPageParams = {
+  params: {
+    slug: string;
+  };
+};
+
+export default function ProfilePage({ params }: TPageParams) {
   const [crop, setCrop] = useState<Crop>();
-  const [invitation, setInvitation] = useState<TInvitation>(INVITATION_FAKER);
   const [groomImage, setGroomImage] = useState<File | undefined>();
   const [brideImage, setBrideImage] = useState<File | undefined>();
-
-  // handle order couple
-  const handleOrderCouple = useCallback((order: boolean) => {
-    const invitationStyle: TInvitationStyle = {
-      ...INVITATION_STYLE_FAKER,
-      groom_first: order,
-    };
-    setInvitationStyle(invitationStyle);
-    reloadIframe("invitation-style-updated", { invitationStyle });
-  }, []);
 
   // tabs menu
   const TABS_MENU = [
@@ -85,7 +71,7 @@ export default function ProfilePage() {
         </TabsList>
         <div className=" mt-4">
           <TabsContent value="configuration">
-            <div className=" flex flex-col gap-6">
+            <div className=" flex flex-col gap-4">
               <div className="flex flex-col gap-y-2">
                 <Label>Judul Profil</Label>
                 <Input placeholder="" value="Bride & Groom" />
@@ -99,16 +85,13 @@ export default function ProfilePage() {
               </div>
               <div className=" flex flex-col space-y-2">
                 <Label>Urutkan Pengantin Pria Terlebih Dahulu</Label>
-                <Switch
-                  checked={invitationStyle.groom_first}
-                  onCheckedChange={(checked) => handleOrderCouple(checked)}
-                />
+                <Switch />
               </div>
             </div>
           </TabsContent>
           <TabsContent value="groom">
-            <div className=" flex flex-col gap-6">
-              <div className=" space-y-2">
+            <div className=" flex flex-col gap-4">
+              <InputItem>
                 <Label>Photo Pengantin Pria</Label>
                 <Dropzone
                   onDrop={(acceptedFiles) => {
@@ -139,7 +122,7 @@ export default function ProfilePage() {
                     </div>
                   )}
                 </Dropzone>
-              </div>
+              </InputItem>
 
               <Dialog open={!!groomImage}>
                 <DialogContent className=" max-w-3xl max-h-[80vh] h-[80vh] flex flex-col gap-4">
@@ -175,86 +158,40 @@ export default function ProfilePage() {
                 </DialogContent>
               </Dialog>
 
-              <div className=" space-y-2">
+              <InputItem>
                 <Label>Username Instagram</Label>
                 <div className=" relative rounded-lg overflow-hidden">
                   <div className=" w-12 aspect-square bg-neutral-100 flex justify-center items-center absolute top-0 left-0">
                     @
                   </div>
-                  <Input
-                    placeholder="adam.berriz"
-                    className=" pl-14"
-                    value={invitation.groom_instagram}
-                    onChange={(e) =>
-                      setInvitation({
-                        ...invitation,
-                        groom_instagram: e.target.value,
-                      })
-                    }
-                  />
+                  <Input placeholder="adam.berriz" className=" pl-14" />
                 </div>
-              </div>
+              </InputItem>
 
-              <div className=" space-y-2">
+              <InputItem>
                 <Label>Nama Pria</Label>
-                <Input
-                  placeholder="Adam Berriz PhD"
-                  value={invitation.groom_name}
-                  onChange={(e) =>
-                    setInvitation({
-                      ...invitation,
-                      groom_name: e.target.value,
-                    })
-                  }
-                />
-              </div>
+                <Input placeholder="Adam Berriz PhD" />
+              </InputItem>
 
-              <div className=" space-y-2">
+              <InputItem>
                 <Label>Anak ke</Label>
-                <Input
-                  placeholder="Pertama/Kedua/Terakhir/Bungsu/Tunggal"
-                  value={invitation.groom_child_sequence}
-                  onChange={(e) =>
-                    setInvitation({
-                      ...invitation,
-                      groom_child_sequence: e.target.value,
-                    })
-                  }
-                />
-              </div>
+                <Input placeholder="Pertama/Kedua/Terakhir/Bungsu/Tunggal" />
+              </InputItem>
 
-              <div className=" space-y-2">
+              <InputItem>
                 <Label>Nama Ayah</Label>
-                <Input
-                  placeholder="John Doe"
-                  value={invitation.groom_father_name}
-                  onChange={(e) =>
-                    setInvitation({
-                      ...invitation,
-                      groom_father_name: e.target.value,
-                    })
-                  }
-                />
-              </div>
+                <Input placeholder="John Doe" />
+              </InputItem>
 
-              <div className=" space-y-2">
+              <InputItem>
                 <Label>Nama Ibu</Label>
-                <Input
-                  placeholder="Maria Anne"
-                  value={invitation.groom_mother_name}
-                  onChange={(e) =>
-                    setInvitation({
-                      ...invitation,
-                      groom_mother_name: e.target.value,
-                    })
-                  }
-                />
-              </div>
+                <Input placeholder="Maria Anne" />
+              </InputItem>
             </div>
           </TabsContent>
           <TabsContent value="bride">
-            <div className=" flex flex-col gap-6">
-              <div className=" space-y-2">
+            <div className=" flex flex-col gap-4">
+              <InputItem>
                 <Label>Photo Pengantin Pria</Label>
                 <Dropzone
                   onDrop={(acceptedFiles) => {
@@ -285,7 +222,7 @@ export default function ProfilePage() {
                     </div>
                   )}
                 </Dropzone>
-              </div>
+              </InputItem>
 
               <Dialog open={!!brideImage}>
                 <DialogContent className=" max-w-3xl max-h-[80vh] h-[80vh] flex flex-col gap-4">
@@ -320,81 +257,35 @@ export default function ProfilePage() {
                   </div>
                 </DialogContent>
               </Dialog>
-              <div className=" space-y-2">
+              <InputItem>
                 <Label>Username Instagram</Label>
                 <div className=" relative rounded-lg overflow-hidden">
                   <div className=" w-12 aspect-square bg-neutral-100 flex justify-center items-center absolute top-0 left-0">
                     @
                   </div>
-                  <Input
-                    placeholder="adam.berriz"
-                    className=" pl-14"
-                    value={invitation.bride_instagram}
-                    onChange={(e) =>
-                      setInvitation({
-                        ...invitation,
-                        bride_instagram: e.target.value,
-                      })
-                    }
-                  />
+                  <Input placeholder="adam.berriz" className=" pl-14" />
                 </div>
-              </div>
+              </InputItem>
 
-              <div className=" space-y-2">
+              <InputItem>
                 <Label>Nama Wanita</Label>
-                <Input
-                  placeholder="Adam Berriz PhD"
-                  value={invitation.bride_name}
-                  onChange={(e) =>
-                    setInvitation({
-                      ...invitation,
-                      bride_name: e.target.value,
-                    })
-                  }
-                />
-              </div>
+                <Input placeholder="Adam Berriz PhD" />
+              </InputItem>
 
-              <div className=" space-y-2">
+              <InputItem>
                 <Label>Anak ke</Label>
-                <Input
-                  placeholder="Pertama/Kedua/Terakhir/Bungsu/Tunggal"
-                  value={invitation.bride_child_sequence}
-                  onChange={(e) =>
-                    setInvitation({
-                      ...invitation,
-                      bride_child_sequence: e.target.value,
-                    })
-                  }
-                />
-              </div>
+                <Input placeholder="Pertama/Kedua/Terakhir/Bungsu/Tunggal" />
+              </InputItem>
 
-              <div className=" space-y-2">
+              <InputItem>
                 <Label>Nama Ayah</Label>
-                <Input
-                  placeholder="John Doe"
-                  value={invitation.bride_father_name}
-                  onChange={(e) =>
-                    setInvitation({
-                      ...invitation,
-                      bride_father_name: e.target.value,
-                    })
-                  }
-                />
-              </div>
+                <Input placeholder="John Doe" />
+              </InputItem>
 
-              <div className=" space-y-2">
+              <InputItem>
                 <Label>Nama Ibu</Label>
-                <Input
-                  placeholder="Maria Anne"
-                  value={invitation.bride_mother_name}
-                  onChange={(e) =>
-                    setInvitation({
-                      ...invitation,
-                      bride_mother_name: e.target.value,
-                    })
-                  }
-                />
-              </div>
+                <Input placeholder="Maria Anne" />
+              </InputItem>
             </div>
           </TabsContent>
         </div>

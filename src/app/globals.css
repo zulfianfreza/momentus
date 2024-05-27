@@ -7,6 +7,11 @@
     max-width: 1200px;
   }
 }
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1400px;
+  }
+}
 
 /* begin: demo 1 */
 .countdown-wrapper {
@@ -19,5 +24,33 @@
 .ReactCrop__child-wrapper {
   height: 100%;
   width: 100%;
+}
+
+.react-datepicker {
+  @apply !border-neutral-200 !rounded-xl !overflow-hidden;
+}
+
+.react-datepicker__day--selected {
+  @apply !bg-pink-600;
+}
+
+.react-datepicker__time-container {
+  @apply !border-neutral-200;
+}
+
+.react-datepicker-popper .react-datepicker__triangle {
+  @apply !stroke-neutral-200;
+}
+
+.react-datepicker__header {
+  @apply !bg-neutral-100 !border-neutral-200;
+}
+
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item--selected {
+  @apply !bg-pink-600;
 }
 /* end: override */

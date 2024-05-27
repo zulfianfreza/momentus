@@ -1,7 +1,15 @@
-import { SIDEBAR_MENU } from "@/constant/common.constant";
+"use client";
+
+import { getSidebarMenu } from "@/constant/common.constant";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 
 export default function DataPage() {
+  const params = useParams<{ slug: string }>();
+
+  // sidebar menu
+  const sidebarMenu = getSidebarMenu(params.slug);
+
   return (
     <div className=" p-6 w-full">
       <div className=" space-y-2">
@@ -13,7 +21,7 @@ export default function DataPage() {
       </div>
 
       <div className=" mt-4 grid grid-cols-3 gap-4 w-full">
-        {SIDEBAR_MENU[1].submenu?.map((submenu) => (
+        {sidebarMenu[1].submenu?.map((submenu) => (
           <div key={submenu.path} className="flex flex-col items-center gap-2">
             <Link
               href={submenu.path}

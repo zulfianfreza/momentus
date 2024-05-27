@@ -23,6 +23,10 @@ export default function Header() {
       label: "Panduan",
       path: "/guide",
     },
+    {
+      label: "Blog",
+      path: "/blog",
+    },
   ];
   return (
     <Container>
@@ -54,7 +58,7 @@ export default function Header() {
         <nav className=" hidden lg:flex justify-center gap-2">
           {MENUS.map((menu, i) => (
             <Button key={i} asChild variant="ghost" className=" rounded-full">
-              <Link href="/" className="">
+              <Link href={menu.path} className="">
                 {menu.label}
               </Link>
             </Button>
