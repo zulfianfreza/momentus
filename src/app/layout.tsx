@@ -1,12 +1,12 @@
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Poppins, Sora } from "next/font/google";
 import "./globals.css";
 import Provider from "@/components/common/provider";
 
-const font = Poppins({
+const font = Sora({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {

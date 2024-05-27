@@ -1,6 +1,7 @@
 "use client";
 
 import HeadingConfigurationSection from "@/components/common/heading-configuration-section";
+import InputItem from "@/components/common/input-item";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
@@ -9,13 +10,6 @@ import { TBackgroundMusic, TInvitation } from "@/types/invitation.type";
 import { useState } from "react";
 
 export default function MusicPage() {
-  // state
-  const [invitation, setInvitation] = useState<TInvitation>(INVITATION_FAKER);
-
-  const handleChangeBackgroundMusic = (music: TBackgroundMusic) => {
-    setInvitation({ ...invitation, background_music: music.id });
-  };
-
   return (
     <div className=" p-5 w-full">
       <HeadingConfigurationSection
@@ -24,31 +18,30 @@ export default function MusicPage() {
       />
 
       <div className=" mt-8">
-        <div className=" flex flex-col space-y-2">
+        <InputItem>
           <Label>Gunakan Latar Musik</Label>
           <Switch checked />
-        </div>
+        </InputItem>
 
         <div className="flex flex-col mt-4 gap-6">
           {MUSIC_FAKER.map((music, i) => (
-            <div className=" space-y-2" key={i}>
-              <div className="flex justify-between">
-                <p className=" text-sm font-medium">{music.name}</p>
-                <Button
-                  size="sm"
-                  onClick={() => handleChangeBackgroundMusic(music)}
-                  variant={
-                    invitation.background_music === music.id
-                      ? "default"
-                      : "secondary"
-                  }
-                >
-                  {invitation.background_music === music.id
-                    ? "Dipilih"
-                    : "Pilih lagu ini"}
-                </Button>
-              </div>
+            <div
+              className=" space-y-4 rounded-lg border shadow-sm p-4 flex flex-col items-start"
+              key={i}
+            >
+              <p className=" text-sm font-medium text-center">{music.name}</p>
               <audio key={i} src={music.url} controls className=" w-full" />
+              <Button
+                size="sm"
+                // onClick={() => handleChangeBackgroundMusic(music)}
+                // variant={
+                //   invitation.background_music === music.id
+                //     ? "default"
+                //     : "secondary"
+                // }
+              >
+                Dipilih
+              </Button>
             </div>
           ))}
         </div>

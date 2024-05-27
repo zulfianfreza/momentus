@@ -1,26 +1,25 @@
 "use client";
 
 import HeadingConfigurationSection from "@/components/common/heading-configuration-section";
+import InputItem from "@/components/common/input-item";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
-import { INVITATION_STYLE_FAKER } from "@/constant/faker.constant";
+import { INVITATION_GALLERIES_FAKER } from "@/constant/faker.constant";
 import { cn } from "@/lib/utils";
-import {
-  TInvitationGalleryType,
-  TInvitationStyle,
-} from "@/types/invitation.type";
+import { TInvitationGallery } from "@/types/invitation.type";
 import { reloadIframe } from "@/utils/iframe";
+import { Trash } from "iconsax-react";
 import Image from "next/image";
 import { useCallback, useState } from "react";
+import { LuPlus } from "react-icons/lu";
 
 export default function GalleryPage() {
-  // state
-  const [invitationStyle, setInvitationStyle] = useState<TInvitationStyle>(
-    INVITATION_STYLE_FAKER
-  );
+  const [invitationGalleries, setInvitationGalleries] = useState<
+    TInvitationGallery[]
+  >(INVITATION_GALLERIES_FAKER);
 
   // tabs menu
   const TABS_MENU = [
@@ -34,18 +33,19 @@ export default function GalleryPage() {
     },
   ];
 
-  // handle change gallery style
-  const handleChangeGalleryStyle = useCallback(
-    (type: TInvitationGalleryType) => {
-      const invitationStyle: TInvitationStyle = {
-        ...INVITATION_STYLE_FAKER,
-        gallery_style: type,
-      };
+  // handle delete photo
+  const handleDeletePhoto = useCallback(
+    (id: number) => {
+      const newGalleries: TInvitationGallery[] = invitationGalleries.filter(
+        (item) => item.id !== id
+      );
 
-      setInvitationStyle(invitationStyle);
-      reloadIframe("invitation-style-updated", { invitationStyle });
+      setInvitationGalleries(newGalleries);
+      reloadIframe("invitation-galleries-updated", {
+        invitationGalleries: newGalleries,
+      });
     },
-    []
+    [invitationGalleries]
   );
 
   return (
@@ -54,7 +54,7 @@ export default function GalleryPage() {
         title="Gallery"
         subtitle="Tambahkan foto-foto spesial untuk membagikan momen berharga dalam perjalanan cinta kalian."
       />
-      <Tabs defaultValue="configuration" className=" w-full mt-4">
+      <Tabs defaultValue="photo" className=" w-full mt-4">
         <TabsList className=" bg-transparent border-b rounded-none px-0 my-0 w-full justify-start gap-4">
           {TABS_MENU.map((menu) => (
             <TabsTrigger
@@ -69,29 +69,29 @@ export default function GalleryPage() {
         <div className=" mt-4">
           <TabsContent value="configuration">
             <div className=" flex flex-col gap-6">
-              <div className="flex flex-col gap-y-2">
+              <InputItem>
                 <Label>Judul Gallery</Label>
                 <Input placeholder="" value="Moment Yang Berharga" />
-              </div>
-              <div className="flex flex-col gap-y-2">
+              </InputItem>
+              <InputItem>
                 <Label>Deskripsi Gallery</Label>
                 <Textarea
                   placeholder=""
                   value="'Menciptakan kenangan adalah hadiah yang tak ternilai harganya. Kenangan akan bertahan seumur hidup; benda-benda hanya dalam waktu singkat.'"
                 />
-              </div>
-              <div className=" space-y-2">
+              </InputItem>
+              <InputItem>
                 <Label>Gallery Style</Label>
                 <div className="grid grid-cols-3 gap-4">
                   <div className=" w-full flex flex-col gap-2 items-center">
                     <div
-                      onClick={() => handleChangeGalleryStyle("grid")}
+                      // onClick={() => handleChangeGalleryStyle("grid")}
                       className={cn(
-                        " w-full p-2 pb-0 border-[1.5px] bg-neutral-100 rounded-lg flex justify-center items-center",
-                        {
-                          " ring-[1.5px] ring-offset-1 ring-pink-500 border-pink-500":
-                            invitationStyle.gallery_style === "grid",
-                        }
+                        " w-full p-2 pb-0 border-[1.5px] bg-neutral-100 rounded-lg flex justify-center items-center"
+                        // {
+                        //   " ring-[1.5px] ring-offset-1 ring-pink-500 border-pink-500":
+                        //     invitationStyle.gallery_style === "grid",
+                        // }
                       )}
                     >
                       <div className=" w-full aspect-video relative rounded-md rounded-b-none overflow-hidden">
@@ -107,13 +107,13 @@ export default function GalleryPage() {
                   </div>
                   <div className=" w-full flex flex-col gap-2 items-center">
                     <div
-                      onClick={() => handleChangeGalleryStyle("slideshow")}
+                      // onClick={() => handleChangeGalleryStyle("slideshow")}
                       className={cn(
-                        " w-full p-2 pb-0 border-[1.5px] bg-neutral-100 rounded-lg flex justify-center items-center",
-                        {
-                          " ring-[1.5px] ring-offset-1 ring-pink-500 border-pink-500":
-                            invitationStyle.gallery_style === "slideshow",
-                        }
+                        " w-full p-2 pb-0 border-[1.5px] bg-neutral-100 rounded-lg flex justify-center items-center"
+                        // {
+                        //   " ring-[1.5px] ring-offset-1 ring-pink-500 border-pink-500":
+                        //     invitationStyle.gallery_style === "slideshow",
+                        // }
                       )}
                     >
                       <div className=" w-full aspect-video relative rounded-md rounded-b-none overflow-hidden">
@@ -129,16 +129,16 @@ export default function GalleryPage() {
                   </div>
                   <div className=" w-full flex flex-col gap-2 items-center">
                     <div
-                      onClick={() =>
-                        handleChangeGalleryStyle("slideshow-with-thumbnail")
-                      }
+                      // onClick={() =>
+                      //   handleChangeGalleryStyle("slideshow-with-thumbnail")
+                      // }
                       className={cn(
-                        " w-full p-2 pb-0 border-[1.5px] bg-neutral-100 rounded-lg flex justify-center items-center",
-                        {
-                          " ring-[1.5px] ring-offset-1 ring-pink-500 border-pink-500":
-                            invitationStyle.gallery_style ===
-                            "slideshow-with-thumbnail",
-                        }
+                        " w-full p-2 pb-0 border-[1.5px] bg-neutral-100 rounded-lg flex justify-center items-center"
+                        // {
+                        //   " ring-[1.5px] ring-offset-1 ring-pink-500 border-pink-500":
+                        //     invitationStyle.gallery_style ===
+                        //     "slideshow-with-thumbnail",
+                        // }
                       )}
                     >
                       <div className=" w-full aspect-video relative rounded-md rounded-b-none overflow-hidden">
@@ -155,7 +155,34 @@ export default function GalleryPage() {
                     </p>
                   </div>
                 </div>
+              </InputItem>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="photo">
+            <div className="grid grid-cols-3 gap-4">
+              <div className=" w-full aspect-square bg-neutral-100 flex justify-center items-center">
+                <LuPlus />
               </div>
+              {invitationGalleries.map((gallery, i) => (
+                <div key={i} className=" w-full aspect-square relative group">
+                  <Image
+                    src={gallery.url}
+                    alt=""
+                    fill
+                    className=" object-cover object-center"
+                  />
+                  <div className=" w-full h-full bg-black/50 flex group-hover:opacity-100 opacity-0 transition-all justify-center items-center absolute top-0 z-[2]">
+                    <Button
+                      onClick={() => handleDeletePhoto(gallery.id)}
+                      size="sm"
+                      variant="destructive"
+                    >
+                      Hapus
+                    </Button>
+                  </div>
+                </div>
+              ))}
             </div>
           </TabsContent>
         </div>

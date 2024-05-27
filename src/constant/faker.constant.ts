@@ -9,7 +9,9 @@ import {
   TBackgroundMusic,
   TInvitation,
   TInvitationGallery,
-  TInvitationStyle,
+  TInvitationStory,
+  TInvitationWish,
+  TTheme,
 } from "@/types/invitation.type";
 import {
   ArchiveBook,
@@ -23,103 +25,193 @@ import {
   VideoOctagon,
 } from "iconsax-react";
 
-export const THEME_FAKER = [
+export const THEME_FAKER: Array<TTheme> = [
   {
-    thumbnail: "/images/theme/auto-scrolled-cinematic.jpg",
-    name: "Auto Scrolled Cinematic",
-    slug: "auto-scrolled-cinematic",
-    plan: "stardust",
-  },
-  {
-    thumbnail: "/images/theme/dark-boho.jpg",
-    name: "Dark Boho",
-    slug: "dark-boho",
-    plan: "stardust",
-  },
-  {
-    thumbnail: "/images/theme/snowfall-minimalist.jpeg",
-    name: "Snowfall Minimalist",
-    slug: "snowfall-minimalist",
-    plan: "stardust",
-  },
-  {
-    thumbnail: "/images/theme/romantic-delight.png",
-    name: "Romantic Delight",
-    slug: "romantic-delight",
-    plan: "stardust",
-  },
-  {
-    thumbnail: "/images/theme/calm-blue.jpeg",
-    name: "Calm Blue",
-    slug: "calm-blue",
-    plan: "moonbeam",
-  },
-  {
-    thumbnail: "/images/theme/elegant-leaves.jpeg",
-    name: "Elegant Leaves",
-    slug: "elegant-leaves",
-    plan: "moonbeam",
-  },
-  {
-    thumbnail: "/images/theme/minimalist-style.jpeg",
-    name: "Minimalist Style",
-    slug: "minimalist-style",
-    plan: "moonbeam",
-  },
-  {
-    thumbnail: "/images/theme/olive-flower-ornament.jpg",
-    name: "Olive Flower Ornament",
-    slug: "olive-flower-ornament",
-    plan: "emberglow",
-  },
-  {
-    thumbnail: "/images/theme/simple-minimalist-deep-purple.jpg",
-    name: "Simple Minimalist Deep Purple",
-    slug: "simple-minimalist-deep-purple",
-    plan: "emberglow",
-  },
-  {
-    thumbnail: "/images/theme/simple-clean.jpeg",
+    id: 1,
+    cover: "/images/theme/simple-clean.jpeg",
     name: "Simple Clean",
-    slug: "simple-clean",
-    plan: "moonbeam",
+    code: "F001",
+    plan: {
+      id: 1,
+      name: "Splendid",
+    },
   },
   {
-    thumbnail: "/images/theme/traditional-java.jpg",
-    slug: "traditional-java",
+    id: 1,
+    cover: "/images/theme/traditional-java.jpg",
+    code: "F002",
     name: "Traditional Java",
-    plan: "moonbeam",
+    plan: {
+      id: 1,
+      name: "Splendid",
+    },
   },
 ];
 
-export const INVITATION_STYLE_FAKER: TInvitationStyle = {
-  theme: "simple-clean",
-  groom_first: true,
-  hide_logo: false,
-  gallery_style: "slideshow",
-};
-
-export const INVITATION_FAKER: TInvitation = {
-  bride_name: "Adelia Wesaya",
-  bride_instagram: "adelia_wesaya",
-  bride_child_sequence: "Kedua",
-  bride_father_name: "Dr. Andreas Sanusi S.E",
-  bride_mother_name: "Dewi Yuliantara",
-  groom_name: "Timothy Pardede S.Kom",
-  groom_instagram: "timothy_pardd",
-  groom_child_sequence: "Sulung",
-  groom_father_name: "Bobby Pardede",
-  groom_mother_name: "Jessica Putri",
-  wedding_date: new Date("2024-10-23T10:00:00+07:00"),
-  wedding_location:
-    "Plataran Menteng, Jalan HOS. Cokroaminoto, RT.6/RW.4, Gondangdia, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta, Indonesia",
-  wedding_reception_date: new Date("2024-10-26T10:00:00+07:00"),
-  wedding_reception_location:
-    "DoubleTree by Hilton Jakarta - Diponegoro Jakarta Pusat",
-  plan: "Free Trial",
-  plan_expired_date: "2024-05-31T10:00:00+07:00",
-  background_music: 1,
-};
+export const INVITATION_FAKER: Array<TInvitation> = [
+  {
+    id: 1,
+    invitation_category: {
+      id: 1,
+      category_name: "wedding",
+    },
+    invitation_status: "actvie",
+    slug: "sekar-hilman",
+    theme: {
+      id: 1,
+      cover: "/images/theme/simple-clean.jpeg",
+      name: "Simple Clean",
+      code: "F001",
+      plan: {
+        id: 1,
+        name: "Fair",
+      },
+    },
+    user_id: 1,
+    invitation_style: {
+      groom_first: true,
+      hide_logo: false,
+      gallery_style: "slideshow",
+    },
+    invitation_private: [
+      {
+        person_name: "Adelia Wesaya",
+        person_instagram: "adelia_wesaya",
+        person_child_sequence: "Kedua",
+        person_father_name: "Dr. Andreas Sanusi S.E",
+        person_mother_name: "Dewi Yuliantara",
+        id: 1,
+        person_image: {
+          id: 1,
+          url: "/images/traditional-java/bride-image.jpeg",
+        },
+      },
+      {
+        id: 2,
+        person_name: "Timothy Pardede S.Kom",
+        person_instagram: "timothy_pardd",
+        person_child_sequence: "Sulung",
+        person_father_name: "Bobby Pardede",
+        person_mother_name: "Jessica Putri",
+        person_image: {
+          id: 1,
+          url: "/images/traditional-java/bride-image.jpeg",
+        },
+      },
+    ],
+    quote:
+      "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِقَوْمٍ يَتَفَكَّرُونَ Artinya: “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berfikir.” (QS. Ar-Rum: 21)",
+    invitation_events: [
+      {
+        id: 1,
+        event_label: "Akad",
+        event_start: new Date("2024-10-23T10:00:00+07:00"),
+        event_end: new Date("2024-10-23T10:00:00+07:00"),
+        event_address:
+          "Plataran Menteng, Jalan HOS. Cokroaminoto, RT.6/RW.4, Gondangdia, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta, Indonesia",
+        event_maps_url: "",
+        event_venue: "Masjid Al-Quran",
+        event_video_url: "",
+      },
+      {
+        id: 2,
+        event_label: "Resepsi",
+        event_start: new Date("2024-10-23T10:00:00+07:00"),
+        event_end: new Date("2024-10-23T10:00:00+07:00"),
+        event_address:
+          "DoubleTree by Hilton Jakarta - Diponegoro Jakarta Pusat",
+        event_maps_url: "",
+        event_venue: "GOR Kertajaya",
+        event_video_url: "",
+      },
+    ],
+    invitation_galleries: [
+      {
+        id: 1,
+        url: "/images/dummy/gallery-1.jpg",
+      },
+      {
+        id: 2,
+        url: "/images/dummy/gallery-2.jpg",
+      },
+      {
+        id: 3,
+        url: "/images/dummy/gallery-3.jpg",
+      },
+      {
+        id: 4,
+        url: "/images/dummy/gallery-4.jpg",
+      },
+      {
+        id: 5,
+        url: "/images/dummy/gallery-5.jpg",
+      },
+      {
+        id: 6,
+        url: "/images/dummy/gallery-6.jpg",
+      },
+      {
+        id: 7,
+        url: "/images/dummy/gallery-7.jpg",
+      },
+      {
+        id: 8,
+        url: "/images/dummy/gallery-8.jpg",
+      },
+      {
+        id: 9,
+        url: "/images/dummy/gallery-9.jpg",
+      },
+    ],
+    plan: {
+      id: 1,
+      name: "Rarely",
+    },
+    plan_expired_at: "2024-05-31T10:00:00+07:00",
+    invitation_stories: [
+      {
+        id: 1,
+        title: "2019",
+        description: "First time we meet.",
+        image: "/images/traditional-java/story-image-1.jpg",
+      },
+      {
+        id: 2,
+        title: "2021",
+        description: "We decided to get engaged.",
+        image: "/images/traditional-java/story-image-2.jpg",
+      },
+      {
+        id: 3,
+        title: "2022",
+        description: "Finally, we are husband and wife.",
+        image: "/images/traditional-java/story-image-3.jpg",
+      },
+      {
+        id: 4,
+        title: "Finally",
+        description:
+          "Akhirnya kita bersama didalam pernikahan yang sakral, semoga tuhan meridoi pernikahan kita.",
+        image: "/images/traditional-java/story-image-4.jpg",
+      },
+    ],
+    invitation_wishes: [
+      {
+        id: 1,
+        name: "Dee",
+        location: "Bogor",
+        message: "Beautiful 💕",
+      },
+      {
+        id: 2,
+        name: "Momentus",
+        location: "Bekasi",
+        message:
+          "Beatiful design matters. happy for all of you that want going to married",
+      },
+    ],
+  },
+];
 
 export const MUSIC_FAKER: TBackgroundMusic[] = [
   {
@@ -134,7 +226,35 @@ export const MUSIC_FAKER: TBackgroundMusic[] = [
   },
 ];
 
-export const INVITATION_GALLERY_FAKER: TInvitationGallery[] = [
+export const INVITATION_STORIES_FAKER: Array<TInvitationStory> = [
+  {
+    id: 1,
+    title: "2019",
+    description: "First time we meet.",
+    image: "/images/traditional-java/story-image-1.jpg",
+  },
+  {
+    id: 2,
+    title: "2021",
+    description: "We decided to get engaged.",
+    image: "/images/traditional-java/story-image-2.jpg",
+  },
+  {
+    id: 3,
+    title: "2022",
+    description: "Finally, we are husband and wife.",
+    image: "/images/traditional-java/story-image-3.jpg",
+  },
+  {
+    id: 4,
+    title: "Finally",
+    description:
+      "Akhirnya kita bersama didalam pernikahan yang sakral, semoga tuhan meridoi pernikahan kita.",
+    image: "/images/traditional-java/story-image-4.jpg",
+  },
+];
+
+export const INVITATION_GALLERIES_FAKER: Array<TInvitationGallery> = [
   {
     id: 1,
     url: "/images/dummy/gallery-1.jpg",
@@ -170,6 +290,22 @@ export const INVITATION_GALLERY_FAKER: TInvitationGallery[] = [
   {
     id: 9,
     url: "/images/dummy/gallery-9.jpg",
+  },
+];
+
+export const INVITATION_WISHES_FAKER: TInvitationWish[] = [
+  {
+    id: 1,
+    name: "Dee",
+    location: "Bogor",
+    message: "Beautiful 💕",
+  },
+  {
+    id: 2,
+    name: "Momentus",
+    location: "Bekasi",
+    message:
+      "Beatiful design matters. happy for all of you that want going to married",
   },
 ];
 

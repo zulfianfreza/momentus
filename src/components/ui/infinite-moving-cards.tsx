@@ -28,6 +28,7 @@ export const InfiniteMovingCards = ({
 
   useEffect(() => {
     addAnimation();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [start, setStart] = useState(false);
   function addAnimation() {
@@ -88,35 +89,36 @@ export const InfiniteMovingCards = ({
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
       >
-        {items.map((item, idx) => (
-          <>
-            <li className=" flex-shrink-0 rounded-2xl border max-w-lg shadow-lg">
-              <div className=" flex h-72 justify-between gap-x-4 bg-[url('/images/logo-10-opacity.png')] bg-cover">
-                <div className=" h-full aspect-[9/16]">
-                  <Image
-                    src={item.tesimonial_image}
-                    width={1280}
-                    height={720}
-                    alt=""
-                    className=" w-full h-full rounded-l-2xl object-cover"
-                  />
-                </div>
-                <div className=" flex-1 flex-col w-full p-4">
-                  <item.icon_quotation
-                    size="56"
-                    color="rgb(219 39 119)"
-                    variant="Bulk"
-                  />
-                  <h1 className=" text-pink-600 mt-2 font-semibold">
-                    {item.testimonial_name}
-                  </h1>
-                  <p className=" text-neutral-500 text-sm mt-1">
-                    {item.testimonial}
-                  </p>
-                </div>
+        {items.map((item, i) => (
+          <li
+            key={i}
+            className=" flex-shrink-0 rounded-2xl border max-w-lg shadow-lg"
+          >
+            <div className=" flex h-72 justify-between gap-x-4 bg-[url('/images/logo-10-opacity.png')] bg-cover">
+              <div className=" h-full aspect-[3/4] ">
+                <Image
+                  src={item.tesimonial_image}
+                  width={1280}
+                  height={720}
+                  alt=""
+                  className=" w-full h-full rounded-l-2xl object-cover"
+                />
               </div>
-            </li>
-          </>
+              <div className=" flex-1 flex flex-col w-full p-4">
+                <item.icon_quotation
+                  size="56"
+                  variant="Bulk"
+                  className=" text-pink-600"
+                />
+                <h1 className=" text-pink-600 mt-2 font-semibold">
+                  {item.testimonial_name}
+                </h1>
+                <p className=" text-neutral-900 text-sm mt-1">
+                  {item.testimonial}
+                </p>
+              </div>
+            </div>
+          </li>
         ))}
       </ul>
     </div>
