@@ -1,6 +1,7 @@
 "use client";
 
 import BaseImageLightbox from "@/components/common/base-image-lightbox";
+import { cn } from "@/lib/utils";
 import {
   TInvitationGallery,
   TInvitationGalleryType,
@@ -14,12 +15,13 @@ import Counter from "yet-another-react-lightbox/plugins/counter";
 import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
-import "yet-another-react-lightbox/plugins/thumbnails.css";
-import "yet-another-react-lightbox/styles.css";
+
+// style
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "yet-another-react-lightbox/plugins/counter.css";
-import { cn } from "@/lib/utils";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
+import "yet-another-react-lightbox/styles.css";
 
 type TProps = {
   type: TInvitationGalleryType;
@@ -64,14 +66,14 @@ export default function InvitationGallery({ type, galleries }: TProps) {
         </div>
       )}
       {type === "grid" && (
-        <div className=" grid grid-cols-3 gap-2">
+        <div className=" grid grid-cols-12 gap-2">
           {galleries.map((image, i) => (
             <div
               key={image.id}
               className={cn(
-                " w-full h-full aspect-square relative cursor-pointer",
+                " w-full h-full aspect-square col-span-6 relative cursor-pointer",
                 {
-                  "row-span-2 aspect-[1/2]": i % 3 === 0,
+                  " col-span-4": [2, 3, 4, 7, 8, 9].includes(i),
                 }
               )}
             >

@@ -29,6 +29,14 @@ export default function Footer() {
       label: "Blog",
       path: "/blog",
     },
+    {
+      label: "FAQ",
+      path: "/faq",
+    },
+    {
+      label: "Portfolio",
+      path: "/portfolio",
+    },
   ];
   const LEGAL_MENU = [
     {
@@ -73,7 +81,7 @@ export default function Footer() {
             </div>
           </div>
           <p className=" text-neutral-500 text-sm text-center lg:text-start">
-            Copyright © 2024 Railway Corp.
+            Copyright © 2024 Momentus Corp.
             <br />
             All rights reserved.
           </p>

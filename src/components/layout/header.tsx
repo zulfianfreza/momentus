@@ -23,6 +23,10 @@ export default function Header() {
       label: "Panduan",
       path: "/guide",
     },
+    {
+      label: "Blog",
+      path: "/blog",
+    },
   ];
   return (
     <Container>

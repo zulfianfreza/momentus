@@ -2,10 +2,14 @@
 
 import HeadingConfigurationSection from "@/components/common/heading-configuration-section";
 import { Button } from "@/components/ui/button";
-import { SIDEBAR_MENU } from "@/constant/common.constant";
-import { INVITATION_STYLE_FAKER, THEME_FAKER } from "@/constant/faker.constant";
+import { INVITATION_FAKER, THEME_FAKER } from "@/constant/faker.constant";
 import { cn } from "@/lib/utils";
-import { TInvitationStyle } from "@/types/invitation.type";
+import {
+  TInvitation,
+  TInvitationGeneralStyle,
+  TTheme,
+} from "@/types/invitation.type";
+import { getInvitationFaker } from "@/utils/faker";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback } from "react";
@@ -15,33 +19,44 @@ type TPageParams = {
   searchParams: {
     plan: string | undefined;
   };
+  params: {
+    slug: string;
+  };
 };
 
-export default function ThemePage({ searchParams }: TPageParams) {
+export default function ThemePage({ searchParams, params }: TPageParams) {
   const plan = searchParams.plan || "all";
+  const invitationFaker = getInvitationFaker(params.slug);
 
   const listTheme =
     plan === "all"
       ? THEME_FAKER
-      : THEME_FAKER.filter((theme) => theme.plan === plan);
+      : THEME_FAKER.filter((theme) => theme.plan.name.toLowerCase() === plan);
 
-  const handleChangeTheme = useCallback((theme: string) => {
-    const invitationStyle: TInvitationStyle = {
-      ...INVITATION_STYLE_FAKER,
-      theme,
-    };
-    const iframe = document.getElementById("preview-page") as HTMLIFrameElement;
+  const handleChangeTheme = useCallback(
+    (theme: TTheme) => {
+      if (invitationFaker) {
+        const invitationStyle: TInvitation = {
+          ...invitationFaker,
+          theme,
+        };
+        const iframe = document.getElementById(
+          "preview-page"
+        ) as HTMLIFrameElement;
 
-    if (!iframe) return;
+        if (!iframe) return;
 
-    iframe.contentWindow?.postMessage(
-      {
-        type: "invitation-style-updated",
-        invitationStyle,
-      },
-      "*"
-    );
-  }, []);
+        iframe.contentWindow?.postMessage(
+          {
+            type: "invitation-style-updated",
+            invitationStyle,
+          },
+          "*"
+        );
+      }
+    },
+    [invitationFaker]
+  );
 
   return (
     <div className=" p-6 w-full">
@@ -71,62 +86,73 @@ export default function ThemePage({ searchParams }: TPageParams) {
         </Button>
         <Button
           size="sm"
-          variant={plan === "emberglow" ? "default" : "outline"}
+          variant={plan === "fair" ? "default" : "outline"}
           className=" gap-2"
           asChild
         >
-          <Link href="/invitation/xyz/appereance/theme?plan=emberglow">
-            Emberglow
+          <Link href="/invitation/xyz/appereance/theme?plan=fair">
+            Fair
             <div
               className={cn(
                 " flex aspect-square w-4 justify-center rounded-full bg-neutral-800 text-[10px] text-white",
-                { "bg-white text-pink-600": plan === "emberglow" }
+                { "bg-white text-pink-600": plan === "fair" }
               )}
             >
-              {THEME_FAKER.filter((theme) => theme.plan === "emberglow").length}
+              {
+                THEME_FAKER.filter(
+                  (theme) => theme.plan.name.toLowerCase() === "fair"
+                ).length
+              }
             </div>
           </Link>
         </Button>
         <Button
           size="sm"
-          variant={plan === "moonbeam" ? "default" : "outline"}
+          variant={plan === "splendid" ? "default" : "outline"}
           className=" gap-2"
           asChild
         >
-          <Link href="/invitation/xyz/appereance/theme?plan=moonbeam">
-            Moonbeam
+          <Link href="/invitation/xyz/appereance/theme?plan=splendid">
+            Splendid
             <div
               className={cn(
                 " flex aspect-square w-4 justify-center rounded-full bg-neutral-800 text-[10px] text-white",
-                { "bg-white text-pink-600": plan === "moonbeam" }
+                { "bg-white text-pink-600": plan === "splendid" }
               )}
             >
-              {THEME_FAKER.filter((theme) => theme.plan === "moonbeam").length}
+              {
+                THEME_FAKER.filter(
+                  (theme) => theme.plan.name.toLowerCase() === "splendid"
+                ).length
+              }
             </div>
           </Link>
         </Button>
         <Button
           size="sm"
-          variant={plan === "stardust" ? "default" : "outline"}
+          variant={plan === "rarely" ? "default" : "outline"}
           className={cn(" relative gap-2 overflow-hidden", {
-            "bg-gradient-to-r from-indigo-800 to-indigo-950":
-              plan === "stardust",
+            "bg-gradient-to-r from-indigo-800 to-indigo-950": plan === "rarely",
           })}
           asChild
         >
-          <Link href="/invitation/xyz/appereance/theme?plan=stardust">
-            Stardust
+          <Link href="/invitation/xyz/appereance/theme?plan=rarely">
+            Rarely
             <div
               className={cn(
                 " z-[2] flex aspect-square w-4 justify-center rounded-full bg-neutral-800 text-[10px] text-white",
                 {
-                  " bg-white text-pink-600": plan === "stardust",
+                  " bg-white text-pink-600": plan === "rarely",
                 }
               )}
             >
-              {THEME_FAKER.filter((theme) => theme.plan === "stardust").length}
+              {
+                THEME_FAKER.filter(
+                  (theme) => theme.plan.name.toLowerCase() === "rarely"
+                ).length
+              }
             </div>
-            {plan === "stardust" && (
+            {plan === "rarely" && (
               <HiSparkles
                 className=" absolute rotate-[190deg] -right-2 -bottom-1 text-yellow-300"
                 size={32}
@@ -141,14 +167,14 @@ export default function ThemePage({ searchParams }: TPageParams) {
           <button
             className=" rounded-lg flex flex-col gap-2 border p-4"
             key={i}
-            onClick={() => handleChangeTheme(theme.slug)}
+            onClick={() => handleChangeTheme(theme)}
           >
             <div className=" relative aspect-video w-full overflow-hidden rounded-lg">
               <Image
                 fill
                 alt=""
                 className=" object-cover object-center"
-                src={theme.thumbnail}
+                src={theme.cover}
               />
             </div>
             <p className=" text-sm text-neutral-900 text-center">
