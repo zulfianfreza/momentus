@@ -25,12 +25,12 @@ export default function CataloguePage() {
                   <Image
                     fill
                     alt=""
-                    src={theme.thumbnail}
+                    src={theme.cover}
                     className=" flex h-full w-full rounded-t-2xl"
                   />
                 </div>
                 <div className=" flex items-center justify-between w-full py-2 px-3">
-                  <Badge>{theme.plan}</Badge>
+                  <Badge>{theme.plan.name}</Badge>
                   <Button variant="secondary-primary">{theme.name}</Button>
                 </div>
               </div>

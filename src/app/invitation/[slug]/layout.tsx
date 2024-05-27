@@ -122,10 +122,8 @@ export default function InvitationLayout({
               /> */}
             </div>
             <div className="flex items-center gap-2">
-              <Button className=" rounded-xl" variant="outline">
-                Share
-              </Button>
-              <Button className=" rounded-xl" asChild>
+              <Button variant="outline">Share</Button>
+              <Button asChild>
                 <Link href="http://localhost:3000/demo" target="_blank">
                   Live View
                 </Link>
