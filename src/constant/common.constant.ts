@@ -1,4 +1,4 @@
-import { TMenu } from "@/types/common.type";
+import { TMenu } from '@/types/common.type';
 import {
   ArchiveBook,
   ArrangeVertical,
@@ -21,42 +21,42 @@ import {
   QuoteDown,
   TagUser,
   TextBlock,
-} from "iconsax-react";
+} from 'iconsax-react';
 import {
   IoBagAddOutline,
   IoImagesOutline,
   IoSettingsOutline,
-} from "react-icons/io5";
+} from 'react-icons/io5';
 import {
   PiAddressBookTabs,
   PiDatabase,
   PiPaintBucket,
   PiQuotes,
-} from "react-icons/pi";
+} from 'react-icons/pi';
 
 export const getSidebarMenu = (slug: string) => {
-  const prefix = "/invitation/" + slug;
+  const prefix = '/invitation/' + slug;
 
   return [
     {
-      title: "Dashboard",
+      title: 'Dashboard',
       icon: Home2,
       path: prefix,
     },
     {
-      title: "Tampilan",
+      title: 'Tampilan',
       icon: PiPaintBucket,
-      path: prefix + "/appereance",
+      path: prefix + '/appereance',
       submenu: [
         {
-          title: "Tema",
+          title: 'Tema',
           icon: BrushBig,
-          path: prefix + "/appereance/theme",
+          path: prefix + '/appereance/theme',
         },
         {
-          title: "Urutan",
+          title: 'Urutan',
           icon: ArrangeVertical,
-          path: prefix + "/appereance/order",
+          path: prefix + '/appereance/order',
         },
         // {
         //   title: "Font",
@@ -66,105 +66,105 @@ export const getSidebarMenu = (slug: string) => {
       ],
     },
     {
-      title: "Data",
+      title: 'Data',
       icon: PiDatabase,
-      path: prefix + "/data",
+      path: prefix + '/data',
       submenu: [
         {
-          title: "Sampul",
+          title: 'Sampul',
           icon: ArchiveBook,
-          path: prefix + "/data/cover",
+          path: prefix + '/data/cover',
         },
         {
-          title: "Quote",
+          title: 'Quote',
           icon: QuoteDown,
-          path: prefix + "/data/quote",
+          path: prefix + '/data/quote',
         },
         {
-          title: "Pasangan",
+          title: 'Pasangan',
           icon: Lovely,
-          path: prefix + "/data/couple",
+          path: prefix + '/data/couple',
         },
         {
-          title: "Detail Acara",
+          title: 'Detail Acara',
           icon: Calendar,
-          path: prefix + "/data/detail",
+          path: prefix + '/data/event',
         },
         {
-          title: "Galeri",
+          title: 'Galeri',
           icon: Gallery,
-          path: prefix + "/data/gallery",
+          path: prefix + '/data/gallery',
         },
         {
-          title: "Cerita",
+          title: 'Cerita',
           icon: Magicpen,
-          path: prefix + "/data/story",
+          path: prefix + '/data/story',
         },
         {
-          title: "Penutup",
+          title: 'Penutup',
           icon: Book,
-          path: prefix + "/data/closing",
+          path: prefix + '/data/closing',
         },
         {
-          title: "Latar Musik",
+          title: 'Latar Musik',
           icon: Music,
-          path: prefix + "/data/music",
+          path: prefix + '/data/music',
         },
       ],
     },
     {
-      title: "Tamu",
+      title: 'Tamu',
       icon: PiAddressBookTabs,
-      path: prefix + "/guest",
+      path: prefix + '/guest',
       submenu: [
         {
-          title: "Daftar Tamu",
+          title: 'Daftar Tamu',
           icon: Profile2User,
-          path: prefix + "/guest/list",
+          path: prefix + '/guest/list',
         },
         {
-          title: "Konfirmasi Kehadiran",
+          title: 'Konfirmasi Kehadiran',
           icon: TagUser,
-          path: prefix + "/guest/confirmation",
+          path: prefix + '/guest/confirmation',
         },
         {
-          title: "Buku Tamu",
+          title: 'Buku Tamu',
           icon: BookSaved,
-          path: prefix + "/guest/guest-book",
+          path: prefix + '/guest/guest-book',
         },
         {
-          title: "Hadiah",
+          title: 'Hadiah',
           icon: Gift,
-          path: prefix + "/guest/gift",
+          path: prefix + '/guest/gift',
         },
         {
-          title: "Doa & Ucapan",
+          title: 'Doa & Ucapan',
           icon: MessageFavorite,
-          path: prefix + "/guest/prayer-and-saying",
+          path: prefix + '/guest/prayer-and-saying',
         },
       ],
     },
     {
-      title: "Extra",
+      title: 'Extra',
       icon: IoBagAddOutline,
-      path: prefix + "/extra",
+      path: prefix + '/extra',
       submenu: [
         {
-          title: "Domain",
+          title: 'Domain',
           icon: Global,
-          path: prefix + "/extra/domain",
+          path: prefix + '/extra/domain',
         },
         {
-          title: "Filter Instagram",
+          title: 'Filter Instagram',
           icon: Instagram,
-          path: prefix + "/extra/filter-instagram",
+          path: prefix + '/extra/filter-instagram',
         },
       ],
     },
     {
-      title: "Pengaturan",
+      title: 'Pengaturan',
       icon: IoSettingsOutline,
-      path: prefix + "/setting",
+      path: prefix + '/setting',
     },
   ] as Array<TMenu>;
 };

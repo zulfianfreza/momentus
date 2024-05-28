@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import HeadingConfigurationSection from "@/components/common/heading-configuration-section";
-import InputItem from "@/components/common/input-item";
-import { Button } from "@/components/ui/button";
+import HeadingConfigurationSection from '@/components/common/heading-configuration-section';
+import InputItem from '@/components/common/input-item';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -10,16 +10,16 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Textarea } from "@/components/ui/textarea";
-import { INVITATION_STORIES_FAKER } from "@/constant/faker.constant";
-import { GalleryAdd, ReceiptAdd } from "iconsax-react";
-import Image from "next/image";
-import { useState } from "react";
-import Dropzone from "react-dropzone";
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Textarea } from '@/components/ui/textarea';
+import { INVITATION_STORIES_FAKER } from '@/constant/faker.constant';
+import { GalleryAdd, ReceiptAdd } from 'iconsax-react';
+import Image from 'next/image';
+import { useState } from 'react';
+import Dropzone from 'react-dropzone';
 
 export default function StoryPage() {
   // state
@@ -29,30 +29,33 @@ export default function StoryPage() {
   // tabs menu
   const TABS_MENU = [
     {
-      label: "Konfigurasi",
-      value: "configuration",
+      label: 'Konfigurasi',
+      value: 'configuration',
     },
     {
-      label: "Cerita",
-      value: "story",
+      label: 'Cerita',
+      value: 'story',
     },
   ];
 
   return (
     <>
-      <div className=" p-5 w-full">
+      <div className=" w-full p-5">
         <HeadingConfigurationSection
           title="Love Story"
           subtitle="Bagikan perjalanan cinta Anda dari awal hingga hari istimewa ini dengan para tamu."
         />
 
-        <Tabs defaultValue="configuration" className=" w-full mt-4">
-          <TabsList className=" bg-transparent border-b rounded-none px-0 my-0 w-full justify-start gap-4">
+        <Tabs
+          defaultValue="configuration"
+          className=" mt-4 w-full"
+        >
+          <TabsList className=" my-0 w-full justify-start gap-4 rounded-none border-b bg-transparent px-0">
             {TABS_MENU.map((menu) => (
               <TabsTrigger
                 key={menu.value}
                 value={menu.value}
-                className=" px-0 border-b-2 border-transparent data-[state=active]:border-pink-600 rounded-none h-10"
+                className=" h-10 rounded-none border-b-2 border-transparent px-0 data-[state=active]:border-pink-600"
               >
                 {menu.label}
               </TabsTrigger>
@@ -82,8 +85,11 @@ export default function StoryPage() {
 
               <div className=" mt-4 flex flex-col gap-4">
                 {INVITATION_STORIES_FAKER.map((story, i) => (
-                  <div key={i} className=" rounded-lg border shadow-sm p-4">
-                    <div className=" w-full aspect-video relative rounded-lg overflow-hidden">
+                  <div
+                    key={i}
+                    className=" rounded-xl border p-4 shadow-sm"
+                  >
+                    <div className=" relative aspect-video w-full overflow-hidden rounded-lg">
                       <Image
                         src={story.image}
                         fill
@@ -106,7 +112,10 @@ export default function StoryPage() {
                       >
                         Ubah Cerita
                       </Button>
-                      <Button size="sm" variant="destructive">
+                      <Button
+                        size="sm"
+                        variant="destructive"
+                      >
                         Hapus Cerita
                       </Button>
                     </div>
@@ -118,7 +127,10 @@ export default function StoryPage() {
         </Tabs>
       </div>
 
-      <Dialog open={showAddStory} onOpenChange={setShowAddStory}>
+      <Dialog
+        open={showAddStory}
+        onOpenChange={setShowAddStory}
+      >
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Tambah Cerita</DialogTitle>
@@ -137,7 +149,7 @@ export default function StoryPage() {
                 {({ getRootProps, getInputProps, open }) => (
                   <div
                     {...getRootProps()}
-                    className=" w-full rounded-lg border-dashed bg-neutral-50 py-8 border-2 flex flex-col justify-center items-center"
+                    className=" flex w-full flex-col items-center justify-center rounded-lg border-2 border-dashed bg-neutral-50 py-8"
                   >
                     <Input {...getInputProps()} />
                     <GalleryAdd
@@ -145,10 +157,13 @@ export default function StoryPage() {
                       size={60}
                       className=" text-pink-300"
                     />
-                    <div className="flex text-center text-sm items-center text-neutral-500 flex-col gap-2 leading-none mt-4">
+                    <div className="mt-4 flex flex-col items-center gap-2 text-center text-sm leading-none text-neutral-500">
                       <p>Drag your image here</p>
                       <p>or</p>
-                      <Button size="sm" onClick={open}>
+                      <Button
+                        size="sm"
+                        onClick={open}
+                      >
                         Browse
                       </Button>
                     </div>
@@ -170,7 +185,10 @@ export default function StoryPage() {
           </div>
         </DialogContent>
       </Dialog>
-      <Dialog open={showEditStory} onOpenChange={setShowEditStory}>
+      <Dialog
+        open={showEditStory}
+        onOpenChange={setShowEditStory}
+      >
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Edit Cerita</DialogTitle>
@@ -189,7 +207,7 @@ export default function StoryPage() {
                 {({ getRootProps, getInputProps, open }) => (
                   <div
                     {...getRootProps()}
-                    className=" w-full rounded-lg border-dashed bg-neutral-50 py-8 border-2 flex flex-col justify-center items-center"
+                    className=" flex w-full flex-col items-center justify-center rounded-lg border-2 border-dashed bg-neutral-50 py-8"
                   >
                     <Input {...getInputProps()} />
                     <GalleryAdd
@@ -197,10 +215,13 @@ export default function StoryPage() {
                       size={60}
                       className=" text-pink-300"
                     />
-                    <div className="flex text-center text-sm items-center text-neutral-500 flex-col gap-2 leading-none mt-4">
+                    <div className="mt-4 flex flex-col items-center gap-2 text-center text-sm leading-none text-neutral-500">
                       <p>Drag your image here</p>
                       <p>or</p>
-                      <Button size="sm" onClick={open}>
+                      <Button
+                        size="sm"
+                        onClick={open}
+                      >
                         Browse
                       </Button>
                     </div>
