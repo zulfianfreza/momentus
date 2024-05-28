@@ -1,11 +1,11 @@
-import HeadingConfigurationSection from "@/components/common/heading-configuration-section";
-import { Button } from "@/components/ui/button";
+import HeadingConfigurationSection from '@/components/common/heading-configuration-section';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from '@/components/ui/dropdown-menu';
 import {
   Table,
   TableBody,
@@ -14,40 +14,59 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { Send, Share, Trash } from "iconsax-react";
-import { HiMiniEllipsisHorizontal } from "react-icons/hi2";
-import { PiShare, PiShareNetwork } from "react-icons/pi";
+} from '@/components/ui/table';
+import {
+  AddSquare,
+  ExportSquare,
+  ImportSquare,
+  Send,
+  Share,
+  Trash,
+} from 'iconsax-react';
+import { HiMiniEllipsisHorizontal } from 'react-icons/hi2';
+import { PiShare, PiShareNetwork } from 'react-icons/pi';
 
 export default function SettingPage() {
   const DUMMY_VISITOR = [
     {
       id: 1,
-      recipient_name: "Adam Berriz",
-      recipient_whatsapp: "082229872",
-      recipient_address: "Jl. Venus",
-      created_at: "2024-05-25T17:06:38+00:00",
-      recipient_greeting: "Yth",
+      recipient_name: 'Adam Berriz',
+      recipient_whatsapp: '082229872',
+      recipient_address: 'Jl. Venus',
+      created_at: '2024-05-25T17:06:38+00:00',
+      recipient_greeting: 'Yth',
     },
   ];
   return (
-    <div className=" p-5 w-full">
+    <div className=" w-full p-5">
       <HeadingConfigurationSection
         title="Daftar Tamu"
         subtitle="Tambahkan dan kelola daftar tamu Anda untuk memastikan semua orang yang spesial hadir di hari istimewa Anda."
       />
 
       <div className=" mt-4">
-        <div className="flex justify-between">
-          <Button>Tambah Tamu</Button>
+        <div className="flex items-end justify-between">
+          <Button>
+            <AddSquare size={20} /> Tambah Tamu
+          </Button>
           <div className="flex gap-2">
-            <Button>Export</Button>
-            <Button className="" variant="success">
+            <Button
+              size="sm"
+              variant="destructive"
+            >
+              <ExportSquare size={16} /> Export
+            </Button>
+            <Button
+              className=""
+              variant="success"
+              size="sm"
+            >
+              <ImportSquare size={16} />
               Import
             </Button>
           </div>
         </div>
-        <div className=" mt-2 border rounded-xl overflow-hidden">
+        <div className=" mt-2 overflow-hidden rounded-xl border">
           <Table>
             <TableHeader>
               <TableRow className=" bg-neutral-100">
@@ -81,7 +100,10 @@ export default function SettingPage() {
                 </TableCell> */}
                   <TableCell>
                     <div className="flex items-center justify-end gap-2">
-                      <Button variant="destructive" size="icon-sm">
+                      <Button
+                        variant="destructive"
+                        size="icon-sm"
+                      >
                         <Trash size={16} />
                       </Button>
                     </div>

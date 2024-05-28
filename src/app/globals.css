@@ -15,7 +15,7 @@
 
 /* begin: demo 1 */
 .countdown-wrapper {
-  mask-image: url("/images/demo-1/mask-1.png");
+  mask-image: url('/images/demo-1/mask-1.png');
   mask-size: 100%;
 }
 /* end: demo 1 */
@@ -26,8 +26,24 @@
   width: 100%;
 }
 
+.__floater__body {
+  @apply overflow-hidden !rounded-lg;
+}
+
 .react-datepicker {
-  @apply !border-neutral-200 !rounded-xl !overflow-hidden;
+  font-family: var(--font-sora) !important;
+}
+
+.react-datepicker__current-month {
+  @apply !text-sm !font-medium;
+}
+
+.react-datepicker-time__header {
+  @apply !text-sm !font-medium;
+}
+
+.react-datepicker {
+  @apply !overflow-hidden !rounded-xl !border-neutral-200;
 }
 
 .react-datepicker__day--selected {
@@ -43,7 +59,7 @@
 }
 
 .react-datepicker__header {
-  @apply !bg-neutral-100 !border-neutral-200;
+  @apply !border-neutral-200 !bg-neutral-100;
 }
 
 .react-datepicker__time-container
