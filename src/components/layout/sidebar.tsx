@@ -1,24 +1,25 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { getSidebarMenu } from "@/constant/common.constant";
-import { cn } from "@/lib/utils";
-import { ArrowLeft, InfoCircle } from "iconsax-react";
-import Image from "next/image";
+} from '@/components/ui/tooltip';
+import { getSidebarMenu } from '@/constant/common.constant';
+import { cn } from '@/lib/utils';
+import { ArrowLeft, InfoCircle } from 'iconsax-react';
+import Image from 'next/image';
 
-import Link from "next/link";
-import { useParams, usePathname } from "next/navigation";
-import { Circle } from "rc-progress";
-import { useCallback } from "react";
-import { BsTablet } from "react-icons/bs";
-import { PiArrowLeft } from "react-icons/pi";
-import { RiCustomerService2Line } from "react-icons/ri";
+import Link from 'next/link';
+import { useParams, usePathname } from 'next/navigation';
+import { Circle } from 'rc-progress';
+import { useCallback, useState } from 'react';
+import { BsTablet } from 'react-icons/bs';
+import { PiArrowLeft } from 'react-icons/pi';
+import { RiCustomerService2Line } from 'react-icons/ri';
+import Joyride, { CallBackProps, STATUS, Step } from 'react-joyride';
 
 export default function Sidebar() {
   // hooks
@@ -31,41 +32,107 @@ export default function Sidebar() {
   // active menu
   const activeMenu = useCallback(
     (menu: string) =>
-      menu === "/invitation/xyz"
+      menu === '/invitation/xyz'
         ? menu === pathname
         : pathname.startsWith(menu),
-    [pathname]
+    [pathname],
   );
 
+  type State = {
+    run: boolean;
+    steps: Step[];
+  };
+
+  const [{ run, steps }, setState] = useState<State>({
+    run: false,
+    steps: [
+      {
+        content: <h2>Let&apos;s begin our journey!</h2>,
+        placement: 'center',
+        target: 'body',
+      },
+      {
+        target: '#first-step',
+        content: 'Navigasi',
+        placement: 'right',
+      },
+      {
+        target: '#second-step',
+        content: 'Preview',
+        placement: 'left',
+      },
+    ],
+  });
+
+  const handleJoyrideCallback = (data: CallBackProps) => {
+    const { status, type } = data;
+    const finishedStatuses: string[] = [STATUS.FINISHED, STATUS.SKIPPED];
+
+    if (finishedStatuses.includes(status)) {
+      setState((prev) => ({ ...prev, run: false }));
+    }
+  };
+
   return (
-    <aside className=" flex h-screen fixed z-[12] left-0 w-fit bg-white border-r shadow-sm flex-col">
-      <div className=" h-full w-full flex-1 flex flex-col items-center">
-        <Button variant="ghost" size="icon" className=" mt-2">
+    <aside
+      className=" fixed left-0 z-[12] flex h-screen w-fit flex-col border-r bg-white shadow-sm"
+      id="first-step"
+    >
+      <Joyride
+        run={run}
+        callback={handleJoyrideCallback}
+        disableOverlayClose
+        steps={steps}
+        styles={{
+          options: {},
+          buttonNext: {
+            backgroundColor: '#db2777',
+            fontSize: '14px',
+          },
+          buttonBack: {
+            color: '#db2777',
+            fontSize: '14px',
+          },
+        }}
+        continuous
+        showSkipButton
+        scrollToFirstStep
+        showProgress
+      />
+      <div className=" flex h-full w-full flex-1 flex-col items-center">
+        <Button
+          variant="ghost"
+          size="icon"
+          className=" mt-2"
+        >
           <PiArrowLeft size={20} />
         </Button>
-        <p className=" text-xs text-neutral-500 text-center mt-4">Menu</p>
-        <div className="flex flex-col mt-2">
+        <p className=" mt-4 text-center text-xs text-neutral-500">Menu</p>
+        <div className="mt-2 flex flex-col">
           {sidebarMenu.map((menu) => (
-            <TooltipProvider key={menu.path} delayDuration={0}>
+            <TooltipProvider
+              key={menu.path}
+              delayDuration={0}
+            >
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button
                     size="icon"
-                    variant={activeMenu(menu.path) ? "secondary" : "ghost"}
+                    variant={activeMenu(menu.path) ? 'secondary' : 'ghost'}
                     asChild
                     className={cn(
-                      " rounded-none w-14 h-12 border-r-2 border-transparent ",
+                      ' h-12 w-14 rounded-none border-r-2 border-transparent ',
                       {
-                        "border-pink-600": activeMenu(menu.path),
-                      }
+                        'border-pink-600': activeMenu(menu.path),
+                      },
                     )}
                   >
                     <Link href={menu.path}>
                       <menu.icon
                         size={20}
-                        variant={activeMenu(menu.path) ? "Outline" : "Outline"}
-                        className={cn(" ml-[2px]", {
-                          "": activeMenu(menu.path),
+                        variant={activeMenu(menu.path) ? 'Outline' : 'Outline'}
+                        className={cn(' ml-[2px]', {
+                          '': activeMenu(menu.path),
                         })}
                       />
                     </Link>
@@ -73,18 +140,18 @@ export default function Sidebar() {
                 </TooltipTrigger>
                 <TooltipContent
                   side="right"
-                  align={menu.submenu ? "start" : "center"}
-                  className=" p-2.5 rounded-xl"
+                  align={menu.submenu ? 'start' : 'center'}
+                  className=" rounded-xl p-2.5"
                 >
                   <p className=" text-neutral-900">{menu.title}</p>
                   {menu.submenu && (
-                    <div className="flex flex-col mt-2 gap-2">
+                    <div className="mt-2 flex flex-col gap-2">
                       {menu.submenu.map((submenu) => (
                         <Button
                           key={submenu.title}
                           size="sm"
                           variant={
-                            activeMenu(submenu.path) ? "default" : "secondary"
+                            activeMenu(submenu.path) ? 'default' : 'secondary'
                           }
                           className=" justify-start"
                           asChild
@@ -92,8 +159,8 @@ export default function Sidebar() {
                           <Link href={submenu.path}>
                             <submenu.icon
                               size={16}
-                              className={cn(" ", {
-                                "text-white": activeMenu(submenu.path),
+                              className={cn(' ', {
+                                'text-white': activeMenu(submenu.path),
                               })}
                             />
                             {submenu.title}
@@ -113,12 +180,16 @@ export default function Sidebar() {
                   <Button
                     size="icon"
                     variant="ghost"
-                    className=" rounded-none w-14"
+                    className=" w-14 rounded-none"
                   >
                     <BsTablet size={20} />
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent side="right" align="start" className=" p-2">
+                <TooltipContent
+                  side="right"
+                  align="start"
+                  className=" p-2"
+                >
                   <p className=" text-neutral-900">Preview</p>
                 </TooltipContent>
               </Tooltip>
@@ -130,12 +201,16 @@ export default function Sidebar() {
                 <Button
                   size="icon"
                   variant="ghost"
-                  className=" rounded-none w-14 h-12"
+                  className=" h-12 w-14 rounded-none"
                 >
                   <RiCustomerService2Line size={20} />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent side="right" align="center" className=" p-2">
+              <TooltipContent
+                side="right"
+                align="center"
+                className=" p-2"
+              >
                 <p className=" text-neutral-900">Support</p>
               </TooltipContent>
             </Tooltip>
@@ -143,11 +218,18 @@ export default function Sidebar() {
         </div>
       </div>
       <div className="flex flex-col gap-2 p-2">
-        <Button size="icon" variant="ghost">
+        <Button
+          size="icon"
+          variant="ghost"
+          onClick={(e) => {
+            e.preventDefault();
+            setState((prev) => ({ ...prev, run: !prev.run }));
+          }}
+        >
           <InfoCircle
             size={20}
             variant="Outline"
-            className={cn(" ml-[2px]", {})}
+            className={cn(' ml-[2px]', {})}
           />
         </Button>
         {/* <div className=" relative">

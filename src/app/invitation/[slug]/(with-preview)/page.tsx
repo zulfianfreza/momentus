@@ -1,5 +1,5 @@
-import HeadingConfigurationSection from "@/components/common/heading-configuration-section";
-import { Badge } from "@/components/ui/badge";
+import HeadingConfigurationSection from '@/components/common/heading-configuration-section';
+import { Badge } from '@/components/ui/badge';
 import {
   Table,
   TableBody,
@@ -7,55 +7,79 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from '@/components/ui/table';
+import { People } from 'iconsax-react';
+import Link from 'next/link';
 import {
   PiAddressBook,
   PiAddressBookTabs,
   PiHandsPraying,
-} from "react-icons/pi";
-import { TbMoodCheck } from "react-icons/tb";
+} from 'react-icons/pi';
+import { TbMoodCheck } from 'react-icons/tb';
 
 export default function DashboardPage() {
   return (
-    <div className=" p-5 w-full">
-      <div className="">
+    <div className=" w-full p-5">
+      <div className=" space-y-2">
         <HeadingConfigurationSection title="Dashboard" />
 
-        <div className=" mt-4 grid grid-cols-3 gap-4">
-          <div className=" w-full p-4 border items-start rounded-xl shadow-sm flex flex-col gap-4">
-            <div className=" bg-pink-100 h-10 w-10 rounded-xl flex items-center justify-center">
-              <PiAddressBookTabs className=" text-pink-600" size={24} />
+        <div className=" grid grid-cols-3 gap-4">
+          <div className=" flex w-full flex-col items-start gap-4 rounded-xl border p-4 shadow-sm">
+            <div className=" flex h-10 w-10 items-center justify-center rounded-xl bg-pink-100/80">
+              <People
+                className=" text-pink-600"
+                size={24}
+              />
             </div>
             <div className="">
-              <p className=" text-neutral-500 text-sm">Jumlah Tamu</p>
-              <h1 className=" font-bold text-2xl">1160</h1>
+              <p className=" text-sm text-neutral-500">Jumlah Tamu</p>
+              <h1 className=" text-2xl font-bold">1160</h1>
             </div>
           </div>
-          <div className=" w-full p-4 border items-start rounded-xl shadow-sm flex flex-col gap-2">
-            <div className=" bg-blue-100 h-10 w-10 rounded-xl flex items-center justify-center">
-              <TbMoodCheck className=" text-blue-600" size={24} />
+          <div className=" flex w-full flex-col items-start gap-4 rounded-xl border p-4 shadow-sm">
+            <div className=" flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100/80">
+              <TbMoodCheck
+                className=" text-blue-600"
+                size={24}
+              />
             </div>
-            <p className=" text-neutral-500 text-sm">Jumlah Kehadiran</p>
-            <h1 className=" font-bold text-2xl">780</h1>
+            <div className="">
+              <p className=" text-sm text-neutral-500">Jumlah Kehadiran</p>
+              <h1 className=" text-2xl font-bold">780</h1>
+            </div>
           </div>
-          <div className=" w-full p-4 border items-start rounded-xl shadow-sm flex flex-col gap-2">
-            <div className=" bg-green-100 h-10 w-10 rounded-xl flex items-center justify-center">
-              <PiHandsPraying className=" text-green-600" size={24} />
+          <div className=" flex w-full flex-col items-start gap-4 rounded-xl border p-4 shadow-sm">
+            <div className=" flex h-10 w-10 items-center justify-center rounded-xl bg-green-100/80">
+              <PiHandsPraying
+                className=" text-green-600"
+                size={24}
+              />
             </div>
-            <p className=" text-neutral-500 text-sm">Jumlah Ucapan & Doa</p>
-            <h1 className=" font-bold text-2xl">268</h1>
+            <div className="">
+              <p className=" text-sm text-neutral-500">Jumlah Ucapan & Doa</p>
+              <h1 className=" text-2xl font-bold">268</h1>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className=" mt-4">
-        <HeadingConfigurationSection title="Do'a & Ucapan" />
-        <div className=" border rounded-xl overflow-hidden">
+      <div className=" mt-4 space-y-2">
+        <div className="flex items-center justify-between">
+          <h1 className=" font-medium">Do&apos;a & Ucapan</h1>
+          <Link
+            href="/"
+            className=" text-sm text-pink-600"
+          >
+            Lihat semua
+          </Link>
+        </div>
+        <div className=" overflow-hidden rounded-xl border">
           <Table>
             <TableHeader>
               <TableRow className=" bg-neutral-100">
                 <TableHead>No.</TableHead>
                 <TableHead>Nama</TableHead>
+                <TableHead>Tanggal</TableHead>
                 <TableHead>Kehadiran</TableHead>
                 <TableHead>Do&apos;a & Ucapan</TableHead>
               </TableRow>
@@ -65,8 +89,14 @@ export default function DashboardPage() {
               <TableRow>
                 <TableCell>1.</TableCell>
                 <TableCell>Adam Suseno</TableCell>
+                <TableCell>29 Mei 2024 16:20</TableCell>
                 <TableCell>
-                  <Badge>Hadir</Badge>
+                  <Badge
+                    variant="success"
+                    size="sm"
+                  >
+                    Hadir
+                  </Badge>
                 </TableCell>
                 <TableCell>Samawa</TableCell>
               </TableRow>
