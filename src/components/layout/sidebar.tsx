@@ -54,10 +54,12 @@ export default function Sidebar() {
       {
         target: '#first-step',
         content: 'Navigasi',
+        placement: 'right',
       },
       {
         target: '#second-step',
         content: 'Preview',
+        placement: 'left',
       },
     ],
   });

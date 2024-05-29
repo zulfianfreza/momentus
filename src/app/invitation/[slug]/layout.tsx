@@ -42,6 +42,7 @@ export default function InvitationLayout({
 }) {
   const [showAddInvitation, setShowAddInvitation] = useState<boolean>(false);
   const [invitationType, setInvitationType] = useState('wedding');
+  const [showShare, setShowShare] = useState<boolean>(false);
 
   return (
     <>
@@ -61,8 +62,6 @@ export default function InvitationLayout({
                   side="right"
                   className=" rounded-xl"
                 >
-                  <DropdownMenuLabel>Daftar Undangan</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
                   <DropdownMenuItem>
                     <div className="flex items-center gap-1">
                       <p>sekar-hilman</p>
@@ -129,7 +128,12 @@ export default function InvitationLayout({
               /> */}
             </div>
             <div className="flex items-center gap-2">
-              <Button variant="outline">Share</Button>
+              <Button
+                variant="outline"
+                onClick={() => setShowShare((prev) => !prev)}
+              >
+                Share
+              </Button>
               <Button asChild>
                 <Link
                   href="http://localhost:3000/demo"
@@ -207,6 +211,17 @@ export default function InvitationLayout({
               <Button>Buat Sekarang</Button>
             </div>
           </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog
+        open={showShare}
+        onOpenChange={setShowShare}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Bagikan Undangan</DialogTitle>
+          </DialogHeader>
         </DialogContent>
       </Dialog>
     </>

@@ -4,8 +4,6 @@ import {
   ArrangeVertical,
   Book,
   BookSaved,
-  Brush,
-  Brush2,
   BrushBig,
   Calendar,
   Gallery,
@@ -20,20 +18,15 @@ import {
   Profile2User,
   QuoteDown,
   TagUser,
-  TextBlock,
 } from 'iconsax-react';
-import {
-  IoBagAddOutline,
-  IoImagesOutline,
-  IoSettingsOutline,
-} from 'react-icons/io5';
-import {
-  PiAddressBookTabs,
-  PiDatabase,
-  PiPaintBucket,
-  PiQuotes,
-} from 'react-icons/pi';
+import { IoBagAddOutline, IoSettingsOutline } from 'react-icons/io5';
+import { PiAddressBookTabs, PiDatabase, PiPaintBucket } from 'react-icons/pi';
 
+/**
+ * function for get sidebar menu
+ * @param slug
+ * @returns
+ */
 export const getSidebarMenu = (slug: string) => {
   const prefix = '/invitation/' + slug;
 
@@ -110,6 +103,11 @@ export const getSidebarMenu = (slug: string) => {
           icon: Music,
           path: prefix + '/data/music',
         },
+        {
+          title: 'Hadiah',
+          icon: Gift,
+          path: prefix + '/data/gift',
+        },
       ],
     },
     {
@@ -131,11 +129,6 @@ export const getSidebarMenu = (slug: string) => {
           title: 'Buku Tamu',
           icon: BookSaved,
           path: prefix + '/guest/guest-book',
-        },
-        {
-          title: 'Hadiah',
-          icon: Gift,
-          path: prefix + '/guest/gift',
         },
         {
           title: 'Doa & Ucapan',
