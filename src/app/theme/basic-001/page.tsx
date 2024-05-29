@@ -2,32 +2,14 @@
 
 import BaseImageLightbox from '@/components/common/base-image-lightbox';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogHeader } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import {
-  comfortaa,
-  inter,
-  italianno,
-  roboto,
-  rubik,
-} from '@/constant/font.constant';
+import { inter, italianno, rubik } from '@/constant/font.constant';
 import { useCountdown } from '@/hooks/use-count-down';
 import useScrollspy from '@/hooks/use-scroll-spy';
 import { cn } from '@/lib/utils';
-import { getFirstName, getInitials } from '@/utils/string';
-import {
-  Calendar,
-  CalendarAdd,
-  Clock,
-  Gallery,
-  Gift,
-  Location,
-  Lovely,
-  Magicpen,
-  Map1,
-  Video,
-} from 'iconsax-react';
+import { getFirstName } from '@/utils/string';
+import { Calendar, Gallery, Lovely, Magicpen, Map1 } from 'iconsax-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, {
@@ -219,20 +201,26 @@ export default function DemoPage() {
   );
 
   const [showCover, setShowCover] = useState<boolean>(false);
-  const audio = useMemo(
-    () => new Audio('/audio/luther-vandross-endless-love.mp3'),
-    [],
-  );
+
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const toggleAudio = useCallback(() => {
     if (paused) {
       setPaused(false);
-      audio.play();
     } else {
       setPaused(true);
-      audio.pause();
     }
-  }, [paused, audio]);
+  }, [paused]);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      if (paused) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+    }
+  }, [paused]);
 
   return (
     <>
@@ -310,7 +298,10 @@ export default function DemoPage() {
             )}
             style={{ animationDuration: '10s' }}
           >
-            <audio src="/audio/wedding-1.mp3" />
+            <audio
+              src="/audio/luther-vandross-endless-love.mp3"
+              ref={audioRef}
+            />
             <RiDiscFill
               className=" text-white"
               size={20}
