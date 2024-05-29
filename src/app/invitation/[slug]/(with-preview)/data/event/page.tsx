@@ -40,7 +40,7 @@ export default function DatePage() {
   return (
     <div className=" w-full p-5">
       <HeadingConfigurationSection
-        title="Detail Acara"
+        title="Informasi Acara"
         subtitle="Tambahkan informasi penting seperti tanggal dan lokasi pernikahan Anda untuk memudahkan para tamu."
       />
 
