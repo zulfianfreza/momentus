@@ -35,7 +35,7 @@ export default function Preview() {
 
   const url = useMemo(
     () =>
-      `http://localhost:3000/demo?activeSection=${
+      `http://localhost:3000/theme/basic-001?activeSection=${
         partsPathname[partsPathname.length - 1]
       }`,
     // eslint-disable-next-line react-hooks/exhaustive-deps

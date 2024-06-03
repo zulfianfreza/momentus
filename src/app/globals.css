@@ -70,3 +70,8 @@
   @apply !bg-pink-600;
 }
 /* end: override */
+
+.decoration-1-mask {
+  filter: drop-shadow(1.5px 0 0 #000) drop-shadow(0 1.5px 0 #000)
+    drop-shadow(-1.5px 0 0 #000) drop-shadow(0 -1.5px 0 #000);
+}

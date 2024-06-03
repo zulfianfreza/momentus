@@ -4,7 +4,13 @@ import BaseImageLightbox from '@/components/common/base-image-lightbox';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { inter, italianno, rubik } from '@/constant/font.constant';
+import {
+  inter,
+  italianno,
+  jost,
+  rubik,
+  theNautigal,
+} from '@/constant/font.constant';
 import { useCountdown } from '@/hooks/use-count-down';
 import useScrollspy from '@/hooks/use-scroll-spy';
 import { cn } from '@/lib/utils';
@@ -31,6 +37,8 @@ import 'yet-another-react-lightbox/styles.css';
 export default function DemoPage() {
   // state
   const [paused, setPaused] = useState(true);
+
+  const [isDev] = useState(true);
 
   // navigation
   const navigations = [
@@ -224,55 +232,57 @@ export default function DemoPage() {
 
   return (
     <>
-      <div
-        className={cn(
-          ' fixed z-[999] h-screen w-full bg-[url(/images/dummy/gallery-1.jpg)] bg-cover bg-center transition-all duration-1000',
-          { '-translate-y-full opacity-0': showCover },
-        )}
-      >
-        <div className=" flex h-full w-full items-center justify-center bg-black/50 p-20">
-          <div className=" flex h-full w-full flex-col">
-            <div className="flex flex-col items-center text-white">
-              <p className=" text-sm">The Wedding of</p>
-              <div className=" text-center">
-                <h1
-                  className={cn(
-                    'flex items-center text-[56px]',
-                    italianno.className,
-                  )}
+      {!isDev && (
+        <div
+          className={cn(
+            ' fixed z-[999] h-screen w-full bg-[url(/images/dummy/gallery-1.jpg)] bg-cover bg-center transition-all duration-1000',
+            { '-translate-y-full opacity-0': showCover },
+          )}
+        >
+          <div className=" flex h-full w-full items-center justify-center bg-black/50 p-20">
+            <div className=" flex h-full w-full flex-col">
+              <div className="flex flex-col items-center text-white">
+                <p className=" text-sm">The Wedding of</p>
+                <div className=" text-center">
+                  <h1
+                    className={cn(
+                      'flex items-center text-[56px]',
+                      italianno.className,
+                    )}
+                  >
+                    <span>{getFirstName(invitation.bride_name)}</span>
+                    <span>&nbsp;&&nbsp;</span>
+                    <span>{getFirstName(invitation.groom_name)}</span>
+                  </h1>
+                  <p className=" text-sm">12 December 2024</p>
+                </div>
+              </div>
+              <div className=" mt-auto flex flex-col items-center gap-6 text-center text-white">
+                <div className="">
+                  <p className=" text-xs">Kepada:</p>
+                  <p className=" text-sm font-medium">La Gandras</p>
+                </div>
+                <p className=" text-sm">
+                  Kami berharap anda menjadi bagian dari hari istimewa kami
+                </p>
+                <Button
+                  className=" h-8 rounded-full bg-black/90 hover:bg-black/80"
+                  onClick={() => {
+                    toggleAudio();
+                    setShowCover((prev) => !prev);
+                  }}
                 >
-                  <span>{getFirstName(invitation.bride_name)}</span>
-                  <span>&nbsp;&&nbsp;</span>
-                  <span>{getFirstName(invitation.groom_name)}</span>
-                </h1>
-                <p className=" text-sm">12 December 2024</p>
+                  Buka Undangan
+                </Button>
               </div>
-            </div>
-            <div className=" mt-auto flex flex-col items-center gap-6 text-center text-white">
-              <div className="">
-                <p className=" text-xs">Kepada:</p>
-                <p className=" text-sm font-medium">La Gandras</p>
-              </div>
-              <p className=" text-sm">
-                Kami berharap anda menjadi bagian dari hari istimewa kami
-              </p>
-              <Button
-                className=" h-8 rounded-full bg-black/90 hover:bg-black/80"
-                onClick={() => {
-                  toggleAudio();
-                  setShowCover((prev) => !prev);
-                }}
-              >
-                Buka Undangan
-              </Button>
             </div>
           </div>
         </div>
-      </div>
+      )}
       <div
         className={cn(
           ' fixed flex h-screen w-full',
-          inter.className,
+          jost.className,
           'text-neutral-950',
         )}
       >
@@ -289,11 +299,11 @@ export default function DemoPage() {
             </h1>
           </div>
         </div>
-        <div className=" relative h-screen w-full lg:w-[536px]">
+        <div className=" relative h-screen w-full lg:w-[472px]">
           <div
             onClick={toggleAudio}
             className={cn(
-              ' absolute bottom-24 right-4 z-[9] aspect-square animate-spin cursor-pointer rounded-full bg-black p-3 min-[512px]:right-[calc(50%-250px)]',
+              ' absolute bottom-24 right-4 z-[9] aspect-square animate-spin cursor-pointer rounded-full bg-black p-3 min-[472px]:right-[calc(50%-230px)]',
               { paused: paused },
             )}
             style={{ animationDuration: '10s' }}
@@ -327,44 +337,69 @@ export default function DemoPage() {
               </Link>
             ))}
           </div>
-          <div className=" absolute z-[1] block h-screen w-full bg-[url(/images/dummy/gallery-2.jpg)] bg-cover bg-center blur-sm brightness-[.25] lg:hidden" />
+          <div className=" absolute z-[1] block h-screen w-full bg-[url(/images/dummy/gallery-2.jpg)] bg-cover bg-center brightness-[.15] lg:hidden" />
           <div
             className=" absolute z-[2] h-screen w-full overflow-y-scroll"
             id="invitation-container"
           >
-            <div className=" relative mx-auto h-screen w-full max-w-[536px]">
+            <div className=" relative mx-auto h-screen w-full max-w-[472px]">
               <div className=" z-[2] w-full bg-[#d8d8d8]">
                 <section
                   id="cover"
-                  className=" h-screen min-h-screen w-full bg-[url(/images/dummy/gallery-1.jpg)] bg-cover bg-center bg-no-repeat text-white"
+                  className=" min-h-screen w-full bg-[url(/images/dummy/dummy-13.jpeg)] bg-cover bg-center bg-no-repeat text-white"
                 >
-                  <div className=" h-full w-full bg-black/60 px-16 py-20">
+                  <div className=" h-full w-full bg-black/60 px-6 py-20">
                     <div className=" flex h-full w-full flex-col gap-20">
-                      <div className="flex flex-1 flex-col items-center">
+                      <div className="flex flex-1 flex-col gap-4">
                         <p className=" text-sm">The Wedding of</p>
-                        <div className=" text-center">
-                          <h1
-                            className={cn(
-                              'flex items-center text-[56px]',
-                              italianno.className,
-                            )}
-                          >
-                            <span>{getFirstName(invitation.bride_name)}</span>
-                            <span>&nbsp;&&nbsp;</span>
-                            <span>{getFirstName(invitation.groom_name)}</span>
-                          </h1>
-                          <p className=" text-sm">12 December 2024</p>
+                        <h1
+                          className={cn(
+                            'flex flex-col text-[87px] font-bold leading-none',
+                            theNautigal.className,
+                          )}
+                        >
+                          <span>{getFirstName(invitation.bride_name)}</span>
+                          <span className=" text-[56px]">&nbsp;&&nbsp;</span>
+                          <span>{getFirstName(invitation.groom_name)}</span>
+                        </h1>
+                        <p className=" mt-2 text-sm">12 December 2024</p>
+                        <div className="mt-2 flex items-center gap-8">
+                          <div className="flex flex-col text-center">
+                            <h1 className="">{days}</h1>
+                            <p className="">Hari</p>
+                          </div>
+                          <div className="flex flex-col text-center">
+                            <h1 className="">{hours}</h1>
+                            <p className="">Jam</p>
+                          </div>
+                          <div className="flex flex-col text-center">
+                            <h1 className="">{minutes}</h1>
+                            <p className="">Menit</p>
+                          </div>
+                          <div className="flex flex-col text-center">
+                            <h1 className="">{seconds}</h1>
+                            <p className="">Detik</p>
+                          </div>
                         </div>
                       </div>
 
-                      <div className=" mx-auto flex flex-col items-center gap-2">
+                      <div className=" mt-24 flex items-center justify-center rounded-3xl bg-[#5a3521]/60 p-6 text-center text-sm text-white">
+                        <p>
+                          Matius 19:6 &quot;Demikianlah mereka bukan lagi dua,
+                          melainkan satu. Karena itu, apa yang telah
+                          dipersatukan Allah, tidak boleh diceraikan
+                          manusia.&quot;
+                        </p>
+                      </div>
+
+                      {/* <div className=" mx-auto flex flex-col items-center gap-2">
                         <div className=" relative flex h-9 w-6 items-center justify-center rounded-full border-2 border-white">
                           <div className=" -mt-2 h-2.5 w-1 animate-bounce rounded-full bg-white" />
                         </div>
                         <p className=" text-xs font-medium text-white">
                           scroll
                         </p>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </section>
