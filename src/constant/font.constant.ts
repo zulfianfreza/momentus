@@ -7,6 +7,7 @@ import {
   Josefin_Sans,
   Jost,
   Judson,
+  Meow_Script,
   Overlock,
   Poppins,
   Roboto,
@@ -61,3 +62,5 @@ export const abhayaLibre = Abhaya_Libre({
 });
 
 export const judson = Judson({ subsets: ['latin'], weight: ['400', '700'] });
+
+export const meowScript = Meow_Script({ subsets: ['latin'], weight: ['400'] });
