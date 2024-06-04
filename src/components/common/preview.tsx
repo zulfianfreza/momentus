@@ -35,12 +35,24 @@ export default function Preview() {
 
   const url = useMemo(
     () =>
-      `http://localhost:3000/theme/basic-001?activeSection=${
+      `http://localhost:3000/theme/sweet-brown?activeSection=${
         partsPathname[partsPathname.length - 1]
       }`,
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
+
+  // const [url, setUrl] = useState('');
+
+  // useEffect(() => {
+  //   setUrl(
+  //     window.location.origin +
+  //       '/theme/sweet-brown?activeSection=' +
+  //       partsPathname[partsPathname.length - 1],
+  //   );
+
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   useEffect(() => {
     handleActiveSection();

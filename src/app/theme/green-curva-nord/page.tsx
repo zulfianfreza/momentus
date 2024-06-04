@@ -4,6 +4,8 @@ import BackgroundMusic from '@/components/theme/shared/background-music';
 import InvitationGallery from '@/components/theme/shared/invitation-gallery';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Textarea } from '@/components/ui/textarea';
 import { INVITATION_GALLERIES_FAKER } from '@/constant/faker.constant';
 import { abhayaLibre, judson } from '@/constant/font.constant';
@@ -11,14 +13,14 @@ import useScrollspy from '@/hooks/use-scroll-spy';
 import { cn } from '@/lib/utils';
 import {
   Calendar,
+  Copy,
   Edit,
   GalleryFavorite,
   Lovely,
   Magicpen,
 } from 'iconsax-react';
 import Image from 'next/image';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { BsFillDiscFill } from 'react-icons/bs';
+import { useCallback, useState } from 'react';
 import { SiFacebook, SiInstagram, SiWhatsapp } from 'react-icons/si';
 
 export default function GreenCurvaNord() {
@@ -78,7 +80,10 @@ export default function GreenCurvaNord() {
   const [playAudio, setPlayAudio] = useState<boolean>(false);
 
   return (
-    <div className={cn(judson.className, `tracking-normal text-[#034405]`)}>
+    <div
+      className={cn(judson.className, `tracking-normal text-[#034405]`)}
+      onContextMenu={(e) => e.preventDefault()}
+    >
       {/* begin: cover */}
       <div
         className={cn(
@@ -354,9 +359,9 @@ export default function GreenCurvaNord() {
             </section>
 
             <section id="gallery">
-              <div className=" w-full bg-[#EBDEC8] px-12 py-20 pt-0">
+              <div className=" w-full bg-[#EBDEC8] px-[30px] py-20 pt-0">
                 <div className="flex flex-col text-center">
-                  <h1 className={cn(' text-[44px]')}>Our Moment</h1>
+                  <h1 className={cn(' text-[44px]', fontTitle)}>Our Moment</h1>
                   <p className=" text-sm">
                     Menciptakan kenangan adalah hadiah yang tak ternilai
                     harganya. Kenangan akan bertahan seumur hidup; benda-benda
@@ -372,9 +377,94 @@ export default function GreenCurvaNord() {
               </div>
             </section>
 
+            <section id="gift">
+              <div className=" w-full bg-[#EBDEC8] px-10 py-20 pt-0">
+                <h1 className={cn(fontTitle, 'text-center text-[64px]')}>
+                  Send Gift
+                </h1>
+
+                <RadioGroup
+                  defaultValue="transfer"
+                  className=""
+                >
+                  <div className="flex space-x-2">
+                    <RadioGroupItem
+                      value="address"
+                      id="address"
+                    />
+                    <Label htmlFor="address">
+                      <div className=" space-y-1">
+                        <p>Kirim Kado</p>
+                        <p className=" font-normal">
+                          Kirim kado ke alamat yang tertera
+                        </p>
+                      </div>
+                    </Label>
+                  </div>
+                  <div className="flex space-x-2">
+                    <RadioGroupItem
+                      value="transfer"
+                      id="transfer"
+                    />
+                    <Label htmlFor="transfer">
+                      <div className=" space-y-1">
+                        <p>Transfer</p>
+                        <p className=" font-normal">
+                          Transfer ke rekening yang tertera
+                        </p>
+                      </div>
+                    </Label>
+                  </div>
+                </RadioGroup>
+
+                <div className=" mt-6 flex w-full flex-col">
+                  <div className=" relative ">
+                    <div className=" absolute right-0 top-0">
+                      <Image
+                        src="/images/logo-bca.png"
+                        width={84}
+                        height={36}
+                        className=" object-contain object-center"
+                        alt="bca"
+                      />
+                    </div>
+                    <p className="">BCA</p>
+                    <div className=" flex items-center gap-1">
+                      <p className=" font-semibold">01234567890</p>
+                      <Copy size={16} />
+                    </div>
+                    <p className="">a/n Rachel Taylor</p>
+                  </div>
+                  <hr className=" my-6 border-[#034405]" />
+                  <div className=" relative ">
+                    <div className=" absolute right-0 top-0">
+                      <Image
+                        src="/images/logo-bri.png"
+                        width={84}
+                        height={36}
+                        className=" object-contain object-center"
+                        alt="bca"
+                      />
+                    </div>
+                    <p className="">BCA</p>
+                    <div className=" flex items-center gap-1">
+                      <p className=" font-semibold">01234567890</p>
+                      <Copy size={16} />
+                    </div>
+                    <p className="">a/n Rachel Taylor</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
             <section id="wish">
               <div className=" w-full bg-[#36713A] px-12 py-20">
-                <h1 className={cn(' text-center text-[44px] text-[#EBDEC8]')}>
+                <h1
+                  className={cn(
+                    ' text-center text-[44px] text-[#EBDEC8]',
+                    fontTitle,
+                  )}
+                >
                   Wedding Wishes
                 </h1>
                 <div className=" mt-8 flex flex-col gap-4">

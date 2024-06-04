@@ -1,14 +1,8 @@
 import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
-import { Poppins, Sora } from 'next/font/google';
 import './globals.css';
 import Provider from '@/components/common/provider';
-
-const font = Sora({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
-  variable: '--font-sora',
-});
+import { GeistSans } from 'geist/font/sans';
 
 export const metadata: Metadata = {
   title: 'Momentus',
@@ -24,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          font.className,
+          GeistSans.className,
           'from-neutral-900 tracking-tight antialiased',
         )}
       >

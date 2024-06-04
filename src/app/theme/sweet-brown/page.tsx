@@ -1,177 +1,63 @@
 'use client';
 
-import BaseImageLightbox from '@/components/common/base-image-lightbox';
+import BackgroundMusic from '@/components/theme/shared/background-music';
+import InvitationGallery from '@/components/theme/shared/invitation-gallery';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Textarea } from '@/components/ui/textarea';
+import { INVITATION_GALLERIES_FAKER } from '@/constant/faker.constant';
 import {
-  inter,
-  italianno,
+  abhayaLibre,
   jost,
-  rubik,
+  judson,
   theNautigal,
 } from '@/constant/font.constant';
-import { useCountdown } from '@/hooks/use-count-down';
 import useScrollspy from '@/hooks/use-scroll-spy';
 import { cn } from '@/lib/utils';
-import { getFirstName } from '@/utils/string';
-import { Calendar, Gallery, Lovely, Magicpen, Map1 } from 'iconsax-react';
+import {
+  Calendar,
+  Copy,
+  Edit,
+  GalleryFavorite,
+  Lovely,
+  Magicpen,
+} from 'iconsax-react';
 import Image from 'next/image';
-import Link from 'next/link';
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
-import { RiDiscFill } from 'react-icons/ri';
-import { SiInstagram, SiWhatsapp, SiYoutube } from 'react-icons/si';
-import Lightbox, { SlideImage } from 'yet-another-react-lightbox';
-import Counter from 'yet-another-react-lightbox/plugins/counter';
-import 'yet-another-react-lightbox/plugins/counter.css';
-import Thumbnails from 'yet-another-react-lightbox/plugins/thumbnails';
-import 'yet-another-react-lightbox/plugins/thumbnails.css';
-import 'yet-another-react-lightbox/styles.css';
+import { useCallback, useState } from 'react';
+import { SiFacebook, SiInstagram, SiWhatsapp } from 'react-icons/si';
 
-export default function DemoPage() {
-  // state
-  const [paused, setPaused] = useState(true);
+export default function GreenCurvaNord() {
+  const fontTitle = theNautigal.className;
 
-  const [isDev] = useState(true);
-
-  // navigation
   const navigations = [
     {
-      label: 'Couple',
-      target: 'couple',
       icon: Lovely,
+      label: 'Pasangan',
+      target: 'couple',
     },
     {
-      label: 'Gallery',
-      target: 'gallery',
-      icon: Gallery,
-    },
-    {
-      label: 'Countdown',
-      target: 'countdown',
       icon: Calendar,
-    },
-    {
-      label: 'Event',
+      label: 'Acara',
       target: 'event',
-      icon: Map1,
     },
     {
-      label: 'Wishes',
-      target: 'wishes',
       icon: Magicpen,
+      label: 'Kisah Cinta',
+      target: 'story',
+    },
+    {
+      icon: GalleryFavorite,
+      label: 'Galeri',
+      target: 'gallery',
+    },
+    {
+      icon: Edit,
+      label: 'Ucapan',
+      target: 'wish',
     },
   ];
-
-  // faker
-  const [invitation] = useState({
-    bride_name: 'Cantika Sukaseuri',
-    bride_instagram: 'adelia_wesaya',
-    bride_child_sequence: 'Kedua',
-    bride_father_name: 'Dr. Andreas Sanusi S.E',
-    bride_mother_name: 'Dewi Yuliantara',
-    groom_name: 'Aji Gunawan',
-    groom_instagram: 'timothy_pardd',
-    groom_child_sequence: 'Sulung',
-    groom_father_name: 'Bobby Pardede',
-    groom_mother_name: 'Jessica Putri',
-    wedding_date: '2024-10-23T10:00:00+07:00',
-    wedding_location:
-      'Plataran Menteng, Jalan HOS. Cokroaminoto, RT.6/RW.4, Gondangdia, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta, Indonesia',
-    wedding_reception_date: '2024-10-26T10:00:00+07:00',
-    wedding_reception_location:
-      'DoubleTree by Hilton Jakarta - Diponegoro Jakarta Pusat',
-  });
-
-  const [invitationStyle] = useState({
-    invitation_theme: 'traditional-java',
-    groom_first: true,
-  });
-
-  const [invitationGallery] = useState([
-    {
-      id: 1,
-      url: '/images/dummy/gallery-1.jpg',
-    },
-    {
-      id: 2,
-      url: '/images/dummy/gallery-2.jpg',
-    },
-    {
-      id: 3,
-      url: '/images/dummy/gallery-3.jpg',
-    },
-    {
-      id: 4,
-      url: '/images/dummy/gallery-4.jpg',
-    },
-    {
-      id: 5,
-      url: '/images/dummy/gallery-5.jpg',
-    },
-    {
-      id: 6,
-      url: '/images/dummy/gallery-6.jpg',
-    },
-    {
-      id: 7,
-      url: '/images/dummy/gallery-7.jpg',
-    },
-    {
-      id: 8,
-      url: '/images/dummy/gallery-8.jpg',
-    },
-    {
-      id: 9,
-      url: '/images/dummy/gallery-9.jpg',
-    },
-  ]);
-
-  const [invitationStories] = useState([
-    {
-      title: '2019',
-      description: 'First time we meet.',
-      image: '/images/traditional-java/story-image-1.jpg',
-    },
-    {
-      title: '2021',
-      description: 'We decided to get engaged.',
-      image: '/images/traditional-java/story-image-2.jpg',
-    },
-    {
-      title: '2022',
-      description: 'Finally, we are husband and wife.',
-      image: '/images/traditional-java/story-image-3.jpg',
-    },
-    {
-      title: 'Finally',
-      description:
-        'Akhirnya kita bersama didalam pernikahan yang sakral, semoga tuhan meridoi pernikahan kita.',
-      image: '/images/traditional-java/story-image-4.jpg',
-    },
-  ]);
-
-  const [invitationWishes] = useState([
-    {
-      id: 1,
-      name: 'Dee',
-      location: 'Bogor',
-      message: 'Beautiful 💕',
-    },
-    {
-      id: 2,
-      name: 'Momentus',
-      location: 'Bekasi',
-      message:
-        'Beatiful design matters. happy for all of you that want going to married',
-    },
-  ]);
 
   const activeId = useScrollspy(
     navigations.map((item) => item.target),
@@ -180,658 +66,498 @@ export default function DemoPage() {
 
   // handle scroll to element
   const handleScrollTo = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
       e.stopPropagation();
       e.preventDefault();
 
-      const container = document.querySelector('#invitation-container');
       const el = document.getElementById(id);
-      if (container) {
-        if (el) {
-          container.scrollTo({
-            top: el.offsetTop,
-            behavior: 'smooth',
-          });
-        }
+      if (el) {
+        window.scrollTo({
+          top: el.offsetTop,
+          behavior: 'smooth',
+        });
       }
     },
     [],
   );
 
-  const [photoActiveIndex, setPhotoActiveIndex] = React.useState(-1);
-  const photos = useMemo<SlideImage[]>(
-    () => invitationGallery.map((item) => ({ src: item.url })),
-    [invitationGallery],
-  );
-
-  const [days, hours, minutes, seconds] = useCountdown(
-    new Date('2024-12-02T08:00:00+07:00'),
-  );
-
-  const [showCover, setShowCover] = useState<boolean>(false);
-
-  const audioRef = useRef<HTMLAudioElement>(null);
-
-  const toggleAudio = useCallback(() => {
-    if (paused) {
-      setPaused(false);
-    } else {
-      setPaused(true);
-    }
-  }, [paused]);
-
-  useEffect(() => {
-    if (audioRef.current) {
-      if (paused) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-    }
-  }, [paused]);
+  const [showCover, setShowCover] = useState<boolean>(true);
+  const [playAudio, setPlayAudio] = useState<boolean>(false);
 
   return (
-    <>
-      {!isDev && (
-        <div
-          className={cn(
-            ' fixed z-[999] h-screen w-full bg-[url(/images/dummy/gallery-1.jpg)] bg-cover bg-center transition-all duration-1000',
-            { '-translate-y-full opacity-0': showCover },
-          )}
-        >
-          <div className=" flex h-full w-full items-center justify-center bg-black/50 p-20">
-            <div className=" flex h-full w-full flex-col">
-              <div className="flex flex-col items-center text-white">
-                <p className=" text-sm">The Wedding of</p>
-                <div className=" text-center">
-                  <h1
-                    className={cn(
-                      'flex items-center text-[56px]',
-                      italianno.className,
-                    )}
-                  >
-                    <span>{getFirstName(invitation.bride_name)}</span>
-                    <span>&nbsp;&&nbsp;</span>
-                    <span>{getFirstName(invitation.groom_name)}</span>
-                  </h1>
-                  <p className=" text-sm">12 December 2024</p>
-                </div>
-              </div>
-              <div className=" mt-auto flex flex-col items-center gap-6 text-center text-white">
-                <div className="">
-                  <p className=" text-xs">Kepada:</p>
-                  <p className=" text-sm font-medium">La Gandras</p>
-                </div>
-                <p className=" text-sm">
-                  Kami berharap anda menjadi bagian dari hari istimewa kami
-                </p>
-                <Button
-                  className=" h-8 rounded-full bg-black/90 hover:bg-black/80"
-                  onClick={() => {
-                    toggleAudio();
-                    setShowCover((prev) => !prev);
-                  }}
-                >
-                  Buka Undangan
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+    <div className={cn(jost.className, `tracking-normal text-white`)}>
+      {/* begin: cover */}
       <div
         className={cn(
-          ' fixed flex h-screen w-full',
-          jost.className,
-          'text-neutral-950',
+          ' fixed inset-0 z-[9999] h-screen w-full bg-[url(/images/dummy/dummy-7.jpeg)] bg-cover bg-center transition-all duration-1000',
+          { ' -translate-y-full opacity-0': !showCover },
         )}
       >
-        <div className=" hidden h-screen flex-1 bg-[url(/images/dummy/gallery-2.jpg)] bg-cover bg-center lg:block">
-          <div className=" flex h-full w-full items-center justify-center bg-black/50">
-            <h1
-              className={cn(
-                italianno.className,
-                'text-center text-[56px] text-white',
-              )}
-            >
-              {getFirstName(invitation.bride_name)} &{' '}
-              {getFirstName(invitation.groom_name)}
+        <div className=" flex h-full w-full flex-col items-start justify-center bg-gradient-to-b from-[#5A3521]/80 p-20">
+          <div className=" text-start">
+            <p className={cn(' text-sm')}>The Wedding of</p>
+            <h1 className={cn(fontTitle, 'text-[87px] leading-none')}>
+              Declan <br />&<br />
+              Aideen
             </h1>
+            <p className=" text-sm">12 Desember 2024</p>
           </div>
-        </div>
-        <div className=" relative h-screen w-full lg:w-[472px]">
-          <div
-            onClick={toggleAudio}
-            className={cn(
-              ' absolute bottom-24 right-4 z-[9] aspect-square animate-spin cursor-pointer rounded-full bg-black p-3 min-[472px]:right-[calc(50%-230px)]',
-              { paused: paused },
-            )}
-            style={{ animationDuration: '10s' }}
-          >
-            <audio
-              src="/audio/luther-vandross-endless-love.mp3"
-              ref={audioRef}
-            />
-            <RiDiscFill
-              className=" text-white"
-              size={20}
-            />
-          </div>
-          <div className=" absolute bottom-4 left-1/2 z-[9] flex  w-fit -translate-x-1/2 items-center gap-2 rounded-full border bg-[#fff] px-2 py-2 shadow-md">
-            {navigations.map((navigation, i) => (
-              <Link
-                href={`#${navigation.target}`}
-                onClick={(e) => handleScrollTo(e, navigation.target)}
-                className={cn(
-                  'flex h-8 items-center gap-2 rounded-full px-2.5 text-[#000] transition-all',
-                  {
-                    'bg-[#000] text-white': activeId === navigation.target,
-                  },
-                )}
-                key={i}
+          <div className=" mt-12">
+            <p className=" text-sm">Kepada:</p>
+            <p className="  text-sm font-bold">La Gandras</p>
+            <div className=" mt-6">
+              <Button
+                className=" rounded-full bg-[#271B11] px-6 hover:bg-[#271B11]/90"
+                onClick={() => {
+                  setPlayAudio((prev) => !prev);
+                  setShowCover((prev) => !prev);
+                }}
               >
-                <navigation.icon size={16} />
-                {activeId === navigation.target && (
-                  <p className=" text-xs">{navigation.label}</p>
-                )}
-              </Link>
-            ))}
-          </div>
-          <div className=" absolute z-[1] block h-screen w-full bg-[url(/images/dummy/gallery-2.jpg)] bg-cover bg-center brightness-[.15] lg:hidden" />
-          <div
-            className=" absolute z-[2] h-screen w-full overflow-y-scroll"
-            id="invitation-container"
-          >
-            <div className=" relative mx-auto h-screen w-full max-w-[472px]">
-              <div className=" z-[2] w-full bg-[#d8d8d8]">
-                <section
-                  id="cover"
-                  className=" min-h-screen w-full bg-[url(/images/dummy/dummy-13.jpeg)] bg-cover bg-center bg-no-repeat text-white"
-                >
-                  <div className=" h-full w-full bg-black/60 px-6 py-20">
-                    <div className=" flex h-full w-full flex-col gap-20">
-                      <div className="flex flex-1 flex-col gap-4">
-                        <p className=" text-sm">The Wedding of</p>
-                        <h1
-                          className={cn(
-                            'flex flex-col text-[87px] font-bold leading-none',
-                            theNautigal.className,
-                          )}
-                        >
-                          <span>{getFirstName(invitation.bride_name)}</span>
-                          <span className=" text-[56px]">&nbsp;&&nbsp;</span>
-                          <span>{getFirstName(invitation.groom_name)}</span>
-                        </h1>
-                        <p className=" mt-2 text-sm">12 December 2024</p>
-                        <div className="mt-2 flex items-center gap-8">
-                          <div className="flex flex-col text-center">
-                            <h1 className="">{days}</h1>
-                            <p className="">Hari</p>
-                          </div>
-                          <div className="flex flex-col text-center">
-                            <h1 className="">{hours}</h1>
-                            <p className="">Jam</p>
-                          </div>
-                          <div className="flex flex-col text-center">
-                            <h1 className="">{minutes}</h1>
-                            <p className="">Menit</p>
-                          </div>
-                          <div className="flex flex-col text-center">
-                            <h1 className="">{seconds}</h1>
-                            <p className="">Detik</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className=" mt-24 flex items-center justify-center rounded-3xl bg-[#5a3521]/60 p-6 text-center text-sm text-white">
-                        <p>
-                          Matius 19:6 &quot;Demikianlah mereka bukan lagi dua,
-                          melainkan satu. Karena itu, apa yang telah
-                          dipersatukan Allah, tidak boleh diceraikan
-                          manusia.&quot;
-                        </p>
-                      </div>
-
-                      {/* <div className=" mx-auto flex flex-col items-center gap-2">
-                        <div className=" relative flex h-9 w-6 items-center justify-center rounded-full border-2 border-white">
-                          <div className=" -mt-2 h-2.5 w-1 animate-bounce rounded-full bg-white" />
-                        </div>
-                        <p className=" text-xs font-medium text-white">
-                          scroll
-                        </p>
-                      </div> */}
-                    </div>
-                  </div>
-                </section>
-                <section
-                  id="quote"
-                  className=" w-full bg-neutral-950 bg-cover bg-center p-6 text-white"
-                >
-                  <div className=" h-full w-full border-2 border-white p-8">
-                    <div className="mx-auto flex max-w-md flex-col items-center text-center">
-                      <div className="">
-                        <p className={cn(rubik.className)}>
-                          وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ
-                          أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ
-                          مَوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ
-                          لِقَوْمٍ يَتَفَكَّرُونَ{' '}
-                        </p>
-                        <p>
-                          Artinya: “Dan di antara tanda-tanda kekuasaan-Nya
-                          ialah Dia menciptakan untukmu isteri-isteri dari
-                          jenismu sendiri, supaya kamu cenderung dan merasa
-                          tenteram kepadanya, dan dijadikan-Nya diantaramu rasa
-                          kasih dan sayang. Sesungguhnya pada yang demikian itu
-                          benar-benar terdapat tanda-tanda bagi kaum yang
-                          berfikir.” (QS. Ar-Rum: 21)
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-                <section id="couple">
-                  <div className=" bg-white p-6">
-                    <h1 className={cn('text-[56px]', italianno.className)}>
-                      The Bride
-                    </h1>
-                    <div className=" grid w-full grid-cols-2 gap-4 bg-[#fff]">
-                      <div className=" relative aspect-[210/235] w-full">
-                        <Image
-                          src="/images/traditional-java/bride-image.jpeg"
-                          fill
-                          alt=""
-                          className=" object-cover object-center"
-                        />
-                      </div>
-                      <div className="">
-                        <h1 className={cn(' text-5xl', italianno.className)}>
-                          {invitation.bride_name}
-                        </h1>
-
-                        <div className="flex items-center gap-2">
-                          <SiInstagram size={12} />
-                          <p className=" text-sm">
-                            {invitation.bride_instagram}
-                          </p>
-                        </div>
-                        <div className=" mt-4 text-sm">
-                          <p>Putri {invitation.bride_child_sequence} dari</p>
-                          <p>Bapak {invitation.bride_father_name}</p>
-                          <p>& Ibu {invitation.bride_mother_name}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className=" mt-12">
-                      <h1
-                        className={cn(
-                          'text-right text-[56px]',
-                          italianno.className,
-                        )}
-                      >
-                        The Groom
-                      </h1>
-                      <div className=" grid grid-cols-2 gap-4">
-                        <div className=" ">
-                          <h1 className={cn(' text-5xl', italianno.className)}>
-                            {invitation.groom_name}
-                          </h1>
-
-                          <div className="flex items-center gap-2">
-                            <SiInstagram size={12} />
-                            <p className=" text-sm">
-                              {invitation.groom_instagram}
-                            </p>
-                          </div>
-                          <div className=" mt-4 text-sm">
-                            <p>Putri {invitation.groom_child_sequence} dari</p>
-                            <p>Bapak {invitation.groom_father_name}</p>
-                            <p>& Ibu {invitation.groom_mother_name}</p>
-                          </div>
-                        </div>
-                        <div className=" relative aspect-[210/235] w-full">
-                          <Image
-                            src="/images/traditional-java/groom-image.jpeg"
-                            fill
-                            alt=""
-                            className=" object-cover object-center"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-                {/* <section
-                  id="story"
-                  className=" w-full bg-white bg-[url(/images/simple-clean/bg-1.png)] bg-contain"
-                >
-                  <div className=" flex w-full flex-col px-16 py-20">
-                    <h1
-                      className={cn(
-                        ' text-center text-3xl',
-                        comfortaa.className,
-                      )}
-                    >
-                      Our Love Story
-                    </h1>
-                    <div className="mt-16 flex flex-col gap-8">
-                      {invitationStories.map((story, i) => (
-                        <div
-                          key={i}
-                          className=" w-full rounded-[120px] bg-[url(/images/traditional-java/quote-background.jpg)] bg-cover bg-center p-6"
-                        >
-                          <div className=" relative aspect-square w-full overflow-hidden rounded-t-[96px]">
-                            <Image
-                              src={story.image}
-                              fill
-                              alt=""
-                              className=" object-cover object-center"
-                            />
-                          </div>
-                          <div className=" space-y-4 p-8 text-center">
-                            <h1
-                              className={cn(' text-4xl', comfortaa.className)}
-                            >
-                              {story.title}
-                            </h1>
-                            <p className="">{story.description}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </section> */}
-                <section
-                  id="gallery"
-                  className=" w-full bg-white bg-contain bg-center"
-                >
-                  <div className=" flex w-full flex-col px-8 py-20">
-                    <div className="flex flex-col text-center">
-                      <h1
-                        className={cn(
-                          ' text-[56px] leading-relaxed',
-                          italianno.className,
-                        )}
-                      >
-                        Moment Yang Berharga
-                      </h1>
-                      <p className=" text-center text-sm">
-                        &apos;Menciptakan kenangan adalah hadiah yang tak
-                        ternilai harganya. Kenangan akan bertahan seumur hidup;
-                        benda-benda hanya dalam waktu singkat.&apos;
-                      </p>
-                    </div>
-
-                    <div className=" mt-8 grid grid-cols-3 gap-2">
-                      {invitationGallery.map((image, i) => (
-                        <div
-                          key={image.id}
-                          className={cn(
-                            ' relative aspect-square h-full w-full cursor-pointer',
-                            {
-                              'row-span-2 aspect-[1/2]': [0, 2, 5].includes(i),
-                            },
-                          )}
-                        >
-                          <Image
-                            src={image.url}
-                            alt=""
-                            fill
-                            className=" object-cover object-center"
-                            onClick={() => {
-                              setPhotoActiveIndex(i);
-                            }}
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </section>
-                {/* <section
-                  id="date"
-                  className=" w-full bg-[#525252] "
-                >
-                  <div className=" h-fit w-full ">
-                    <div className=" flex w-full flex-col items-center px-8 py-20">
-                      <div className=" w-full bg-white p-10 py-16">
-                        <h1
-                          className={cn(
-                            ' text-center text-3xl',
-                            comfortaa.className,
-                          )}
-                        >
-                          Save The Date
-                        </h1>
-                        <div className=" relative mt-16">
-                          <div className="flex h-full w-full flex-col items-center justify-center gap-4 text-center text-[#3b1f0e]">
-                            <p className=" text-sm">Sabtu, 19 Oktober 2024</p>
-                            <div className="flex items-center justify-center gap-4">
-                              <div className=" text-2xl">
-                                <p>10</p>
-                                <p className=" text-sm">Hari</p>
-                              </div>
-                              <div className="text-2xl">
-                                <p>12</p>
-                                <p className=" text-sm">Jam</p>
-                              </div>
-                              <div className="text-2xl">
-                                <p>31</p>
-                                <p className=" text-sm">Menit</p>
-                              </div>
-                              <div className="text-2xl">
-                                <p>24</p>
-                                <p className=" text-sm">Detil</p>
-                              </div>
-                            </div>
-                            <div className=" mt-8">
-                              <Button
-                                size="lg"
-                                className="rounded-none bg-[#000] font-normal"
-                              >
-                                <CalendarAdd size={16} />
-                                Tambah ke Kalendar
-                              </Button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section> */}
-                <section id="countdown">
-                  <div className=" min-h-screen w-full bg-[url(/images/dummy/gallery-3.jpg)] bg-cover bg-center bg-no-repeat">
-                    <div className=" flex min-h-screen w-full items-end justify-center bg-black/50 px-8 py-24">
-                      <div className="flex flex-col text-center text-white">
-                        <p className=" text-sm">The Wedding of</p>
-                        <h1 className={cn(' text-[56px]', italianno.className)}>
-                          Cantika & Aji
-                        </h1>
-                        <p className=" text-sm">12 Desember 2024</p>
-                        <div className="mt-4 flex justify-center gap-2">
-                          <div className="flex h-20 w-16 flex-col items-center justify-center border border-white">
-                            <p className=" text-lg font-medium">{days}</p>
-                            <p className=" text-sm">Hari</p>
-                          </div>
-                          <div className="flex h-20 w-16 flex-col items-center justify-center border border-white">
-                            <p className=" text-lg font-medium">{hours}</p>
-                            <p className=" text-sm">Jam</p>
-                          </div>
-                          <div className="flex h-20 w-16 flex-col items-center justify-center border border-white">
-                            <p className=" text-lg font-medium">{minutes}</p>
-                            <p className=" text-sm">Menit</p>
-                          </div>
-                          <div className="flex h-20 w-16 flex-col items-center justify-center border border-white">
-                            <p className=" text-lg font-medium">{seconds}</p>
-                            <p className=" text-sm">Detik</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-                <section id="event">
-                  <div className=" w-full bg-white p-12">
-                    <p className=" text-center text-sm">
-                      Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta’ala,
-                      kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara
-                      pernikahan kami yang akan dilaksanakan pada :
-                    </p>
-
-                    <div className="mt-6 flex flex-col gap-8">
-                      <div className=" flex w-full flex-col items-center justify-center gap-2 rounded-xl bg-neutral-100 p-6 text-center text-sm shadow-lg">
-                        <h1 className={cn('text-3xl', italianno.className)}>
-                          Akad Nikah
-                        </h1>
-                        <div className="">
-                          <p className="">Minggu, 12 Desember 2024</p>
-                          <p className="">Pukul 08:00 WIB</p>
-                        </div>
-                        <div className="">
-                          <p className="">Tempat: Lapangan Voli RW 10</p>
-                          <p className="">Perumahan Sukamaju</p>
-                        </div>
-                      </div>
-                      <div className=" flex w-full flex-col items-center justify-center gap-2 rounded-xl bg-neutral-100 p-6 text-center text-sm shadow-lg">
-                        <h1 className={cn('text-3xl', italianno.className)}>
-                          Resepsi
-                        </h1>
-                        <div className="">
-                          <p className="">Minggu, 12 Desember 2024</p>
-                          <p className="">Pukul 11:00 s/d selesai</p>
-                        </div>
-                        <div className="">
-                          <p className="">Tempat: Lapangan Voli RW 10</p>
-                          <p className="">Perumahan Sukamaju</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                {/* <section id="extra">
-                  <div className=" flex w-full flex-col items-center gap-6 bg-white bg-[url(/images/simple-clean/bg-1.png)] bg-cover bg-center p-8 py-16 shadow-lg">
-                    <h1 className={cn(' text-3xl', comfortaa.className)}>
-                      Live Streaming
-                    </h1>
-                    <p className="">Silahkan untuk join live streaming.</p>
-                    <Button className=" rounded-none bg-[#000]">
-                      <Video size={16} />
-                      Live Streaming
-                    </Button>
-                  </div>
-                  <div className=" flex w-full flex-col items-center gap-6 bg-[#d8d8d8] p-8 py-16 shadow-lg">
-                    <h1 className={cn(' text-3xl', comfortaa.className)}>
-                      Kirim Hadiah
-                    </h1>
-                    <p className="">
-                      Catatan kado atau kata kata terimakasih untuk yang
-                      memberikan hadiah.
-                    </p>
-                    <Button className=" rounded-none bg-[#000]">
-                      <Gift size={16} />
-                      Kirim Hadiah
-                    </Button>
-                  </div>
-                </section> */}
-
-                <section id="wishes">
-                  <div className=" w-full bg-neutral-950 p-8">
-                    <h1
-                      className={cn(
-                        'text-center text-[56px] text-white',
-                        italianno.className,
-                      )}
-                    >
-                      Wedding Wishes
-                    </h1>
-                    <div className=" mt-8 flex flex-col gap-4">
-                      <Input
-                        className=" rounded-none"
-                        placeholder="Nama Lengkap"
-                      />
-                      <Input
-                        className=" rounded-none"
-                        placeholder="Alamat"
-                      />
-                      <Textarea
-                        className=" rounded-none"
-                        placeholder="Ucapan"
-                      />
-                      <Button
-                        className=" rounded-none border-2 border-white bg-black text-white hover:bg-black/90"
-                        size="lg"
-                      >
-                        Kirim
-                      </Button>
-                    </div>
-
-                    <div className="mt-8 flex flex-col gap-4">
-                      <div className=" w-full border-b border-white py-2">
-                        <h1 className=" text-white">Apdul</h1>
-                        <p className=" text-sm text-white">di Ciburuy</p>
-
-                        <p className=" mt-4 text-sm text-white">
-                          “Semoga lancar sampai hari H dan menjadi keluarga yang
-                          samawa, aamiin..”
-                        </p>
-                      </div>
-                      <div className=" w-full border-b border-white py-2">
-                        <h1 className=" text-white">Dilan</h1>
-                        <p className=" text-sm text-white">di Bandung</p>
-
-                        <p className=" mt-4 text-sm text-white">
-                          “Semoga lancar sampai hari H dan menjadi keluarga yang
-                          samawa, aamiin..”
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-                <div className=" flex w-full flex-col items-center justify-center gap-2 bg-neutral-950 pb-20 pt-6 text-white">
-                  <p className=" text-xs">Powered by</p>
-                  <div className="flex items-center gap-1">
-                    <div className=" relative aspect-square w-6">
-                      <Image
-                        src="/images/logo.png"
-                        fill
-                        alt=""
-                        className=" object-contain object-center"
-                      />
-                    </div>
-                    <p className="">Momentus</p>
-                  </div>
-                  <div className="flex gap-2">
-                    <SiInstagram
-                      className=" text-pink-600"
-                      size={12}
-                    />
-                    <SiWhatsapp
-                      className=" text-pink-600"
-                      size={12}
-                    />
-                    <SiYoutube
-                      className=" text-pink-600"
-                      size={12}
-                    />
-                  </div>
-                </div>
-              </div>
+                Buka Undangan
+              </Button>
             </div>
           </div>
         </div>
       </div>
-      <Lightbox
-        styles={{
-          container: { backgroundColor: '#000' },
-          icon: { color: '#FFF', boxShadow: 'none' },
-        }}
-        index={photoActiveIndex}
-        slides={photos}
-        plugins={[Thumbnails, Counter]}
-        counter={{ container: { style: { top: 0 } } }}
-        open={photoActiveIndex >= 0}
-        close={() => setPhotoActiveIndex(-1)}
-        render={{ slide: BaseImageLightbox }}
-      />
-    </>
+      {/* end: cover */}
+
+      <div className=" flex w-full">
+        {/* begin: left */}
+        <div className=" fixed hidden h-screen w-[calc(100%-430px)] flex-1 bg-[url(/images/dummy/dummy-1.jpeg)] bg-cover bg-center lg:block">
+          <div className=" flex h-full w-full items-start justify-center bg-gradient-to-b from-[#5A3521]/60 p-20">
+            <div className="flex flex-col items-center">
+              <div className=" relative flex flex-col bg-red-100 leading-none">
+                <h1 className={cn(fontTitle, 'absolute -left-36 text-[133px]')}>
+                  D
+                </h1>
+                <h1
+                  className={cn(fontTitle, ' absolute top-[88px] text-[40px]')}
+                >
+                  &
+                </h1>
+                <h1
+                  className={cn(
+                    fontTitle,
+                    'absolute -right-36 top-24 text-[133px]',
+                  )}
+                >
+                  A
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* end: left */}
+        <div className=" flex w-full justify-center bg-[#EBDEC899] lg:justify-end">
+          {/* <div className=" fixed block h-screen  w-full bg-[url(/images/dummy/dummy-7.jpeg)] bg-cover bg-center lg:hidden">
+            <div className=" h-full w-full bg-[#EBDEC8]/60 backdrop-blur-lg" />
+          </div> */}
+          <div className=" z-[998] min-h-screen w-full sm:w-[430px]">
+            <div className=" fixed bottom-4 right-1/2 z-[999] flex translate-x-1/2 gap-1 rounded-full bg-black/25 p-1 shadow-lg backdrop-blur-md lg:right-[215px]">
+              {navigations.map((navigation) => (
+                <Button
+                  key={navigation.target}
+                  size={activeId === navigation.target ? 'default' : 'icon'}
+                  className={cn(
+                    ' rounded-full bg-black/10 text-[#EBDEC8] transition-all hover:bg-black/15 hover:text-white',
+                    {
+                      'bg-[#271B11] hover:bg-[#271B11]/90':
+                        activeId === navigation.target,
+                    },
+                  )}
+                  variant="ghost"
+                  onClick={(e) => handleScrollTo(e, navigation.target)}
+                >
+                  <navigation.icon size={16} />{' '}
+                  <span
+                    className={cn('hidden transition-all', {
+                      block: activeId === navigation.target,
+                    })}
+                  >
+                    {navigation.label}
+                  </span>
+                </Button>
+              ))}
+            </div>
+
+            <BackgroundMusic
+              play={playAudio}
+              setPlay={setPlayAudio}
+            />
+
+            <section id="opening">
+              <div className=" min-h-screen w-full bg-[url(/images/dummy/dummy-13.jpeg)] bg-cover bg-center">
+                <div className=" flex min-h-screen w-full flex-col bg-black/[0.44] px-6 py-20">
+                  <div className=" flex flex-col">
+                    <p className=" text-sm">The Wedding of</p>
+                    <h1 className={cn(' text-[64px] leading-none', fontTitle)}>
+                      Declan
+                      <br />&<br />
+                      Aideen
+                    </h1>
+                    <p className=" text-sm">12 Desember 2024</p>
+                    <div className=" mt-4 flex items-center gap-4 ">
+                      <div className="flex flex-col space-y-1 text-center leading-none">
+                        <p>12</p>
+                        <p>Hari</p>
+                      </div>
+                      <div className="flex flex-col space-y-1 text-center leading-none">
+                        <p>12</p>
+                        <p>Jam</p>
+                      </div>
+                      <div className="flex flex-col space-y-1 text-center leading-none">
+                        <p>12</p>
+                        <p>Menit</p>
+                      </div>
+                      <div className="flex flex-col space-y-1 text-center leading-none">
+                        <p>12</p>
+                        <p>Detik</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className=" mx-auto mt-auto flex h-[152.5px] w-[336px] items-center justify-center rounded-3xl bg-[#5A3521]/60 p-6">
+                    <p className=" text-center text-sm">
+                      Matius 19:6 &quot;Demikianlah mereka bukan lagi dua,
+                      melainkan satu. Karena itu, apa yang telah dipersatukan
+                      Allah, tidak boleh diceraikan manusia.&quot;
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section id="couple">
+              <div className=" w-full bg-[url(/images/dummy/dummy-4.jpeg)] bg-cover bg-center">
+                <div className=" relative h-full w-full bg-[#271B11]/75 px-6 py-16 pb-[172px]">
+                  <div className=" absolute top-[255px]">
+                    <div className=" mt-4 h-[2px] w-[112px] bg-white"></div>
+                    <div className=" -mt-4 ml-4 h-[112px] w-[2px] bg-white"></div>
+                  </div>
+                  <div className=" absolute bottom-[60px] right-[40px]">
+                    <div className=" -mb-4 ml-auto h-[112px] w-[2px] bg-white"></div>
+                    <div className=" -mr-4 h-[2px] w-[112px] bg-white"></div>
+                  </div>
+                  <div className=" relative ml-auto h-[256px] w-[228px]">
+                    <Image
+                      src="/images/dummy/dummy-11.jpeg"
+                      fill
+                      alt="groom"
+                      className=" object-cover object-center"
+                    />
+                  </div>
+                  <div className=" ml-12">
+                    <h1 className={cn(fontTitle, 'text-[56px]')}>
+                      Declan Hornet
+                    </h1>
+                    <div className=" text-sm">
+                      <p className="">Putra Sulung dari</p>
+                      <p className="">Bapak Anthony Hornet</p>
+                      <p className="">dan Ibu Lisa Hornet</p>
+                      <div className="flex items-center gap-1">
+                        <SiInstagram />
+                        <p className="">hornetdeclan</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className=" w-full bg-[url(/images/dummy/dummy-3.jpeg)] bg-cover bg-center">
+                <div className=" relative h-full w-full bg-[#271B11]/75 px-6 py-16 pb-[172px]">
+                  <div className=" absolute right-6 top-[255px]">
+                    <div className=" mt-4 h-[2px] w-[112px] bg-white"></div>
+                    <div className=" -mt-4 ml-auto mr-4 h-[112px] w-[2px] bg-white"></div>
+                  </div>
+                  <div className=" absolute bottom-[60px] left-[40px]">
+                    <div className=" -mb-4 mr-auto h-[112px] w-[2px] bg-white"></div>
+                    <div className=" -ml-4 h-[2px] w-[112px] bg-white"></div>
+                  </div>
+                  <div className=" relative h-[256px] w-[228px]">
+                    <Image
+                      src="/images/dummy/dummy-12.jpeg"
+                      fill
+                      alt="groom"
+                      className=" object-cover object-center"
+                    />
+                  </div>
+                  <div className=" mr-12 text-end">
+                    <h1 className={cn(fontTitle, 'text-[56px]')}>
+                      Aideen Johanson
+                    </h1>
+                    <div className=" text-sm">
+                      <p className="">Putra Sulung dari</p>
+                      <p className="">Bapak Chris Johanson</p>
+                      <p className="">dan Ibu Susan Johanson</p>
+                      <div className="flex items-center justify-end gap-1">
+                        <SiInstagram />
+                        <p className="">aideenjn</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section id="story">
+              <div className=" w-full bg-[url(/images/dummy/dummy-6.jpeg)] bg-cover bg-center">
+                <div className=" w-full bg-[#271B11]/90 px-12 py-20">
+                  <h1
+                    className={cn(
+                      ' text-center text-[64px] font-extrabold',
+                      fontTitle,
+                    )}
+                  >
+                    Our Story
+                  </h1>
+                  <div className="mt-8 flex flex-col gap-4">
+                    <div className="flex flex-col">
+                      <p className=" text-sm font-semibold">Awal Bertemu</p>
+                      <p className=" text-sm">
+                        Kami bertemu pertama kali saat masih duduk di bangku
+                        SMA. Karena berada di kelas yang sama, kami seringkali
+                        mengobrol dan bercanda bersama. Namun, kami tidak
+                        menyadari jika ada perasaan sayang.
+                      </p>
+                    </div>
+                    <div className="flex flex-col">
+                      <p className=" text-sm font-semibold">Perpisahan</p>
+                      <p className=" text-sm">
+                        Waktu memisahkan kami begitu lama. Empat tahun lamanya
+                        setelah lulus sekolah menengah, kami tidak pernah saling
+                        berkomunikasi.
+                      </p>
+                    </div>
+                    <div className="flex flex-col">
+                      <p className=" text-sm font-semibold">
+                        Pertemuan Kembali
+                      </p>
+                      <p className=" text-sm">
+                        Acara reuni mempertemukan kami dan membuat kami semakin
+                        dekat. Hingga kami merasa memiliki perasaan yang sama
+                        dan menjalin hubungan.
+                      </p>
+                    </div>
+                    <div className="flex flex-col">
+                      <p className=" text-sm font-semibold">Pernikahan</p>
+                      <p className=" text-sm">
+                        Perasaan cinta yang kuat membuat kami yakin menuju
+                        jenjang pernikahan. Untuk menjalani hari-hari bersama
+                        dan berbahagia dalam jalinan rumah tangga.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section id="gallery">
+              <div className=" w-full bg-[#271B11] px-[30px] py-20 ">
+                <div className="flex flex-col text-center">
+                  <h1 className={cn(' text-[64px]', fontTitle)}>Our Moment</h1>
+                  <p className=" text-sm">
+                    Menciptakan kenangan adalah hadiah yang tak ternilai
+                    harganya. Kenangan akan bertahan seumur hidup; benda-benda
+                    hanya dalam waktu singkat.
+                  </p>
+                </div>
+                <div className=" mt-8">
+                  <InvitationGallery
+                    type="grid"
+                    galleries={INVITATION_GALLERIES_FAKER}
+                  />
+                </div>
+              </div>
+            </section>
+
+            <section id="event">
+              <div className=" relative flex h-full w-full flex-col items-center justify-center gap-6 bg-[#D8A783] px-12 py-20 text-[#271B11]">
+                <div className=" absolute right-10 top-10">
+                  <div className=" -mr-4 h-[2px] w-[112px] bg-[#271B11]"></div>
+                  <div className=" -mt-4 ml-auto h-[112px] w-[2px] bg-[#271B11]"></div>
+                </div>
+                <div className=" absolute bottom-10 left-10">
+                  <div className=" -mb-4 h-[112px] w-[2px] bg-[#271B11]"></div>
+                  <div className=" -ml-4 h-[2px] w-[112px] bg-[#271B11]"></div>
+                </div>
+                <p className=" text-center text-sm">
+                  Kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara
+                  pernikahan kami yang akan dilaksanakan pada :
+                </p>
+                <div className=" flex h-[164px] w-[255px] flex-col items-center justify-center  text-center">
+                  <h1 className={cn(' text-3xl font-semibold')}>Akad Nikah</h1>
+                  <p className=" text-sm">Minggu, 12 Desember 2024</p>
+                  <p className=" text-sm">Pukul 08:00 WIB</p>
+                  <p className=" text-sm">
+                    Tempat : Lapangan Voli RW 10 Perumahan Sukamaju
+                  </p>
+                </div>
+                <div className=" flex h-[164px] w-[255px] flex-col items-center justify-center  text-center">
+                  <h1 className={cn(' text-3xl font-semibold')}>Resepsi</h1>
+                  <p className=" text-sm">Minggu, 12 Desember 2024</p>
+                  <p className=" text-sm">Pukul 11:00 s/d Selesai</p>
+                  <p className=" text-sm">
+                    Tempat : Lapangan Voli RW 10 Perumahan Sukamaju
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section id="gift">
+              <div className=" w-full bg-[#D8A783] px-10 py-20 pt-0 text-[#271B11]">
+                <h1 className={cn(fontTitle, 'text-center text-[64px]')}>
+                  Send Gift
+                </h1>
+
+                <RadioGroup
+                  defaultValue="transfer"
+                  className=""
+                >
+                  <div className="flex space-x-2">
+                    <RadioGroupItem
+                      value="address"
+                      id="address"
+                    />
+                    <Label htmlFor="address">
+                      <div className=" space-y-1">
+                        <p>Kirim Kado</p>
+                        <p className=" font-normal">
+                          Kirim kado ke alamat yang tertera
+                        </p>
+                      </div>
+                    </Label>
+                  </div>
+                  <div className="flex space-x-2">
+                    <RadioGroupItem
+                      value="transfer"
+                      id="transfer"
+                    />
+                    <Label htmlFor="transfer">
+                      <div className=" space-y-1">
+                        <p>Transfer</p>
+                        <p className=" font-normal">
+                          Transfer ke rekening yang tertera
+                        </p>
+                      </div>
+                    </Label>
+                  </div>
+                </RadioGroup>
+
+                <div className=" mt-6 flex w-full flex-col bg-[#D48C34] p-4">
+                  <div className=" relative text-sm">
+                    <div className=" absolute right-0 top-0">
+                      <Image
+                        src="/images/logo-bca-white.png"
+                        width={84}
+                        height={36}
+                        className=" object-contain object-center"
+                        alt="bca"
+                      />
+                    </div>
+                    <p className="">BCA</p>
+                    <div className=" flex items-center gap-1">
+                      <p className=" font-semibold">01234567890</p>
+                      <Copy size={16} />
+                    </div>
+                    <p className="">a/n Rachel Taylor</p>
+                  </div>
+                  <hr className=" my-6" />
+                  <div className=" relative text-sm">
+                    <div className=" absolute right-0 top-0">
+                      <Image
+                        src="/images/logo-bri-white.png"
+                        width={84}
+                        height={36}
+                        className=" object-contain object-center"
+                        alt="bca"
+                      />
+                    </div>
+                    <p className="">BCA</p>
+                    <div className=" flex items-center gap-1">
+                      <p className=" font-semibold">01234567890</p>
+                      <Copy size={16} />
+                    </div>
+                    <p className="">a/n Rachel Taylor</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section id="wish">
+              <div className=" w-full bg-[#271B11] px-12 py-20">
+                <h1
+                  className={cn(
+                    ' text-center text-[64px] text-[#EBDEC8]',
+                    fontTitle,
+                  )}
+                >
+                  Wedding Wishes
+                </h1>
+                <div className=" mt-8 flex flex-col gap-4">
+                  <Input
+                    className=" rounded-none border-none bg-[#F5D5BE]"
+                    placeholder="Nama Lengkap"
+                  />
+                  <Input
+                    className=" rounded-none border-none bg-[#F5D5BE]"
+                    placeholder="Alamat"
+                  />
+                  <Textarea
+                    className=" rounded-none border-none bg-[#F5D5BE]"
+                    placeholder="Ucapan"
+                  />
+                  <Button className=" rounded-none bg-[#D48C34] text-[#fff]">
+                    Kirim
+                  </Button>
+                </div>
+
+                <div className=" mt-8 flex flex-col gap-6">
+                  <div className=" space-y-2 border-b border-b-[#F5D5BE] pb-2.5 text-[#F5D5BE]">
+                    <>
+                      <h1 className=" font-bold">Apdul</h1>
+                      <p className=" text-sm">di Bandung</p>
+                    </>
+                    <p className=" text-sm">
+                      “Semoga lancar sampai hari H dan menjadi keluarga yang
+                      samawa, aamiin..”
+                    </p>
+                  </div>
+                  <div className=" space-y-2 border-b border-b-[#F5D5BE] pb-2.5 text-[#F5D5BE]">
+                    <>
+                      <h1 className=" font-bold">Dilan</h1>
+                      <p className=" text-sm">di Bandung</p>
+                    </>
+                    <p className=" text-sm">
+                      “Semoga lancar sampai hari H dan menjadi keluarga yang
+                      samawa, aamiin..”
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section id="footer">
+              <div className=" w-full bg-[#271B11] py-6 pb-20 text-center">
+                <p className=" text-xs text-[#F5D5BE]">Powered by</p>
+                <h1 className="">Momentus</h1>
+                <div className="mt-2 flex items-center justify-center gap-2">
+                  <SiWhatsapp
+                    className=" text-[#F5D5BE]"
+                    size={12}
+                  />
+                  <SiInstagram
+                    className=" text-[#F5D5BE]"
+                    size={12}
+                  />
+                  <SiFacebook
+                    className=" text-[#F5D5BE]"
+                    size={12}
+                  />
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
