@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from 'react';
 
 const clamp = (value: number) => Math.max(0, value);
 
@@ -6,44 +6,37 @@ const isBetween = (value: number, floor: number, ceil: number) =>
   value >= floor && value <= ceil;
 
 const useScrollspy = (ids: string[], offset: number = 0) => {
-  const [activeId, setActiveId] = useState("");
+  const [activeId, setActiveId] = useState('');
 
   useLayoutEffect(() => {
-    const container = document.querySelector("#invitation-container");
     const listener = () => {
-      if (container) {
-        const scroll = container.scrollTop;
+      const scroll = window.pageYOffset;
 
-        const position = ids
-          .map((id) => {
-            const element = document.getElementById(id);
+      const position = ids
+        .map((id) => {
+          const element = document.getElementById(id);
 
-            if (!element) return { id, top: -1, bottom: -1 };
+          if (!element) return { id, top: -1, bottom: -1 };
 
-            const rect = element.getBoundingClientRect();
-            const top = clamp(rect.top + scroll - offset);
-            const bottom = clamp(rect.bottom + scroll - offset);
+          const rect = element.getBoundingClientRect();
+          const top = clamp(rect.top + scroll - offset);
+          const bottom = clamp(rect.bottom + scroll - offset);
 
-            return { id, top, bottom };
-          })
-          .find(({ top, bottom }) => isBetween(scroll, top, bottom));
+          return { id, top, bottom };
+        })
+        .find(({ top, bottom }) => isBetween(scroll, top, bottom));
 
-        setActiveId(position?.id || "");
-      }
+      setActiveId(position?.id || '');
     };
 
     listener();
 
-    if (container) {
-      container.addEventListener("resize", listener);
-      container.addEventListener("scroll", listener);
-    }
+    window.addEventListener('resize', listener);
+    window.addEventListener('scroll', listener);
 
     return () => {
-      if (container) {
-        container.removeEventListener("resize", listener);
-        container.removeEventListener("scroll", listener);
-      }
+      window.removeEventListener('resize', listener);
+      window.removeEventListener('scroll', listener);
     };
   }, [ids, offset]);
 

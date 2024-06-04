@@ -4,7 +4,7 @@ import BaseImageLightbox from '@/components/common/base-image-lightbox';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { inter, italianno, rubik } from '@/constant/font.constant';
+import { inter, italiana, italianno, rubik } from '@/constant/font.constant';
 import { useCountdown } from '@/hooks/use-count-down';
 import useScrollspy from '@/hooks/use-scroll-spy';
 import { cn } from '@/lib/utils';
@@ -224,7 +224,7 @@ export default function DemoPage() {
 
   return (
     <>
-      <div
+      {/* <div
         className={cn(
           ' fixed z-[999] h-screen w-full bg-[url(/images/dummy/gallery-1.jpg)] bg-cover bg-center transition-all duration-1000',
           { '-translate-y-full opacity-0': showCover },
@@ -268,7 +268,7 @@ export default function DemoPage() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div
         className={cn(
           ' fixed flex h-screen w-full',
@@ -289,7 +289,7 @@ export default function DemoPage() {
             </h1>
           </div>
         </div>
-        <div className=" relative h-screen w-full lg:w-[536px]">
+        <div className=" relative h-screen w-full lg:w-[472px]">
           <div
             onClick={toggleAudio}
             className={cn(
@@ -332,13 +332,13 @@ export default function DemoPage() {
             className=" absolute z-[2] h-screen w-full overflow-y-scroll"
             id="invitation-container"
           >
-            <div className=" relative mx-auto h-screen w-full max-w-[536px]">
+            <div className=" relative mx-auto h-screen w-full max-w-[472px]">
               <div className=" z-[2] w-full bg-[#d8d8d8]">
                 <section
                   id="cover"
-                  className=" h-screen min-h-screen w-full bg-[url(/images/dummy/gallery-1.jpg)] bg-cover bg-center bg-no-repeat text-white"
+                  className=" h-screen min-h-screen w-full"
                 >
-                  <div className=" h-full w-full bg-black/60 px-16 py-20">
+                  <div className=" h-full w-full bg-gradient-to-b from-[#EB5C9C]/[0.3] to-[#EB5C9C] px-16 py-20 text-white">
                     <div className=" flex h-full w-full flex-col gap-20">
                       <div className="flex flex-1 flex-col items-center">
                         <p className=" text-sm">The Wedding of</p>
@@ -346,7 +346,7 @@ export default function DemoPage() {
                           <h1
                             className={cn(
                               'flex items-center text-[56px]',
-                              italianno.className,
+                              italiana.className,
                             )}
                           >
                             <span>{getFirstName(invitation.bride_name)}</span>
@@ -533,7 +533,7 @@ export default function DemoPage() {
                           className={cn(
                             ' relative aspect-square h-full w-full cursor-pointer',
                             {
-                              'row-span-2 aspect-[1/2]': [0, 2, 5].includes(i),
+                              'row-span-2 aspect-[1/2]': i % 3 === 0,
                             },
                           )}
                         >

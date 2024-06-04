@@ -16,7 +16,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
@@ -30,6 +29,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
+import { cn } from '@/lib/utils';
 import { AddSquare } from 'iconsax-react';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -46,14 +46,26 @@ export default function InvitationLayout({
 
   return (
     <>
-      <div className=" h-screen w-full overflow-hidden bg-neutral-100 text-neutral-900">
+      <div
+        className={cn(
+          ' h-screen w-full overflow-hidden bg-neutral-100 text-neutral-900',
+        )}
+      >
         <header className=" fixed z-[12] h-14 w-full border-b bg-white pl-14 shadow-sm lg:h-[72px]">
           <div className="flex h-14 items-center justify-between p-2 lg:h-[72px] lg:p-4">
             <div className=" flex items-center gap-4">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <div className="flex h-8 cursor-pointer items-center gap-2 text-sm">
-                    <div className="flex items-center gap-1">sekar-hilman</div>
+                    <div className="flex items-center gap-1">
+                      <p>sekar-hilman</p>
+                      <Badge
+                        variant="rarely"
+                        size="xs"
+                      >
+                        Rarely
+                      </Badge>
+                    </div>
                     <HiChevronUpDown />
                   </div>
                 </DropdownMenuTrigger>
@@ -119,7 +131,7 @@ export default function InvitationLayout({
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-              <Badge variant="rarely">Rarely</Badge>
+              {/* <Badge variant="rarely">Rarely</Badge> */}
               {/* <CountdownDisplay
                 days={days}
                 hours={hours}
