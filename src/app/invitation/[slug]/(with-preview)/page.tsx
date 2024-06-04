@@ -56,7 +56,7 @@ export default function DashboardPage() {
               />
             </div>
             <div className="">
-              <p className=" text-sm text-neutral-500">Jumlah Ucapan & Doa</p>
+              <p className=" text-sm text-neutral-500">Ucapan & Doa</p>
               <h1 className=" text-2xl font-bold">268</h1>
             </div>
           </div>
