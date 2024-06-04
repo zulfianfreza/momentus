@@ -85,7 +85,10 @@ export default function GreenCurvaNord() {
   const [playAudio, setPlayAudio] = useState<boolean>(false);
 
   return (
-    <div className={cn(jost.className, `tracking-normal text-white`)}>
+    <div
+      className={cn(jost.className, `tracking-normal text-white`)}
+      onContextMenu={(e) => e.preventDefault()}
+    >
       {/* begin: cover */}
       <div
         className={cn(
