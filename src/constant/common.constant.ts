@@ -6,7 +6,9 @@ import {
   BookSaved,
   BrushBig,
   Calendar,
+  Edit,
   Gallery,
+  GalleryFavorite,
   Gift,
   Global,
   Home2,
@@ -18,9 +20,38 @@ import {
   Profile2User,
   QuoteDown,
   TagUser,
+  TextBlock,
 } from 'iconsax-react';
 import { IoBagAddOutline, IoSettingsOutline } from 'react-icons/io5';
 import { PiAddressBookTabs, PiDatabase, PiPaintBucket } from 'react-icons/pi';
+
+export const NAVIGATIONS = [
+  {
+    icon: Lovely,
+    label: 'Pasangan',
+    target: 'couple',
+  },
+  {
+    icon: Calendar,
+    label: 'Acara',
+    target: 'event',
+  },
+  {
+    icon: Magicpen,
+    label: 'Kisah Cinta',
+    target: 'story',
+  },
+  {
+    icon: GalleryFavorite,
+    label: 'Galeri',
+    target: 'gallery',
+  },
+  {
+    icon: Edit,
+    label: 'Ucapan',
+    target: 'wish',
+  },
+];
 
 /**
  * function for get sidebar menu
@@ -51,11 +82,11 @@ export const getSidebarMenu = (slug: string) => {
           icon: ArrangeVertical,
           path: prefix + '/appereance/order',
         },
-        // {
-        //   title: "Font",
-        //   icon: TextBlock,
-        //   path: prefix + "/appereance/font",
-        // },
+        {
+          title: 'Font',
+          icon: TextBlock,
+          path: prefix + '/appereance/font',
+        },
       ],
     },
     {

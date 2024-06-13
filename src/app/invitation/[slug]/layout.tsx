@@ -12,15 +12,13 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
 import {
   Select,
   SelectContent,
@@ -30,10 +28,12 @@ import {
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
+import { PopoverClose } from '@radix-ui/react-popover';
 import { AddSquare } from 'iconsax-react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { HiChevronUpDown } from 'react-icons/hi2';
+import { LuCheck } from 'react-icons/lu';
 
 export default function InvitationLayout({
   children,
@@ -54,84 +54,101 @@ export default function InvitationLayout({
         <header className=" fixed z-[12] h-14 w-full border-b bg-white pl-14 shadow-sm lg:h-[72px]">
           <div className="flex h-14 items-center justify-between p-2 lg:h-[72px] lg:p-4">
             <div className=" flex items-center gap-4">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
+              <Popover>
+                <PopoverTrigger asChild>
                   <div className="flex h-8 cursor-pointer items-center gap-2 text-sm">
                     <div className="flex items-center gap-1">
                       <p>sekar-hilman</p>
-                      <Badge
-                        variant="rarely"
-                        size="xs"
-                      >
-                        Rarely
-                      </Badge>
                     </div>
                     <HiChevronUpDown />
                   </div>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
+                </PopoverTrigger>
+                <PopoverContent
                   align="start"
-                  side="right"
-                  className=" rounded-xl"
+                  side="bottom"
+                  className=" max-w-max rounded-lg p-0"
                 >
-                  <DropdownMenuItem>
-                    <div className="flex items-center gap-1">
-                      <p>sekar-hilman</p>
-                      <Badge
-                        variant="rarely"
-                        size="xs"
+                  <div className=" flex flex-col gap-1 p-1">
+                    <PopoverClose asChild>
+                      <Button
+                        variant="ghost"
+                        className=" justify-start"
+                        size="sm"
                       >
-                        Rarely
-                      </Badge>
-                    </div>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <div className="flex items-center gap-1">
-                      <p>momenthus-gathering</p>
-                      <Badge
-                        variant="info"
-                        size="xs"
+                        <LuCheck className=" invisible" />
+                        <p>momenthus-gathering</p>
+                        <Badge
+                          variant="info"
+                          size="xs"
+                        >
+                          Fair
+                        </Badge>
+                      </Button>
+                    </PopoverClose>
+                    <PopoverClose asChild>
+                      <Button
+                        variant="ghost"
+                        className=" justify-start"
+                        size="sm"
                       >
-                        Fair
-                      </Badge>
-                    </div>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <div className="flex items-center gap-1">
-                      <p>adam-anne</p>
-                      <Badge
-                        variant="success"
-                        size="xs"
+                        <LuCheck className=" visible text-pink-600" />
+                        <p>sekar-hilman</p>
+                        <Badge
+                          variant="rarely"
+                          size="xs"
+                        >
+                          Rarely
+                        </Badge>
+                      </Button>
+                    </PopoverClose>
+                    <PopoverClose asChild>
+                      <Button
+                        variant="ghost"
+                        className=" justify-start"
+                        size="sm"
                       >
-                        Trial
-                      </Badge>
-                    </div>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <div className="flex items-center gap-1">
-                      <p>dian-ado</p>
-                      <Badge
-                        variant="destructive"
-                        size="xs"
+                        <LuCheck className=" invisible" />
+                        <p>adam-anne</p>
+                        <Badge
+                          variant="success"
+                          size="xs"
+                        >
+                          Trial
+                        </Badge>
+                      </Button>
+                    </PopoverClose>
+                    <PopoverClose asChild>
+                      <Button
+                        variant="ghost"
+                        className=" justify-start"
+                        size="sm"
                       >
-                        Expired
-                      </Badge>
-                    </div>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem asChild>
-                    <Button
-                      className=" w-full gap-1 rounded-lg text-xs"
-                      size="sm"
-                      onClick={() => setShowAddInvitation((prev) => !prev)}
-                    >
-                      <AddSquare size={16} />
-                      Buat Baru
-                    </Button>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-              {/* <Badge variant="rarely">Rarely</Badge> */}
+                        <LuCheck className=" invisible" />
+                        <p>dian-ado</p>
+                        <Badge
+                          variant="destructive"
+                          size="xs"
+                        >
+                          Expired
+                        </Badge>
+                      </Button>
+                    </PopoverClose>
+                  </div>
+                  <div className=" border-t p-1">
+                    <PopoverClose asChild>
+                      <Button
+                        className=" w-full gap-1 text-sm"
+                        size="sm"
+                        onClick={() => setShowAddInvitation((prev) => !prev)}
+                      >
+                        <AddSquare size={16} />
+                        Buat Baru
+                      </Button>
+                    </PopoverClose>
+                  </div>
+                </PopoverContent>
+              </Popover>
+              <Badge variant="rarely">Rarely</Badge>
               {/* <CountdownDisplay
                 days={days}
                 hours={hours}

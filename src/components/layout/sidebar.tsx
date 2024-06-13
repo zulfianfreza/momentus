@@ -9,12 +9,10 @@ import {
 } from '@/components/ui/tooltip';
 import { getSidebarMenu } from '@/constant/common.constant';
 import { cn } from '@/lib/utils';
-import { ArrowLeft, InfoCircle } from 'iconsax-react';
-import Image from 'next/image';
+import { InfoCircle } from 'iconsax-react';
 
 import Link from 'next/link';
 import { useParams, usePathname } from 'next/navigation';
-import { Circle } from 'rc-progress';
 import { useCallback, useState } from 'react';
 import { BsTablet } from 'react-icons/bs';
 import { PiArrowLeft } from 'react-icons/pi';
@@ -108,7 +106,7 @@ export default function Sidebar() {
           <PiArrowLeft size={20} />
         </Button>
         <p className=" mt-4 text-center text-xs text-neutral-500">Menu</p>
-        <div className="mt-2 flex flex-col">
+        <div className="mt-2 flex flex-col items-center gap-2">
           {sidebarMenu.map((menu) => (
             <TooltipProvider
               key={menu.path}
@@ -118,21 +116,18 @@ export default function Sidebar() {
                 <TooltipTrigger asChild>
                   <Button
                     size="icon"
-                    variant={activeMenu(menu.path) ? 'secondary' : 'ghost'}
+                    variant={activeMenu(menu.path) ? 'default' : 'ghost'}
                     asChild
-                    className={cn(
-                      ' h-12 w-14 rounded-none border-r-2 border-transparent ',
-                      {
-                        'border-pink-600': activeMenu(menu.path),
-                      },
-                    )}
+                    className={cn('  ', {
+                      '': activeMenu(menu.path),
+                    })}
                   >
                     <Link href={menu.path}>
                       <menu.icon
                         size={20}
                         variant={activeMenu(menu.path) ? 'Outline' : 'Outline'}
-                        className={cn(' ml-[2px]', {
-                          '': activeMenu(menu.path),
+                        className={cn(' ', {
+                          ' ': activeMenu(menu.path),
                         })}
                       />
                     </Link>
@@ -141,7 +136,7 @@ export default function Sidebar() {
                 <TooltipContent
                   side="right"
                   align={menu.submenu ? 'start' : 'center'}
-                  className=" rounded-xl p-2.5"
+                  className=" rounded-lg p-2"
                 >
                   <p className=" text-neutral-900">{menu.title}</p>
                   {menu.submenu && (
@@ -201,7 +196,6 @@ export default function Sidebar() {
                 <Button
                   size="icon"
                   variant="ghost"
-                  className=" h-12 w-14 rounded-none"
                 >
                   <RiCustomerService2Line size={20} />
                 </Button>

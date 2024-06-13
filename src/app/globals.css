@@ -75,3 +75,10 @@
   filter: drop-shadow(1.5px 0 0 #000) drop-shadow(0 1.5px 0 #000)
     drop-shadow(-1.5px 0 0 #000) drop-shadow(0 -1.5px 0 #000);
 }
+
+.fred-text-stroke {
+  color: black;
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #546595;
+}

@@ -6,16 +6,14 @@ import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Textarea } from '@/components/ui/textarea';
-import { INVITATION_STORIES_FAKER } from '@/constant/faker.constant';
+import { INVITATION_STORIES_FAKER } from '@/constant/invitation-faker.constant';
 import { GalleryAdd, ReceiptAdd } from 'iconsax-react';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -50,12 +48,12 @@ export default function StoryPage() {
           defaultValue="configuration"
           className=" mt-4 w-full"
         >
-          <TabsList className=" my-0 w-full justify-start gap-4 rounded-none border-b bg-transparent px-0">
+          <TabsList className=" my-0 w-full justify-start gap-2 rounded-none border-b bg-transparent px-0">
             {TABS_MENU.map((menu) => (
               <TabsTrigger
                 key={menu.value}
                 value={menu.value}
-                className=" h-10 rounded-none border-b-2 border-transparent px-0 data-[state=active]:border-pink-600"
+                className=" h-10 rounded-none border-b-2 border-transparent px-2.5 data-[state=active]:border-pink-600"
               >
                 {menu.label}
               </TabsTrigger>

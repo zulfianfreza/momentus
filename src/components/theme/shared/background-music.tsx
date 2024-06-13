@@ -31,7 +31,7 @@ export default function BackgroundMusic({ play, setPlay }: TProps) {
       role="presentation"
       onClick={toggleAudio}
       className={cn(
-        ' fixed bottom-24 right-4 z-[999] flex aspect-square w-12 animate-spin cursor-pointer items-center justify-center rounded-full bg-black sm:right-[calc(50%-200px)] lg:right-4',
+        ' fixed bottom-24 right-4 z-[32] flex aspect-square w-12 animate-spin cursor-pointer items-center justify-center rounded-full bg-black sm:right-[calc(50%-220px)] lg:right-4',
         { paused: !play },
       )}
       style={{ animationDuration: '10s' }}

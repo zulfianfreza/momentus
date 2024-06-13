@@ -2,13 +2,11 @@
 
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { BsLaptop, BsTablet } from 'react-icons/bs';
 import { IoPhonePortraitOutline } from 'react-icons/io5';
-import { Button } from '../ui/button';
 import { LuMinus, LuPlus } from 'react-icons/lu';
-import { DndContext, useDraggable } from '@dnd-kit/core';
-import { CSS } from '@dnd-kit/utilities';
+import { Button } from '../ui/button';
 
 export default function Preview() {
   const [activedFrame, setActivedFrame] = useState<
@@ -27,7 +25,9 @@ export default function Preview() {
     iframe.contentWindow?.postMessage(
       {
         type: 'actived-section-updated',
-        activeSection: partsPathname[partsPathname.length - 1],
+        active_section: partsPathname[partsPathname.length - 1],
+        show_cover:
+          partsPathname[partsPathname.length - 1] === 'cover' ? true : false,
       },
       '*',
     );
@@ -35,35 +35,14 @@ export default function Preview() {
 
   const url = useMemo(
     () =>
-      `http://localhost:3000/theme/sweet-brown?activeSection=${
-        partsPathname[partsPathname.length - 1]
-      }`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/theme/black-and-white?demo_secret=${process.env.NEXT_PUBLIC_DEMO_SECRET}&active_section=${partsPathname[partsPathname.length - 1]}&show_cover=${partsPathname[partsPathname.length - 1] === 'cover' ? true : false}`,
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
 
-  // const [url, setUrl] = useState('');
-
-  // useEffect(() => {
-  //   setUrl(
-  //     window.location.origin +
-  //       '/theme/sweet-brown?activeSection=' +
-  //       partsPathname[partsPathname.length - 1],
-  //   );
-
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
-
   useEffect(() => {
     handleActiveSection();
   }, [handleActiveSection]);
-
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: 'unique-id',
-  });
-  const style = {
-    transform: CSS.Translate.toString(transform),
-  };
 
   return (
     <div className="  h-screen flex-1 pt-[72px]">
@@ -118,32 +97,20 @@ export default function Preview() {
           style={{ scale: scale / 100 }}
           className=" "
         >
-          <DndContext>
+          <div>
             {activedFrame === 'laptop' ? (
               <div className=" relative aspect-[621/360] w-[656px] overflow-hidden bg-[url(/images/macbook-frame.png)] bg-contain bg-center bg-no-repeat px-[68px] pb-[38px] pt-[18px]">
                 <iframe
                   src={url}
-                  className=" h-[calc(100%*2.5)] w-[calc(100%*2.5)] -translate-x-[30.025%] -translate-y-[30.025%] scale-[0.4] overflow-hidden rounded-md"
+                  className=" h-[calc(100%*2.5)] w-[calc(100%*2.5)] -translate-x-[30.025%] -translate-y-[30.025%] scale-[0.4] overflow-hidden rounded-md bg-black"
                   id="preview-page"
                 ></iframe>
               </div>
             ) : activedFrame === 'tablet' ? (
-              <div
-                {...attributes}
-                ref={setNodeRef}
-                style={
-                  {
-                    ...style,
-                    '--translate-x': `${transform?.x ?? 0}px`,
-                    '--translate-y': `${transform?.y ?? 0}px`,
-                  } as React.CSSProperties
-                }
-                {...listeners}
-                className=" relative aspect-[127/176] w-[424px] overflow-hidden  bg-[url(/images/ipad-frame.png)] bg-contain bg-center bg-no-repeat px-[18px] pb-[35px] pt-[37px]"
-              >
+              <div className=" relative aspect-[127/177] w-[424px] overflow-hidden  bg-[url(/images/ipad-frame.png)] bg-contain bg-center bg-no-repeat px-[18px] pb-[35px] pt-[37px]">
                 <iframe
                   src={url}
-                  className=" h-[calc(100%*1.75)] w-[calc(100%*1.75)] -translate-x-[21.5%] -translate-y-[21.5%] scale-[0.5712] overflow-hidden rounded-xl"
+                  className=" h-[calc(100%*1.75)] w-[calc(100%*1.75)] -translate-x-[21.5%] -translate-y-[21.5%] scale-[0.5712] overflow-hidden rounded-xl bg-black"
                   id="preview-page"
                 ></iframe>
               </div>
@@ -151,12 +118,12 @@ export default function Preview() {
               <div className=" relative aspect-[438/892] w-[278px] overflow-hidden bg-[url(/images/mobile-frame.png)] bg-contain bg-center bg-no-repeat px-[16px] pb-[56px] pt-[50px]">
                 <iframe
                   src={url}
-                  className=" h-[calc(100%*1.5)] w-[calc(100%*1.5)] -translate-x-[16.667%] -translate-y-[16.667%] scale-[0.667] overflow-hidden"
+                  className=" h-[calc(100%*1.5)] w-[calc(100%*1.5)] -translate-x-[16.667%] -translate-y-[16.667%] scale-[0.667] overflow-hidden bg-black"
                   id="preview-page"
                 ></iframe>
               </div>
             )}
-          </DndContext>
+          </div>
         </div>
       </div>
     </div>
