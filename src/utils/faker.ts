@@ -1,4 +1,4 @@
-import { INVITATION_FAKER } from "@/constant/faker.constant";
+import { INVITATION_FAKER } from '@/constant/invitation-faker.constant';
 
 /**
  * Get invitation faker

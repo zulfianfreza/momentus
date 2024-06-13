@@ -7,23 +7,12 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Textarea } from '@/components/ui/textarea';
-import { INVITATION_GALLERIES_FAKER } from '@/constant/faker.constant';
-import {
-  italianno,
-  josefinSans,
-  jost,
-  meowScript,
-} from '@/constant/font.constant';
+import { NAVIGATIONS } from '@/constant/common.constant';
+import { josefinSans, meowScript } from '@/constant/font.constant';
+import { INVITATION_GALLERIES_FAKER } from '@/constant/invitation-faker.constant';
 import useScrollspy from '@/hooks/use-scroll-spy';
 import { cn } from '@/lib/utils';
-import {
-  Calendar,
-  Copy,
-  Edit,
-  GalleryFavorite,
-  Lovely,
-  Magicpen,
-} from 'iconsax-react';
+import { Copy } from 'iconsax-react';
 import Image from 'next/image';
 import { useCallback, useState } from 'react';
 import { SiFacebook, SiInstagram, SiWhatsapp } from 'react-icons/si';
@@ -31,36 +20,8 @@ import { SiFacebook, SiInstagram, SiWhatsapp } from 'react-icons/si';
 export default function GreenCurvaNord() {
   const fontTitle = meowScript.className;
 
-  const navigations = [
-    {
-      icon: Lovely,
-      label: 'Pasangan',
-      target: 'couple',
-    },
-    {
-      icon: Calendar,
-      label: 'Acara',
-      target: 'event',
-    },
-    {
-      icon: Magicpen,
-      label: 'Kisah Cinta',
-      target: 'story',
-    },
-    {
-      icon: GalleryFavorite,
-      label: 'Galeri',
-      target: 'gallery',
-    },
-    {
-      icon: Edit,
-      label: 'Ucapan',
-      target: 'wish',
-    },
-  ];
-
   const activeId = useScrollspy(
-    navigations.map((item) => item.target),
+    NAVIGATIONS.map((item) => item.target),
     5,
   );
 
@@ -179,7 +140,7 @@ export default function GreenCurvaNord() {
           </div> */}
           <div className=" z-[998] min-h-screen w-full sm:w-[430px]">
             <div className=" fixed bottom-4 right-1/2 z-[999] flex translate-x-1/2 gap-1 rounded-full bg-black/25 p-1 shadow-lg backdrop-blur-md lg:right-[215px]">
-              {navigations.map((navigation) => (
+              {NAVIGATIONS.map((navigation) => (
                 <Button
                   key={navigation.target}
                   size={activeId === navigation.target ? 'default' : 'icon'}
@@ -560,6 +521,16 @@ export default function GreenCurvaNord() {
                 </div>
               </div>
             </section>
+
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15845.53169525584!2d107.488159!3d-6.8446144!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e350d877b155%3A0x7c6afead782224d4!2sBorma%20Toserba%20Padalarang!5e0!3m2!1sid!2sid!4v1717595765106!5m2!1sid!2sid"
+              width={600}
+              height={450}
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
 
             <section id="wish">
               <div className=" w-full bg-[#13077B] px-12 py-20">

@@ -1,40 +1,53 @@
-"use client";
+'use client';
 
-import { comfortaa } from "@/constant/font.constant";
-import { cn } from "@/lib/utils";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { Button } from "../ui/button";
-import Container from "../common/container";
-import { HambergerMenu } from "iconsax-react";
+import { comfortaa } from '@/constant/font.constant';
+import { cn } from '@/lib/utils';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import { Button } from '../ui/button';
+import Container from '../common/container';
+import { HambergerMenu } from 'iconsax-react';
+import {
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+  useAuth,
+} from '@clerk/nextjs';
 
 export default function Header() {
   const MENUS = [
     {
-      label: "Tema",
-      path: "/theme",
+      label: 'Tema',
+      path: '/theme',
     },
     {
-      label: "Portfolio",
-      path: "/portfolio",
+      label: 'Portfolio',
+      path: '/portfolio',
     },
     {
-      label: "Panduan",
-      path: "/guide",
+      label: 'Panduan',
+      path: '/guide',
     },
     {
-      label: "Blog",
-      path: "/blog",
+      label: 'Blog',
+      path: '/blog',
     },
   ];
+
+  const { getToken } = useAuth();
+
   return (
     <Container>
-      <div className=" w-full py-5 flex justify-between items-center">
+      <div className=" flex w-full items-center justify-between py-5">
         {/* begin: left */}
         <div className=" flex-1">
-          <Link href="/" className="flex items-center gap-2 w-fit">
-            <div className=" w-10 aspect-square relative">
+          <Link
+            href="/"
+            className="flex w-fit items-center gap-2"
+          >
+            <div className=" relative aspect-square w-10">
               <Image
                 src="/images/logo.png"
                 fill
@@ -45,7 +58,7 @@ export default function Header() {
             <h1
               className={cn(
                 comfortaa.className,
-                " text-xl font-bold text-pink-600"
+                ' text-xl font-bold text-pink-600',
               )}
             >
               Momentus
@@ -55,10 +68,18 @@ export default function Header() {
         {/* end: left */}
 
         {/* begin: center */}
-        <nav className=" hidden lg:flex justify-center gap-2">
+        <nav className=" hidden justify-center gap-2 lg:flex">
           {MENUS.map((menu, i) => (
-            <Button key={i} asChild variant="ghost" className=" rounded-full">
-              <Link href={menu.path} className="">
+            <Button
+              key={i}
+              asChild
+              variant="ghost"
+              className=" rounded-full"
+            >
+              <Link
+                href={menu.path}
+                className=""
+              >
                 {menu.label}
               </Link>
             </Button>
@@ -67,14 +88,21 @@ export default function Header() {
         {/* end: center */}
 
         {/* begin: right */}
-        <div className=" flex-1 justify-end flex gap-2">
+        <div className=" flex flex-1 justify-end gap-2">
+          {}
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
           <Button className=" rounded-full">
             Daftar <span className=" hidden lg:block">& Coba Gratis</span>
           </Button>
           <Button
             variant="secondary"
             size="icon"
-            className=" rounded-full flex lg:hidden"
+            className=" flex rounded-full lg:hidden"
           >
             <HambergerMenu size={16} />
           </Button>
