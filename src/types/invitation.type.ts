@@ -1,4 +1,4 @@
-import { TImage, TTimestamp } from "./common.type";
+import { TImage, TTimestamp } from './common.type';
 
 export type TInvitationGallery = {
   id: number;
@@ -12,7 +12,7 @@ export type TInvitationStory = {
   image: string;
 };
 
-export type TInvitationWish = {
+export type TInvitationWish = TTimestamp & {
   id: number;
   name: string;
   location: string;
@@ -20,9 +20,9 @@ export type TInvitationWish = {
 };
 
 export type TInvitationGalleryType =
-  | "grid"
-  | "slideshow"
-  | "slideshow-with-thumbnail";
+  | 'grid'
+  | 'slideshow'
+  | 'slideshow-with-thumbnail';
 
 export type TBackgroundMusic = {
   id: number;

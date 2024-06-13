@@ -1,5 +1,6 @@
 'use client';
 
+import BasePagination from '@/components/common/base-pagination';
 import HeadingConfigurationSection from '@/components/common/heading-configuration-section';
 import { Button } from '@/components/ui/button';
 import {
@@ -16,6 +17,11 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import {
   Table,
   TableBody,
   TableCaption,
@@ -25,6 +31,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import useToggle from '@/hooks/use-toggle';
+import { PopoverClose } from '@radix-ui/react-popover';
 import {
   AddSquare,
   ExportSquare,
@@ -35,6 +42,7 @@ import {
 } from 'iconsax-react';
 import { useCallback, useState } from 'react';
 import { HiMiniEllipsisHorizontal } from 'react-icons/hi2';
+import { LuCheck, LuChevronDown } from 'react-icons/lu';
 import { PiShare, PiShareNetwork } from 'react-icons/pi';
 
 export default function SettingPage() {
@@ -127,6 +135,9 @@ export default function SettingPage() {
                 ))}
               </TableBody>
             </Table>
+          </div>
+          <div className="mt-4">
+            <BasePagination totalCount={100} />
           </div>
         </div>
       </div>

@@ -1,13 +1,10 @@
 'use client';
 
 import HeadingConfigurationSection from '@/components/common/heading-configuration-section';
-import InputItem from '@/components/common/input-item';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
-import { INVITATION_FAKER, MUSIC_FAKER } from '@/constant/faker.constant';
-import { TBackgroundMusic, TInvitation } from '@/types/invitation.type';
-import { useState } from 'react';
+import { MUSIC_FAKER } from '@/constant/faker.constant';
 
 export default function MusicPage() {
   return (
@@ -18,10 +15,10 @@ export default function MusicPage() {
       />
 
       <div className=" mt-8">
-        <InputItem>
-          <Label>Gunakan Latar Musik</Label>
+        <div className=" flex items-center gap-2">
           <Switch checked />
-        </InputItem>
+          <Label>Gunakan Latar Musik</Label>
+        </div>
 
         <div className="mt-4 flex flex-col gap-6">
           {MUSIC_FAKER.map((music, i) => (

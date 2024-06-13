@@ -117,10 +117,6 @@ export default function DatePage() {
         <h1 className=" text-lg font-medium">Resepsi</h1>
         <div className="mt-4 flex flex-col gap-4">
           <InputItem>
-            <Label>Sama dengan Akad</Label>
-            <Switch />
-          </InputItem>
-          <InputItem>
             <Label>Judul</Label>
             <Input placeholder="Akad" />
           </InputItem>
@@ -161,6 +157,10 @@ export default function DatePage() {
                 </Label>
               </div>
             </InputItem>
+          </div>
+          <div className=" flex items-center gap-2">
+            <Switch />
+            <Label>Alamat sama dengan Akad</Label>
           </div>
           <InputItem>
             <Label>Tempat Acara</Label>

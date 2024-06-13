@@ -61,12 +61,12 @@ export default function ProfilePage({ params }: TPageParams) {
         defaultValue="configuration"
         className=" mt-4 w-full"
       >
-        <TabsList className=" my-0 w-full justify-start gap-4 rounded-none border-b bg-transparent px-0">
+        <TabsList className=" my-0 w-full justify-start gap-2 rounded-none border-b bg-transparent px-0">
           {TABS_MENU.map((menu) => (
             <TabsTrigger
               key={menu.value}
               value={menu.value}
-              className=" h-10 rounded-none border-b-2 border-transparent px-0 data-[state=active]:border-pink-600"
+              className=" h-10 rounded-none border-b-2 border-transparent px-2.5 data-[state=active]:border-pink-600"
             >
               {menu.label}
             </TabsTrigger>
@@ -89,9 +89,9 @@ export default function ProfilePage({ params }: TPageParams) {
                   value="We’re getting hitched! And we’d be delighted if you could join our wedding!"
                 />
               </div>
-              <div className=" flex flex-col space-y-2">
-                <Label>Urutkan Pengantin Pria Terlebih Dahulu</Label>
+              <div className=" flex items-center gap-2">
                 <Switch />
+                <Label>Urutkan Pengantin Pria Terlebih Dahulu</Label>
               </div>
             </div>
           </TabsContent>
@@ -193,7 +193,7 @@ export default function ProfilePage({ params }: TPageParams) {
               <InputItem>
                 <div className="flex items-center gap-2">
                   <Switch />
-                  <Label>Tampilkan nama orang tua di undangan</Label>
+                  <Label>Tampilkan nama orang tua</Label>
                 </div>
               </InputItem>
 
@@ -305,7 +305,7 @@ export default function ProfilePage({ params }: TPageParams) {
               <InputItem>
                 <div className="flex items-center gap-2">
                   <Switch />
-                  <Label>Tampilkan nama orang tua di undangan</Label>
+                  <Label>Tampilkan nama orang tua</Label>
                 </div>
               </InputItem>
 

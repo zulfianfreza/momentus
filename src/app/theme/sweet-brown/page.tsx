@@ -7,23 +7,12 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Textarea } from '@/components/ui/textarea';
-import { INVITATION_GALLERIES_FAKER } from '@/constant/faker.constant';
-import {
-  abhayaLibre,
-  jost,
-  judson,
-  theNautigal,
-} from '@/constant/font.constant';
+import { NAVIGATIONS } from '@/constant/common.constant';
+import { jost, theNautigal } from '@/constant/font.constant';
+import { INVITATION_GALLERIES_FAKER } from '@/constant/invitation-faker.constant';
 import useScrollspy from '@/hooks/use-scroll-spy';
 import { cn } from '@/lib/utils';
-import {
-  Calendar,
-  Copy,
-  Edit,
-  GalleryFavorite,
-  Lovely,
-  Magicpen,
-} from 'iconsax-react';
+import { Copy } from 'iconsax-react';
 import Image from 'next/image';
 import { useCallback, useState } from 'react';
 import { SiFacebook, SiInstagram, SiWhatsapp } from 'react-icons/si';
@@ -31,36 +20,8 @@ import { SiFacebook, SiInstagram, SiWhatsapp } from 'react-icons/si';
 export default function GreenCurvaNord() {
   const fontTitle = theNautigal.className;
 
-  const navigations = [
-    {
-      icon: Lovely,
-      label: 'Pasangan',
-      target: 'couple',
-    },
-    {
-      icon: Calendar,
-      label: 'Acara',
-      target: 'event',
-    },
-    {
-      icon: Magicpen,
-      label: 'Kisah Cinta',
-      target: 'story',
-    },
-    {
-      icon: GalleryFavorite,
-      label: 'Galeri',
-      target: 'gallery',
-    },
-    {
-      icon: Edit,
-      label: 'Ucapan',
-      target: 'wish',
-    },
-  ];
-
   const activeId = useScrollspy(
-    navigations.map((item) => item.target),
+    NAVIGATIONS.map((item) => item.target),
     5,
   );
 
@@ -129,7 +90,7 @@ export default function GreenCurvaNord() {
         <div className=" fixed hidden h-screen w-[calc(100%-430px)] flex-1 bg-[url(/images/dummy/dummy-1.jpeg)] bg-cover bg-center lg:block">
           <div className=" flex h-full w-full items-start justify-center bg-gradient-to-b from-[#5A3521]/60 p-20">
             <div className="flex flex-col items-center">
-              <div className=" relative flex flex-col bg-red-100 leading-none">
+              <div className=" relative flex flex-col leading-none">
                 <h1 className={cn(fontTitle, 'absolute -left-36 text-[133px]')}>
                   D
                 </h1>
@@ -157,7 +118,7 @@ export default function GreenCurvaNord() {
           </div> */}
           <div className=" z-[998] min-h-screen w-full sm:w-[430px]">
             <div className=" fixed bottom-4 right-1/2 z-[999] flex translate-x-1/2 gap-1 rounded-full bg-black/25 p-1 shadow-lg backdrop-blur-md lg:right-[215px]">
-              {navigations.map((navigation) => (
+              {NAVIGATIONS.map((navigation) => (
                 <Button
                   key={navigation.target}
                   size={activeId === navigation.target ? 'default' : 'icon'}

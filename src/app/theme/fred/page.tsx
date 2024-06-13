@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Textarea } from '@/components/ui/textarea';
 import { NAVIGATIONS } from '@/constant/common.constant';
-import { italianno, jost } from '@/constant/font.constant';
+import { italianno, jost, notable, poppins } from '@/constant/font.constant';
 import {
   INVITATION_GALLERIES_FAKER,
   INVITATION_WISHES_FAKER,
@@ -43,7 +43,7 @@ type TPageParams = {
 
 export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
   // font title
-  const fontTitle = italianno.className;
+  const fontTitle = notable.className;
 
   // state
   const [showCover, setShowCover] = useState<boolean>(true);
@@ -142,47 +142,13 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
 
   return (
     <div
-      className={cn(jost.className, `tracking-normal text-black`)}
+      className={cn(poppins.className, `tracking-normal text-black`)}
       onContextMenu={disableRightClick}
     >
       {/* begin: cover */}
-      {/* <div
-        className={cn(
-          ' fixed inset-0 z-[9999] h-screen w-full bg-[url(/images/dummy/dummy-7.jpeg)] bg-cover bg-center text-white transition-all duration-1000',
-          { ' -translate-y-full opacity-0': !showCover },
-        )}
-      >
-        <div className=" flex h-full w-full flex-col items-center justify-center bg-black/60 p-20">
-          <div className=" space-y-1 text-center">
-            <p className={cn(' text-sm')}>The Wedding of</p>
-            <h1 className={cn(fontTitle, 'text-[56px] leading-none')}>
-              Rachel & Ross
-            </h1>
-            <p className=" text-sm">12 Desember 2024</p>
-          </div>
-          <div className=" mt-auto space-y-4 text-center">
-            <div>
-              <p className=" text-sm">Kepada:</p>
-              <p className="  text-sm font-bold">La Gandras</p>
-            </div>
-            <div className=" mt-6">
-              <Button
-                className=" rounded-full bg-black px-6 hover:bg-black/90"
-                onClick={() => {
-                  setPlayAudio((prev) => !prev);
-                  setShowCover((prev) => !prev);
-                }}
-                disabled={!showCover}
-              >
-                Buka Undangan
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div> */}
       <div
         className={cn(
-          ' fixed inset-0 z-[39] h-screen w-full bg-[url(/images/dummy/dummy-7.jpeg)] bg-cover bg-center text-white transition-all duration-1000',
+          ' fixed inset-0 z-[39] hidden h-screen w-full bg-[url(/images/dummy/dummy-7.jpeg)] bg-cover bg-center text-white transition-all duration-1000',
           { ' -translate-y-full opacity-0': !showCover },
         )}
       >
@@ -225,12 +191,12 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
         <div className=" fixed hidden h-screen w-[calc(100%-472px)] flex-1 bg-[url(/images/dummy/dummy-7.jpeg)] bg-cover bg-center text-white lg:block">
           <div className=" flex h-full w-full items-center justify-center bg-gradient-to-b from-black/60 p-20">
             <div className="flex flex-col items-center">
-              <h1 className={cn(fontTitle, 'text-[56px]')}>Rachel & Ross</h1>
+              <h1 className={cn(fontTitle, ' text-[56px]')}>Rachel & Ross</h1>
             </div>
           </div>
         </div>
         {/* end: left */}
-        <div className=" flex w-full justify-center bg-white text-black lg:justify-end">
+        <div className=" flex w-full justify-center bg-[#D0CABA] text-[#546595] lg:justify-end">
           {/* <div className=" fixed block h-screen  w-full bg-[url(/images/dummy/dummy-7.jpeg)] bg-cover bg-center lg:hidden">
             <div className=" h-full w-full bg-[#EBDEC8]/60 backdrop-blur-lg" />
           </div> */}
@@ -268,23 +234,88 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
             />
 
             <section id="opening">
-              <div className=" min-h-screen w-full bg-[url(/images/dummy/dummy-14.jpeg)] bg-cover bg-center text-white">
-                <div className=" flex min-h-screen w-full flex-col items-center justify-end bg-black/[0.44] px-6 py-20">
-                  <div className=" flex flex-col text-center">
-                    <p className=" text-sm">The Wedding of</p>
-                    <h1 className={cn(' text-[56px] leading-tight', fontTitle)}>
-                      Rachel & Ross
-                    </h1>
-                    <p className=" text-sm">12 Desember 2024</p>
+              <div className=" min-h-screen w-full">
+                <div className=" flex min-h-screen w-full flex-col items-center bg-[#D0CABA] px-6 py-20">
+                  <div className=" flex w-full flex-col items-center">
+                    <svg
+                      viewBox="0 0 500 500"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      {/* Define the pattern with an image */}
+                      <defs>
+                        <pattern
+                          id="imgPattern"
+                          patternUnits="userSpaceOnUse"
+                          width={500}
+                          height={500}
+                        >
+                          <image
+                            href="/images/dummy/dummy-2.jpeg"
+                            x={0}
+                            y={0}
+                            width={500}
+                            height={500}
+                          />
+                        </pattern>
+                        <path
+                          id="test"
+                          d="M 90,481 L 90,230.5 A 153,153 0 0 1 416,230.5 L 416,481 L 10,481 Z"
+                        />
+                      </defs>
+                      {/* Draw the combined shape and fill it with the pattern */}
+                      <path
+                        d="M 100,230.5 A 153,153 0 0 1 406,230.5 L 406,481 L 100,481 Z"
+                        fill="url(#imgPattern)"
+                        stroke=""
+                      />
+                      {/* Add the text following the path */}
+                      <text
+                        fill="#546595"
+                        className={cn(notable.className, 'text-[40px]')}
+                      >
+                        <textPath
+                          href="#test"
+                          startOffset="33.5%"
+                          textAnchor="middle"
+                          // className={cn(notable.className, 'text-[#546595]')}
+                        >
+                          THE WEDDING OF DECLAN & AIDEEN
+                        </textPath>
+                      </text>
+                    </svg>
+                    <div className=" relative w-full ">
+                      <Image
+                        src="/images/dummy/decoration-6.png"
+                        height={40}
+                        width={40}
+                        alt=""
+                        className=" absolute -top-4 left-20"
+                      />
+                      <h1
+                        className={cn(
+                          fontTitle,
+                          ' fred-text-stroke stroke-black text-center text-[20px]',
+                        )}
+                      >
+                        Selasa <br /> 10 Oktober 2024
+                      </h1>
+                    </div>
                   </div>
                 </div>
               </div>
             </section>
 
             <section id="quote">
-              <div className=" w-full bg-black p-6">
-                <div className=" mx-auto mt-auto flex w-full items-center justify-center border-2 border-white p-8 py-12">
-                  <p className=" text-center text-sm text-white">
+              <div className=" relative w-full p-6">
+                <Image
+                  src="/images/dummy/decoration-6.png"
+                  height={50}
+                  width={50}
+                  alt=""
+                  className=" absolute bottom-0 right-0 z-[2]"
+                />
+                <div className=" mx-auto mt-auto flex w-full items-center justify-center border-2 border-[#546595] p-8">
+                  <p className=" text-center text-sm text-[#546595]">
                     &quot;Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia
                     menciptakan pasangan-pasangan untukmu dari jenismu sendiri,
                     agar kamu cenderung dan merasa tenteram kepadanya, dan Dia
@@ -297,54 +328,33 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
             </section>
 
             <section id="couple">
-              <div className=" flex w-full flex-col gap-10 p-6">
-                <div className="flex flex-col">
-                  <h1 className={cn(fontTitle, 'text-[56px]')}>The Bride</h1>
-                  <div className="flex gap-4">
-                    <div className=" relative aspect-[3/4] h-[256px]">
-                      <Image
-                        src="/images/dummy/dummy-12.jpeg"
-                        fill
-                        alt="bride"
-                        className=" object-cover object-center"
-                      />
-                    </div>
-                    <div className="flex flex-1 flex-col">
-                      <h1 className={cn(fontTitle, 'text-[46px] leading-none')}>
-                        Rachel Taylor
-                      </h1>
-                      <div className=" text-sm">
-                        <p className="">Putra Sulung dari</p>
-                        <p className="">Bapak Anthony Hornet</p>
-                        <p className="">dan Ibu Lisa Hornet</p>
-                        <div className="flex items-center gap-1">
-                          <SiInstagram />
-                          <p className="">hornetdeclan</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-col">
-                  <h1 className={cn(fontTitle, 'text-end text-[56px]')}>
+              <div className=" flex w-full flex-col gap-10 overflow-hidden p-8 py-20">
+                <div className="relative flex flex-col">
+                  <h1
+                    className={cn(
+                      fontTitle,
+                      'fred-text-stroke absolute -left-[184px] top-40 z-[3]  -rotate-90 text-[48px]',
+                    )}
+                  >
+                    The Groom
+                  </h1>
+                  <h1
+                    className={cn(
+                      fontTitle,
+                      ' absolute -left-[168px] top-[180px] z-[2] -rotate-90  text-[48px] opacity-[.35]',
+                    )}
+                  >
                     The Groom
                   </h1>
                   <div className="flex gap-4">
-                    <div className="flex flex-1 flex-col items-end text-end">
-                      <h1 className={cn(fontTitle, 'text-[46px] leading-none')}>
-                        Ross Chamberlain
-                      </h1>
-                      <div className=" text-sm">
-                        <p className="">Putra Sulung dari</p>
-                        <p className="">Bapak Anthony Hornet</p>
-                        <p className="">dan Ibu Lisa Hornet</p>
-                        <div className="flex items-center justify-end gap-1">
-                          <SiInstagram />
-                          <p className="">hornetdeclan</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className=" relative aspect-[3/4] h-[256px]">
+                    <div
+                      className=" relative h-[373px] w-[204px] overflow-hidden"
+                      style={{
+                        maskImage: 'url(/images/dummy/decoration-mask-3.png)',
+                        maskSize: '100%',
+                        maskRepeat: 'no-repeat',
+                      }}
+                    >
                       <Image
                         src="/images/dummy/dummy-11.jpeg"
                         fill
@@ -352,38 +362,105 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
                         className=" object-cover object-center"
                       />
                     </div>
+                    <div className="flex flex-1 flex-col items-start gap-6">
+                      <h1 className={cn('text-[48px] leading-none')}>
+                        Declan Hornet
+                      </h1>
+                      <div className=" text-sm">
+                        <p className="">
+                          Daughter of Charlie Hornet and Betty Hornet
+                        </p>
+                      </div>
+                      <div className=" relative -rotate-90">
+                        <div className="absolute right-0 flex items-center gap-1">
+                          <SiInstagram />
+                          <p className=" leading-none">hornetdeclan</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="relative flex flex-col">
+                  <h1
+                    className={cn(
+                      fontTitle,
+                      'fred-text-stroke absolute -right-[168px] top-40 z-[3]  rotate-90 text-[48px]',
+                    )}
+                  >
+                    The Bride
+                  </h1>
+                  <h1
+                    className={cn(
+                      fontTitle,
+                      ' absolute -right-[152px] top-[180px] z-[2] rotate-90  text-[48px] opacity-[.35]',
+                    )}
+                  >
+                    The Bride
+                  </h1>
+                  <div className="flex flex-row-reverse gap-4">
+                    <div
+                      className=" relative h-[373px] w-[204px] scale-x-[-1] overflow-hidden"
+                      style={{
+                        maskImage: 'url(/images/dummy/decoration-mask-3.png)',
+                        maskSize: '100%',
+                        maskRepeat: 'no-repeat',
+                      }}
+                    >
+                      <Image
+                        src="/images/dummy/dummy-12.jpeg"
+                        fill
+                        alt="bride"
+                        className=" object-cover object-center"
+                      />
+                    </div>
+                    <div className="flex flex-1 flex-col items-end gap-6 text-end">
+                      <h1 className={cn('text-[48px] leading-none')}>
+                        Aideen Danes
+                      </h1>
+                      <div className=" text-sm">
+                        <p className="">
+                          Daughter of Charlie Hornet and Betty Hornet
+                        </p>
+                      </div>
+                      <div className=" relative rotate-90">
+                        <div className="absolute left-0 flex items-center gap-1">
+                          <SiInstagram />
+                          <p className="">hornetdeclan</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </section>
 
             <section id="countdown">
-              <div className=" w-full bg-[url(/images/dummy/dummy-3.jpeg)] bg-cover bg-center text-white">
-                <div className=" flex h-full w-full flex-col items-center gap-6 bg-black/60 px-8 py-12">
+              <div className=" w-full bg-[#546595] text-[#D0CABA]">
+                <div className=" flex h-full w-full flex-col items-center gap-6 px-8 py-12">
                   <h1 className={cn(fontTitle, 'text-center text-[56px]')}>
                     Save The Date
                   </h1>
                   <p>12 Desember 2024</p>
                   <div className=" flex items-center justify-center gap-4 ">
-                    <div className="flex h-[88px] w-16 flex-col items-center justify-center border border-white text-center">
+                    <div className="flex h-[88px] w-16 flex-col items-center justify-center rounded-t-full border border-[#D0CABA] text-center">
                       <p className=" text-lg font-semibold">
                         {days.toString().padStart(2, '0')}
                       </p>
                       <p className=" text-sm">Hari</p>
                     </div>
-                    <div className="flex h-[88px] w-16 flex-col items-center justify-center border border-white text-center">
+                    <div className="flex h-[88px] w-16 flex-col items-center justify-center rounded-t-full border border-[#D0CABA] text-center">
                       <p className=" text-lg font-semibold">
                         {hours.toString().padStart(2, '0')}
                       </p>
                       <p className=" text-sm">Jam</p>
                     </div>
-                    <div className="flex h-[88px] w-16 flex-col items-center justify-center border border-white text-center">
+                    <div className="flex h-[88px] w-16 flex-col items-center justify-center rounded-t-full border border-[#D0CABA] text-center">
                       <p className=" text-lg font-semibold">
                         {minutes.toString().padStart(2, '0')}
                       </p>
                       <p className=" text-sm">Menit</p>
                     </div>
-                    <div className="flex h-[88px] w-16 flex-col items-center justify-center border border-white text-center">
+                    <div className="flex h-[88px] w-16 flex-col items-center justify-center rounded-t-full border border-[#D0CABA] text-center">
                       <p className=" text-lg font-semibold">
                         {seconds.toString().padStart(2, '0')}
                       </p>
@@ -391,7 +468,7 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
                     </div>
                   </div>
                   <Button
-                    className=" rounded-none bg-white text-black"
+                    className=" rounded-none bg-[#D0CABA] text-[#546595]"
                     variant="outline"
                   >
                     <CalendarAdd size={20} />
@@ -402,18 +479,25 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
             </section>
 
             <section id="event">
-              <div className=" w-full bg-white p-12">
-                <p className=" text-center text-sm">
-                  Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta’ala,
-                  kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara
-                  pernikahan kami yang akan dilaksanakan pada :
-                </p>
-
-                <div className="mt-6 flex flex-col gap-8">
-                  <div className=" flex w-full flex-col items-center justify-center gap-2 rounded-xl bg-neutral-100 p-6 text-center text-sm shadow-lg">
-                    <h1 className={cn('text-3xl', italianno.className)}>
-                      Akad Nikah
-                    </h1>
+              <div className=" w-full overflow-hidden bg-[#D0CABA] p-8">
+                <div className="relative mt-6 flex flex-col">
+                  <p
+                    className={cn(
+                      'fred-text-stroke absolute left-1/2 top-1/2 z-[5] -translate-x-1/2 -translate-y-1/2 text-[60px] leading-none',
+                    )}
+                  >
+                    *
+                  </p>
+                  <div className=" absolute left-1/2 top-1/2 h-[180px] w-[538px] -translate-x-1/2 -translate-y-1/2 -rotate-[45deg] rounded-[75%] border border-[#546595]" />
+                  <div className=" relative z-[3] flex w-[272px] flex-col items-center justify-center gap-2 rounded-bl-[120px] rounded-tr-[120px] border border-[#546595] bg-[#D0CABA] p-6 py-16 text-center text-sm">
+                    <p
+                      className={cn(
+                        'fred-text-stroke absolute left-0 top-0 text-[60px] leading-none',
+                      )}
+                    >
+                      *
+                    </p>
+                    <h1 className={cn('text-2xl', fontTitle)}>Akad Nikah</h1>
                     <div className="">
                       <p className="">Minggu, 12 Desember 2024</p>
                       <p className="">Pukul 08:00 WIB</p>
@@ -429,10 +513,15 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
                       Lihat Map
                     </Button>
                   </div>
-                  <div className=" flex w-full flex-col items-center justify-center gap-2 rounded-xl bg-neutral-100 p-6 text-center text-sm shadow-lg">
-                    <h1 className={cn('text-3xl', italianno.className)}>
-                      Resepsi
-                    </h1>
+                  <div className="relative z-[2] -mt-8 ml-auto flex w-[272px] flex-col items-center justify-center gap-2 rounded-bl-[120px] rounded-tr-[120px] border border-[#546595] bg-[#D0CABA] p-6 py-16 text-center text-sm">
+                    <p
+                      className={cn(
+                        'fred-text-stroke absolute -bottom-6 right-0 text-[60px] leading-none',
+                      )}
+                    >
+                      *
+                    </p>
+                    <h1 className={cn('text-2xl', fontTitle)}>Resepsi</h1>
                     <div className="">
                       <p className="">Minggu, 12 Desember 2024</p>
                       <p className="">Pukul 11:00 s/d selesai</p>
@@ -453,51 +542,54 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
             </section>
 
             <section id="story">
-              <div className=" w-full bg-[url(/images/dummy/dummy-6.jpeg)] bg-cover bg-center text-white">
-                <div className=" w-full bg-black/80 px-12 py-20">
+              <div className=" w-full bg-[#546595] text-[#D0CABA]">
+                <div className=" w-full overflow-hidden pt-20">
                   <h1
                     className={cn(
-                      ' text-center text-[56px] font-extrabold',
+                      ' text-center text-[40px] font-extrabold',
                       fontTitle,
                     )}
                   >
                     Our Story
                   </h1>
-                  <div className="mt-8 flex flex-col gap-4">
-                    <div className="flex flex-col">
-                      <p className=" text-sm font-semibold">Awal Bertemu</p>
-                      <p className=" text-sm">
-                        Kami bertemu pertama kali saat masih duduk di bangku
-                        SMA. Karena berada di kelas yang sama, kami seringkali
-                        mengobrol dan bercanda bersama. Namun, kami tidak
-                        menyadari jika ada perasaan sayang.
-                      </p>
-                    </div>
-                    <div className="flex flex-col">
-                      <p className=" text-sm font-semibold">Perpisahan</p>
-                      <p className=" text-sm">
-                        Waktu memisahkan kami begitu lama. Empat tahun lamanya
-                        setelah lulus sekolah menengah, kami tidak pernah saling
-                        berkomunikasi.
-                      </p>
-                    </div>
-                    <div className="flex flex-col">
-                      <p className=" text-sm font-semibold">
-                        Pertemuan Kembali
-                      </p>
-                      <p className=" text-sm">
-                        Acara reuni mempertemukan kami dan membuat kami semakin
-                        dekat. Hingga kami merasa memiliki perasaan yang sama
-                        dan menjalin hubungan.
-                      </p>
-                    </div>
-                    <div className="flex flex-col">
-                      <p className=" text-sm font-semibold">Pernikahan</p>
-                      <p className=" text-sm">
-                        Perasaan cinta yang kuat membuat kami yakin menuju
-                        jenjang pernikahan. Untuk menjalani hari-hari bersama
-                        dan berbahagia dalam jalinan rumah tangga.
-                      </p>
+                  <div className=" w-full overflow-auto">
+                    <div className=" mt-8 flex snap-x snap-mandatory items-stretch overflow-x-scroll pb-20 pt-4">
+                      <div className=" flex h-max w-full max-w-[472px] flex-none snap-center items-center justify-center">
+                        <div className=" h-full w-[320px] snap-always rounded-b-full rounded-t-full bg-[#D0CABA] px-12 py-20 text-[#546595] ring-2 ring-[#D0CABA] ring-offset-4 ring-offset-[#546595]">
+                          <h1 className={cn(fontTitle, 'text-[40px]')}>2015</h1>
+                          <p className=" ">
+                            Takdir mempertemukan kami di SMA. Selama 3 tahun,
+                            kami selalu satu kelas, membangun persahabatan di
+                            tahun pertama. Suatu masalah muncul, membuat kami
+                            bermusuhan hingga lulus SMA. Namun sebelum Ujian
+                            Nasional, terjadi momen berharga ketika kami saling
+                            bermaafan.
+                          </p>
+                        </div>
+                      </div>
+                      <div className=" flex w-full max-w-[472px] flex-none snap-center items-center justify-center">
+                        <div className=" flex h-full w-[320px] snap-always flex-col justify-center rounded-b-full rounded-t-full bg-[#D0CABA] px-12 py-20 text-[#546595] ring-2 ring-[#D0CABA] ring-offset-4 ring-offset-[#546595]">
+                          <h1 className={cn(fontTitle, 'text-[40px]')}>2015</h1>
+                          <p className=" ">
+                            Takdir mempertemukan kami di SMA. Selama 3 tahun,
+                            kami selalu satu kelas, membangun persahabatan di
+                            tahun pertama.
+                          </p>
+                        </div>
+                      </div>
+                      <div className=" flex h-full w-full max-w-[472px] flex-none snap-center items-center justify-center">
+                        <div className=" h-full w-[320px] snap-always rounded-b-full rounded-t-full bg-[#D0CABA] px-12 py-20 text-[#546595] ring-2 ring-[#D0CABA] ring-offset-4 ring-offset-[#546595]">
+                          <h1 className={cn(fontTitle, 'text-[40px]')}>2015</h1>
+                          <p className=" ">
+                            Takdir mempertemukan kami di SMA. Selama 3 tahun,
+                            kami selalu satu kelas, membangun persahabatan di
+                            tahun pertama. Suatu masalah muncul, membuat kami
+                            bermusuhan hingga lulus SMA. Namun sebelum Ujian
+                            Nasional, terjadi momen berharga ketika kami saling
+                            bermaafan.
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -506,8 +598,8 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
 
             <section id="gallery">
               <div className=" w-full px-[30px] py-20 ">
-                <div className="flex flex-col text-center">
-                  <h1 className={cn(' text-[46px]', fontTitle)}>
+                <div className="flex flex-col gap-2 text-center">
+                  <h1 className={cn(' text-[40px] leading-tight', fontTitle)}>
                     Moment yang Berbahagia
                   </h1>
                   <p className=" text-sm">
@@ -526,45 +618,47 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
             </section>
 
             <section id="external">
-              <div className=" w-full bg-black px-8 py-12 text-white">
+              <div className=" w-full bg-[#546595] px-8 py-12 text-[#D0CABA]">
                 <div className="flex flex-col items-center gap-12 text-center">
                   <div className=" space-y-6">
-                    <div>
+                    <div className=" space-y-2">
                       <h1
                         className={cn(
-                          ' text-center text-[46px] leading-none',
+                          ' text-center text-[24px] leading-none',
                           fontTitle,
                         )}
                       >
                         Live Streaming
                       </h1>
-                      <p>Silahkan untuk join live streaming</p>
+                      <p className=" text-sm">
+                        Silahkan untuk join live streaming
+                      </p>
                     </div>
                     <Button
                       variant="outline"
-                      className=" rounded-none border-black text-black"
+                      className=" rounded-none border-black bg-[#D0CABA] text-black"
                     >
                       Menuju Live Streaming
                     </Button>
                   </div>
                   <div className=" space-y-6">
-                    <div>
+                    <div className=" space-y-2">
                       <h1
                         className={cn(
-                          ' text-center text-[46px] leading-none',
+                          ' text-center text-[24px] leading-none',
                           fontTitle,
                         )}
                       >
                         Filter Instagram
                       </h1>
-                      <p>
+                      <p className=" text-sm">
                         Bagikan momentmu pakai Instagram Filter dan bagikan
                         Bersama kami
                       </p>
                     </div>
                     <Button
                       variant="outline"
-                      className=" rounded-none border-black text-black"
+                      className=" rounded-none border-black bg-[#D0CABA] text-black"
                     >
                       Link Instagram Filter
                     </Button>
@@ -574,14 +668,14 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
             </section>
 
             <section id="gift">
-              <div className=" w-full px-10 py-20 text-[#271B11]">
-                <h1 className={cn(fontTitle, 'text-center text-[46px]')}>
+              <div className=" w-full px-10 py-20 text-[#546595]">
+                <h1 className={cn(fontTitle, 'text-center text-[24px]')}>
                   Send Gift
                 </h1>
 
                 <RadioGroup
                   defaultValue="transfer"
-                  className=""
+                  className=" mt-8"
                 >
                   <div className="flex space-x-2">
                     <RadioGroupItem
@@ -613,8 +707,9 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
                   </div>
                 </RadioGroup>
 
-                <div className=" mt-6 flex w-full flex-col">
-                  <div className=" relative ">
+                <div className=" relative mt-6 flex w-full flex-col items-start gap-4">
+                  <div className=" absolute left-1/2 top-1/2 h-[163px] w-[466px] -translate-x-1/2 -translate-y-1/2 -rotate-[45deg] rounded-[75%] border border-[#546595]" />
+                  <div className=" relative z-[2] rounded-[32px] border border-[#546595] px-6 py-8 after:absolute after:left-2 after:top-2 after:h-full after:w-full after:rounded-[32px] after:border after:border-[#546595] after:content-['']">
                     {/* <div className=" absolute right-0 top-0">
                       <Image
                         src="/images/logo-bca.png"
@@ -640,8 +735,7 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
                     </div>
                     <p className="">a/n Rachel Taylor</p>
                   </div>
-                  <hr className=" my-6 border-[#034405]" />
-                  <div className=" relative ">
+                  <div className=" relative z-[2] ml-auto rounded-[32px] border border-[#546595] px-6 py-8 after:absolute after:left-2 after:top-2 after:h-full after:w-full after:rounded-[32px] after:border after:border-[#546595] after:content-['']">
                     {/* <div className=" absolute right-0 top-0">
                       <Image
                         src="/images/logo-bri.png"
@@ -672,37 +766,29 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
             </section>
 
             <section id="wish">
-              <div className=" w-full bg-black px-12 py-20">
-                <h1
-                  className={cn(
-                    ' text-center text-[64px] text-white',
-                    fontTitle,
-                  )}
-                >
+              <div className=" w-full bg-[#546595] px-12 py-20 text-[#D0CABA]">
+                <h1 className={cn(' text-center text-[24px] ', fontTitle)}>
                   Wedding Wishes
                 </h1>
                 <div className=" mt-8 flex flex-col gap-4">
                   <Input
-                    className=" rounded-none border-none "
+                    className=" rounded-none border-none bg-[#D0CABA]"
                     placeholder="Nama Lengkap"
                   />
                   <Input
-                    className=" rounded-none border-none "
+                    className=" rounded-none border-none bg-[#D0CABA]"
                     placeholder="Alamat"
                   />
                   <Textarea
-                    className=" rounded-none border-none "
+                    className=" rounded-none border-none bg-[#D0CABA]"
                     placeholder="Ucapan"
                   />
-                  <Button
-                    className=" rounded-none bg-transparent text-[#fff]"
-                    variant="outline"
-                  >
+                  <Button className=" text rounded-none bg-[#D0CABA] text-[#546595] hover:bg-[#D0CABA]/90">
                     Kirim
                   </Button>
                 </div>
 
-                <div className=" mt-8 flex flex-col gap-6 text-white">
+                <div className=" mt-8 flex flex-col gap-6 ">
                   {INVITATION_WISHES_FAKER.slice(0, 5).map((wish) => (
                     <div
                       key={wish.id}
@@ -768,7 +854,7 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
             </section>
 
             <section id="footer">
-              <div className=" w-full bg-black py-6 pb-20 text-center text-white">
+              <div className=" w-full bg-[#546595] py-6 pb-20 text-center text-[#D0CABA]">
                 <p className=" text-xs ">Powered by</p>
                 <h1 className="">Momentus</h1>
                 <div className="mt-2 flex items-center justify-center gap-2">
