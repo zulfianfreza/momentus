@@ -1,5 +1,6 @@
 import HeadingConfigurationSection from '@/components/common/heading-configuration-section';
 import InputItem from '@/components/common/input-item';
+import CustomBreadcrumb from '@/components/custom/custom-breadcrumb';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
@@ -14,7 +15,9 @@ import { Textarea } from '@/components/ui/textarea';
 export default function CoverPage() {
   return (
     <div className=" w-full p-6">
+      <CustomBreadcrumb items={[{ label: 'Data' }, { label: 'Sampul' }]} />
       <HeadingConfigurationSection
+        className=" mt-4"
         title="Cover"
         subtitle="Pilih desain sampul yang indah untuk memulai undangan pernikahan Anda dengan kesan pertama yang menawan."
       />

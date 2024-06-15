@@ -5,8 +5,6 @@ import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { Button } from '../ui/button';
-import Container from '../common/container';
 import { HambergerMenu } from 'iconsax-react';
 import {
   SignInButton,
@@ -15,8 +13,10 @@ import {
   UserButton,
   useAuth,
 } from '@clerk/nextjs';
+import Container from '@/components/common/container';
+import { Button } from '@/components/ui/button';
 
-export default function Header() {
+export default function MainHeader() {
   const MENUS = [
     {
       label: 'Tema',
@@ -89,7 +89,6 @@ export default function Header() {
 
         {/* begin: right */}
         <div className=" flex flex-1 justify-end gap-2">
-          {}
           <SignedOut>
             <SignInButton />
           </SignedOut>

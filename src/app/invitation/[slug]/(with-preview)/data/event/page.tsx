@@ -22,6 +22,7 @@ import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { id } from 'date-fns/locale';
+import CustomBreadcrumb from '@/components/custom/custom-breadcrumb';
 
 export default function DatePage() {
   const [date, setDate] = useState<Date>();
@@ -39,7 +40,9 @@ export default function DatePage() {
 
   return (
     <div className=" w-full p-5">
+      <CustomBreadcrumb items={[{ label: 'Data' }, { label: 'Acara' }]} />
       <HeadingConfigurationSection
+        className=" mt-4"
         title="Informasi Acara"
         subtitle="Tambahkan informasi penting seperti tanggal dan lokasi pernikahan Anda untuk memudahkan para tamu."
       />

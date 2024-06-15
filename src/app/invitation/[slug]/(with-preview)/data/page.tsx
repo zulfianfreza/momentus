@@ -23,7 +23,7 @@ export default function DataPage() {
             <div className="flex  w-full flex-col items-center  justify-center gap-2 rounded-xl p-4 py-6 transition-all group-hover:bg-neutral-100">
               <submenu.icon
                 variant="Outline"
-                size={36}
+                size={30}
               />
               <p className=" text-sm">{submenu.title}</p>
             </div>

@@ -30,6 +30,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import { Variants, motion } from 'framer-motion';
 
 type TPageParams = {
   searchParams: {
@@ -50,7 +51,7 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
   const [playAudio, setPlayAudio] = useState<boolean>(false);
   const [isCopied, setIsCopied] = useState(false);
 
-  // active section
+  // active id section
   const activeId = useScrollspy(
     NAVIGATIONS.map((item) => item.target),
     5,
@@ -140,12 +141,82 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
     }
   }, [searchParams]);
 
+  const coverVariants: Variants = {
+    initial: {
+      translateY: '0%',
+    },
+    animate: {
+      translateY: '0%',
+      transition: {
+        duration: 1,
+        ease: 'easeIn',
+      },
+    },
+    exit: {
+      translateY: '-100%',
+      transition: {
+        duration: 1,
+        ease: 'easeOut',
+      },
+    },
+  };
+
+  const fadeInUpVariants: Variants = {
+    initial: { opacity: 0, translateY: '25%', transition: { duration: 1 } },
+    whileInView: {
+      opacity: 1,
+      translateY: '0%',
+      transition: { duration: 1 },
+    },
+  };
+
   return (
     <div
       className={cn(jost.className, `tracking-normal text-black`)}
       onContextMenu={disableRightClick}
     >
       {/* begin: cover */}
+      <motion.div
+        className={cn(
+          ' fixed inset-0 z-[39] h-screen w-full bg-[url(/images/dummy/dummy-7.jpeg)] bg-cover bg-center text-white transition-all duration-1000',
+          // { ' -translate-y-full opacity-0': !showCover },
+        )}
+        variants={coverVariants}
+        initial="initial"
+        animate={showCover ? 'animate' : 'exit'}
+      >
+        <div className=" flex h-full w-full flex-col items-center justify-center bg-black/60 p-20">
+          <div className=" text-center">
+            <p className={cn(' text-sm')}>The Wedding of</p>
+            <div className=" relative flex justify-center text-[120px] leading-none">
+              <h1 className={cn(fontTitle, '  top-0 ')}>R</h1>
+              <h1 className={cn(fontTitle, ' mx-6 mt-[48px] text-[60px]')}>
+                &
+              </h1>
+              <h1 className={cn(fontTitle, '  mt-[72px] ')}>R</h1>
+            </div>
+            <p className=" text-sm">12 Desember 2024</p>
+          </div>
+          <div className=" mt-auto space-y-4 text-center">
+            <div>
+              <p className=" text-sm">Kepada:</p>
+              <p className="  text-sm font-bold">La Gandras</p>
+            </div>
+            <div className=" mt-6">
+              <Button
+                className=" rounded-full bg-black px-6 hover:bg-black/90"
+                onClick={() => {
+                  setPlayAudio((prev) => !prev);
+                  setShowCover((prev) => !prev);
+                }}
+                disabled={!showCover}
+              >
+                Buka Undangan
+              </Button>
+            </div>
+          </div>
+        </div>
+      </motion.div>
       {/* <div
         className={cn(
           ' fixed inset-0 z-[9999] h-screen w-full bg-[url(/images/dummy/dummy-7.jpeg)] bg-cover bg-center text-white transition-all duration-1000',
@@ -180,52 +251,21 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
           </div>
         </div>
       </div> */}
-      <div
-        className={cn(
-          ' fixed inset-0 z-[39] h-screen w-full bg-[url(/images/dummy/dummy-7.jpeg)] bg-cover bg-center text-white transition-all duration-1000',
-          { ' -translate-y-full opacity-0': !showCover },
-        )}
-      >
-        <div className=" flex h-full w-full flex-col items-center justify-center bg-black/60 p-20">
-          <div className=" text-center">
-            <p className={cn(' text-sm')}>The Wedding of</p>
-            <div className=" relative flex justify-center text-[120px] leading-none">
-              <h1 className={cn(fontTitle, '  top-0 ')}>R</h1>
-              <h1 className={cn(fontTitle, ' mx-6 mt-[48px] text-[60px]')}>
-                &
-              </h1>
-              <h1 className={cn(fontTitle, '  mt-[72px] ')}>R</h1>
-            </div>
-            <p className=" text-sm">12 Desember 2024</p>
-          </div>
-          <div className=" mt-auto space-y-4 text-center">
-            <div>
-              <p className=" text-sm">Kepada:</p>
-              <p className="  text-sm font-bold">La Gandras</p>
-            </div>
-            <div className=" mt-6">
-              <Button
-                className=" rounded-full bg-black px-6 hover:bg-black/90"
-                onClick={() => {
-                  setPlayAudio((prev) => !prev);
-                  setShowCover((prev) => !prev);
-                }}
-                disabled={!showCover}
-              >
-                Buka Undangan
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
+
       {/* end: cover */}
 
       <div className=" flex w-full">
         {/* begin: left */}
         <div className=" fixed hidden h-screen w-[calc(100%-472px)] flex-1 bg-[url(/images/dummy/dummy-7.jpeg)] bg-cover bg-center text-white lg:block">
+          <div className=" absolute right-0 h-full w-1 bg-black/50 backdrop-blur-sm" />
           <div className=" flex h-full w-full items-center justify-center bg-gradient-to-b from-black/60 p-20">
             <div className="flex flex-col items-center">
-              <h1 className={cn(fontTitle, 'text-[56px]')}>Rachel & Ross</h1>
+              <motion.h1
+                initial={{}}
+                className={cn(fontTitle, 'text-[56px]')}
+              >
+                Rachel & Ross
+              </motion.h1>
             </div>
           </div>
         </div>
@@ -299,7 +339,15 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
             <section id="couple">
               <div className=" flex w-full flex-col gap-10 p-6">
                 <div className="flex flex-col">
-                  <h1 className={cn(fontTitle, 'text-[56px]')}>The Bride</h1>
+                  <h1
+                    // variants={fadeInUpVariants}
+                    // initial="initial"
+                    // whileInView="whileInView"
+                    data-aos="fade-up"
+                    className={cn(fontTitle, 'text-[56px]')}
+                  >
+                    The Bride
+                  </h1>
                   <div className="flex gap-4">
                     <div className=" relative aspect-[3/4] h-[256px]">
                       <Image
@@ -310,9 +358,14 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
                       />
                     </div>
                     <div className="flex flex-1 flex-col">
-                      <h1 className={cn(fontTitle, 'text-[46px] leading-none')}>
+                      <motion.h1
+                        variants={fadeInUpVariants}
+                        initial="initial"
+                        whileInView="whileInView"
+                        className={cn(fontTitle, 'text-[46px] leading-none')}
+                      >
                         Rachel Taylor
-                      </h1>
+                      </motion.h1>
                       <div className=" text-sm">
                         <p className="">Putra Sulung dari</p>
                         <p className="">Bapak Anthony Hornet</p>
@@ -326,14 +379,24 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
                   </div>
                 </div>
                 <div className="flex flex-col">
-                  <h1 className={cn(fontTitle, 'text-end text-[56px]')}>
+                  <motion.h1
+                    variants={fadeInUpVariants}
+                    initial="initial"
+                    whileInView="whileInView"
+                    className={cn(fontTitle, 'text-end text-[56px]')}
+                  >
                     The Groom
-                  </h1>
+                  </motion.h1>
                   <div className="flex gap-4">
                     <div className="flex flex-1 flex-col items-end text-end">
-                      <h1 className={cn(fontTitle, 'text-[46px] leading-none')}>
+                      <motion.h1
+                        variants={fadeInUpVariants}
+                        initial="initial"
+                        whileInView="whileInView"
+                        className={cn(fontTitle, 'text-[46px] leading-none')}
+                      >
                         Ross Chamberlain
-                      </h1>
+                      </motion.h1>
                       <div className=" text-sm">
                         <p className="">Putra Sulung dari</p>
                         <p className="">Bapak Anthony Hornet</p>
