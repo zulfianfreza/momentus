@@ -34,6 +34,7 @@ import useToggle from '@/hooks/use-toggle';
 import { PopoverClose } from '@radix-ui/react-popover';
 import {
   AddSquare,
+  Edit,
   ExportSquare,
   ImportSquare,
   Send,
@@ -123,12 +124,21 @@ export default function SettingPage() {
                     <TableCell>
                       <div className="flex items-center justify-end gap-2">
                         <Button size="sm">Share</Button>
-                        <Button
-                          variant="destructive"
-                          size="icon-sm"
-                        >
-                          <Trash size={16} />
-                        </Button>
+                        <div className=" h-8 border-r" />
+                        <div className="flex">
+                          <Button
+                            variant="ghost"
+                            size="icon-sm"
+                          >
+                            <Edit size={16} />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="icon-sm"
+                          >
+                            <Trash size={16} />
+                          </Button>
+                        </div>
                       </div>
                     </TableCell>
                   </TableRow>

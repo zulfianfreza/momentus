@@ -2,6 +2,15 @@
 
 import HeadingConfigurationSection from '@/components/common/heading-configuration-section';
 import InputItem from '@/components/common/input-item';
+import CustomBreadcrumb from '@/components/custom/custom-breadcrumb';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -12,6 +21,7 @@ import { cn } from '@/lib/utils';
 import { TInvitationGallery } from '@/types/invitation.type';
 import { reloadIframe } from '@/utils/iframe';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useCallback, useState } from 'react';
 import { LuPlus } from 'react-icons/lu';
 
@@ -49,7 +59,9 @@ export default function GalleryPage() {
 
   return (
     <div className=" w-full p-6">
+      <CustomBreadcrumb items={[{ label: 'Data' }, { label: 'Galeri' }]} />
       <HeadingConfigurationSection
+        className=" mt-4"
         title="Galeri"
         subtitle="Tambahkan foto-foto spesial untuk membagikan momen berharga dalam perjalanan cinta kalian."
       />
@@ -57,7 +69,7 @@ export default function GalleryPage() {
         defaultValue="configuration"
         className=" mt-4 w-full"
       >
-        <TabsList className=" my-0 w-full justify-start gap-2 rounded-none border-b bg-transparent px-0">
+        <TabsList className=" my-0 w-full justify-start rounded-none border-b bg-transparent px-0">
           {TABS_MENU.map((menu) => (
             <TabsTrigger
               key={menu.value}

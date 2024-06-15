@@ -1,6 +1,8 @@
 'use client';
 
+import { DOTS, usePagination } from '@/hooks/use-pagination';
 import { cn } from '@/lib/utils';
+import { PopoverClose } from '@radix-ui/react-popover';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React, { useCallback, useMemo } from 'react';
 import {
@@ -16,16 +18,7 @@ import {
   PaginationEllipsis,
   PaginationItem,
 } from '../ui/pagination';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '../ui/select';
-import { DOTS, usePagination } from '@/hooks/use-pagination';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
-import { PopoverClose } from '@radix-ui/react-popover';
 
 type TBasePaginationProps = {
   totalCount: number;

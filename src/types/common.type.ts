@@ -1,6 +1,6 @@
-import { Icon } from "iconsax-react";
-import { IconType } from "react-icons/lib";
-import { TPlan } from "./invitation.type";
+import { Icon } from 'iconsax-react';
+import { IconType } from 'react-icons/lib';
+import { TPlan } from './invitation.type';
 
 export type TMenu = {
   title: string;
@@ -66,3 +66,5 @@ export type IAbout = {
   title: string;
   description: string;
 };
+
+export type TPreviewDeviceType = 'laptop' | 'tablet' | 'smartphone';

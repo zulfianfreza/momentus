@@ -1,6 +1,7 @@
 'use client';
 
 import HeadingConfigurationSection from '@/components/common/heading-configuration-section';
+import CustomBreadcrumb from '@/components/custom/custom-breadcrumb';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -20,7 +21,9 @@ export default function DataPage() {
 
   return (
     <div className=" w-full p-6">
+      <CustomBreadcrumb items={[{ label: 'Data' }, { label: 'Quote' }]} />
       <HeadingConfigurationSection
+        className=" mt-4"
         title="Quote"
         subtitle="Tambahkan kutipan inspiratif untuk memperindah undangan Anda dan
           menyampaikan pesan cinta yang mendalam."

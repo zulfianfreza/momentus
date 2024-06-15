@@ -1,4 +1,6 @@
-import Preview from "@/components/common/preview";
+'use client';
+
+import PreviewCanvas from '@/components/layout/preview';
 
 export default function WithPreviewLayout({
   children,
@@ -6,11 +8,12 @@ export default function WithPreviewLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className=" pl-14 w-full flex h-screen">
-      <div className="w-[624px] h-screen flex left-14 bg-white pt-14 lg:pt-[72px]">
-        <div className=" overflow-y-auto w-full">{children}</div>
+    <div className=" flex h-screen w-full pl-14">
+      <PreviewCanvas />
+
+      <div className=" hidden h-screen w-[400px] bg-white pt-14 md:flex lg:w-[512px] lg:pt-[72px]">
+        <div className=" w-full overflow-y-auto">{children}</div>
       </div>
-      <Preview />
     </div>
   );
 }

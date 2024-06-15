@@ -23,7 +23,7 @@ export default function DashboardPage() {
       <div className=" space-y-2">
         <HeadingConfigurationSection title="Dashboard" />
 
-        <div className=" grid grid-cols-3 gap-4">
+        <div className=" grid grid-cols-1 gap-4 lg:grid-cols-3">
           <div className=" flex w-full flex-col items-start gap-4 rounded-xl border p-4 shadow-sm">
             <div className=" flex h-10 w-10 items-center justify-center rounded-xl bg-pink-100/80">
               <People
@@ -74,7 +74,7 @@ export default function DashboardPage() {
           </Link>
         </div>
         <div className=" overflow-hidden rounded-xl border">
-          <Table>
+          <Table className=" whitespace-nowrap">
             <TableHeader>
               <TableRow className=" bg-neutral-100">
                 <TableHead>No.</TableHead>
