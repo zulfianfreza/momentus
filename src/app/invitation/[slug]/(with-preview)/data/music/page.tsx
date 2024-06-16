@@ -1,6 +1,7 @@
 'use client';
 
 import HeadingConfigurationSection from '@/components/common/heading-configuration-section';
+import CustomBreadcrumb from '@/components/custom/custom-breadcrumb';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
@@ -9,7 +10,9 @@ import { MUSIC_FAKER } from '@/constant/faker.constant';
 export default function MusicPage() {
   return (
     <div className=" w-full p-5">
+      <CustomBreadcrumb items={[{ label: 'Data' }, { label: 'Musik' }]} />
       <HeadingConfigurationSection
+        className=" mt-4"
         title="Latar Musik"
         subtitle="Pilih musik yang menggambarkan kisah cinta Anda untuk melengkapi undangan pernikahan."
       />

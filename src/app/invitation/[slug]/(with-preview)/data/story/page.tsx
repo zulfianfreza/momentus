@@ -2,6 +2,7 @@
 
 import HeadingConfigurationSection from '@/components/common/heading-configuration-section';
 import InputItem from '@/components/common/input-item';
+import CustomBreadcrumb from '@/components/custom/custom-breadcrumb';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -39,7 +40,11 @@ export default function StoryPage() {
   return (
     <>
       <div className=" w-full p-5">
+        <CustomBreadcrumb
+          items={[{ label: 'Data' }, { label: 'Love Story' }]}
+        />
         <HeadingConfigurationSection
+          className=" mt-4"
           title="Love Story"
           subtitle="Bagikan perjalanan cinta Anda dari awal hingga hari istimewa ini dengan para tamu."
         />

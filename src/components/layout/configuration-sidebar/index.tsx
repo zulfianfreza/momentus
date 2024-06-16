@@ -19,7 +19,7 @@ import { PiArrowLeft } from 'react-icons/pi';
 import { RiCustomerService2Line } from 'react-icons/ri';
 import Joyride, { CallBackProps, STATUS, Step } from 'react-joyride';
 
-export default function Sidebar() {
+export default function ConfigurationSidebar() {
   // hooks
   const pathname = usePathname();
   const params = useParams<{ slug: string }>();
@@ -57,7 +57,7 @@ export default function Sidebar() {
       {
         target: '#second-step',
         content: 'Preview',
-        placement: 'left',
+        placement: 'auto',
       },
     ],
   });
@@ -73,7 +73,7 @@ export default function Sidebar() {
 
   return (
     <aside
-      className=" fixed left-0 z-[12] flex h-screen w-fit flex-col border-r bg-white shadow-sm"
+      className=" fixed left-0 z-[11] flex h-screen w-14 flex-col border-r bg-white pt-[72px] shadow-sm"
       id="first-step"
     >
       <Joyride
@@ -101,12 +101,11 @@ export default function Sidebar() {
         <Button
           variant="ghost"
           size="icon"
-          className=" mt-2"
         >
           <PiArrowLeft size={20} />
         </Button>
-        <p className=" mt-4 text-center text-xs text-neutral-500">Menu</p>
-        <div className="mt-2 flex flex-col items-center gap-2">
+        <p className=" mt-4 text-center text-[10px] text-neutral-500">Menu</p>
+        <div className="mt-2 flex flex-col items-center gap-1">
           {sidebarMenu.map((menu) => (
             <TooltipProvider
               key={menu.path}
@@ -118,7 +117,7 @@ export default function Sidebar() {
                     size="icon"
                     variant={activeMenu(menu.path) ? 'default' : 'ghost'}
                     asChild
-                    className={cn('  ', {
+                    className={cn('', {
                       '': activeMenu(menu.path),
                     })}
                   >
@@ -190,6 +189,11 @@ export default function Sidebar() {
               </Tooltip>
             </TooltipProvider>
           </div>
+        </div>
+        <p className=" mt-4 text-center text-[10px] text-neutral-500">
+          Bantuan
+        </p>
+        <div className="mt-2 flex flex-col gap-1">
           <TooltipProvider delayDuration={0}>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -209,43 +213,23 @@ export default function Sidebar() {
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
+          <Button
+            size="icon"
+            variant="ghost"
+            onClick={(e) => {
+              e.preventDefault();
+              setState((prev) => ({ ...prev, run: !prev.run }));
+            }}
+          >
+            <InfoCircle
+              size={20}
+              variant="Outline"
+              className={cn(' ml-[2px]', {})}
+            />
+          </Button>
         </div>
       </div>
-      <div className="flex flex-col gap-2 p-2">
-        <Button
-          size="icon"
-          variant="ghost"
-          onClick={(e) => {
-            e.preventDefault();
-            setState((prev) => ({ ...prev, run: !prev.run }));
-          }}
-        >
-          <InfoCircle
-            size={20}
-            variant="Outline"
-            className={cn(' ml-[2px]', {})}
-          />
-        </Button>
-        {/* <div className=" relative">
-          <Circle
-            strokeWidth={6}
-            percent={10}
-            strokeColor="#db2777"
-            trailWidth={6}
-          />
-          <p className=" absolute text-sm text-pink-600 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">
-            10%
-          </p>
-        </div> */}
-        {/* <div className=" w-10 aspect-square rounded-[50%] relative overflow-hidden">
-          <Image
-            src="/images/51.png"
-            fill
-            alt=""
-            className=" object-cover object-center"
-          />
-        </div> */}
-      </div>
+      {/* <div className="flex flex-col gap-2 p-2"></div> */}
     </aside>
   );
 }

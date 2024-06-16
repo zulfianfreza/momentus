@@ -1,8 +1,7 @@
-import Footer from "@/components/layout/footer";
-import Header from "@/components/layout/header";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { SiWhatsapp } from "react-icons/si";
+import MainFooter from '@/components/layout/main-footer';
+import MainHeader from '@/components/layout/main-header';
+import Link from 'next/link';
+import { SiWhatsapp } from 'react-icons/si';
 
 export default function MainLayout({
   children,
@@ -11,19 +10,22 @@ export default function MainLayout({
 }) {
   return (
     <div className=" w-full">
-      <div className=" fixed right-4 bottom-20">
+      <div className=" fixed bottom-20 right-4">
         <Link
           href="https://wa.me/"
           target="_blank"
-          className=" h-12 relative aspect-square rounded-full bg-green-500 flex justify-center items-center"
+          className=" relative flex aspect-square h-12 items-center justify-center rounded-full bg-green-500"
         >
-          <div className=" w-2.5 aspect-square rounded-full bg-pink-600 absolute top-[2px] right-[2px]" />
-          <SiWhatsapp className=" text-white" size={24} />
+          <div className=" absolute right-[2px] top-[2px] aspect-square w-2.5 rounded-full bg-pink-600" />
+          <SiWhatsapp
+            className=" text-white"
+            size={24}
+          />
         </Link>
       </div>
-      <Header />
+      <MainHeader />
       {children}
-      <Footer />
+      <MainFooter />
     </div>
   );
 }

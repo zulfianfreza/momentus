@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-type TProps = {
+type TProps = React.HTMLAttributes<HTMLDivElement> & {
   title: string;
   subtitle?: string;
 };
@@ -10,9 +10,13 @@ type TProps = {
 export default function HeadingConfigurationSection({
   title,
   subtitle,
+  ...props
 }: TProps) {
   return (
-    <div className=" space-y-1">
+    <div
+      className=" space-y-1"
+      {...props}
+    >
       <h1 className=" text-2xl font-medium text-neutral-900">{title}</h1>
       <p className=" text-sm text-neutral-500">{subtitle}</p>
     </div>
