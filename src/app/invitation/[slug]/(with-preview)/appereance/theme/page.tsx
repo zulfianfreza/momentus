@@ -82,21 +82,21 @@ export default function ThemePage({ searchParams, params }: TPageParams) {
         </Button>
         <Button
           size="sm"
-          variant={plan === 'fair' ? 'default' : 'outline'}
+          variant={plan === 'basic' ? 'default' : 'outline'}
           className=" gap-2"
           asChild
         >
-          <Link href="/invitation/xyz/appereance/theme?plan=fair">
-            Fair
+          <Link href="/invitation/xyz/appereance/theme?plan=basic">
+            Basic
             <div
               className={cn(
                 ' flex aspect-square w-4 justify-center rounded-full bg-neutral-800 text-[10px] text-white',
-                { 'bg-white text-pink-600': plan === 'fair' },
+                { 'bg-white text-pink-600': plan === 'basic' },
               )}
             >
               {
                 THEME_FAKER.filter(
-                  (theme) => theme.plan.name.toLowerCase() === 'fair',
+                  (theme) => theme.plan.name.toLowerCase() === 'basic',
                 ).length
               }
             </div>
@@ -126,29 +126,29 @@ export default function ThemePage({ searchParams, params }: TPageParams) {
         </Button>
         <Button
           size="sm"
-          variant={plan === 'rarely' ? 'default' : 'outline'}
+          variant={plan === 'luxury' ? 'default' : 'outline'}
           className={cn(' relative gap-2 overflow-hidden', {
-            'bg-gradient-to-r from-indigo-800 to-indigo-950': plan === 'rarely',
+            'bg-gradient-to-r from-indigo-800 to-indigo-950': plan === 'luxury',
           })}
           asChild
         >
-          <Link href="/invitation/xyz/appereance/theme?plan=rarely">
-            Rarely
+          <Link href="/invitation/xyz/appereance/theme?plan=luxury">
+            Luxury
             <div
               className={cn(
                 ' z-[2] flex aspect-square w-4 justify-center rounded-full bg-neutral-800 text-[10px] text-white',
                 {
-                  ' bg-white text-pink-600': plan === 'rarely',
+                  ' bg-white text-pink-600': plan === 'luxury',
                 },
               )}
             >
               {
                 THEME_FAKER.filter(
-                  (theme) => theme.plan.name.toLowerCase() === 'rarely',
+                  (theme) => theme.plan.name.toLowerCase() === 'luxury',
                 ).length
               }
             </div>
-            {plan === 'rarely' && (
+            {plan === 'luxury' && (
               <HiSparkles
                 className=" absolute -bottom-1 -right-2 rotate-[190deg] text-yellow-300"
                 size={32}
@@ -160,23 +160,23 @@ export default function ThemePage({ searchParams, params }: TPageParams) {
 
       <div className=" mt-4 grid grid-cols-2 gap-4">
         {listTheme.map((theme, i) => (
-          <button
-            className=" flex flex-col gap-2 rounded-lg border p-4"
+          <div
+            className=" flex flex-col items-center"
             key={i}
             onClick={() => handleChangeTheme(theme)}
           >
-            <div className=" relative aspect-video w-full overflow-hidden rounded-lg">
+            <button className=" relative aspect-[16/10] w-full overflow-hidden rounded-lg">
               <Image
                 fill
                 alt=""
                 className=" object-cover object-center"
                 src={theme.cover}
               />
-            </div>
-            <p className=" text-center text-sm text-neutral-900">
+            </button>
+            <p className=" mt-2 text-center text-sm text-neutral-900">
               {theme.name}
             </p>
-          </button>
+          </div>
         ))}
       </div>
     </div>

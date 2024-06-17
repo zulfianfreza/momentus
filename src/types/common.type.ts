@@ -68,3 +68,8 @@ export type IAbout = {
 };
 
 export type TPreviewDeviceType = 'laptop' | 'tablet' | 'smartphone';
+
+export type TTabMenu = {
+  label: string;
+  value: string;
+};

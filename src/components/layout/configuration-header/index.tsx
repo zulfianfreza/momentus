@@ -41,7 +41,7 @@ export default function ConfigurationHeader() {
             </svg>
 
             <SelectInvitation setOpen={setShowAddInvitation} />
-            <Badge variant="rarely">Rarely</Badge>
+            <Badge variant="destructive">Expired</Badge>
           </div>
           <div className="flex items-center gap-2">
             <Button
