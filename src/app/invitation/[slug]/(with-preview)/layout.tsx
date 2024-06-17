@@ -11,7 +11,7 @@ export default function WithPreviewLayout({
     <div className=" flex h-screen w-full pl-14">
       <PreviewCanvas />
 
-      <div className=" hidden h-screen w-[400px] bg-white pt-14 md:flex lg:w-[512px] lg:pt-[72px]">
+      <div className=" hidden h-screen w-[400px] border-l bg-white pt-14 md:flex lg:w-[512px] lg:pt-[72px]">
         <div className=" w-full overflow-y-auto">{children}</div>
       </div>
     </div>

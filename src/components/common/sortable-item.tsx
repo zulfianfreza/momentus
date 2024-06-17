@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import React from "react";
-import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
-import { RiDraggable } from "react-icons/ri";
+import React from 'react';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
+import { RiDraggable } from 'react-icons/ri';
 
 type TSortableItemProps = {
   item: {
@@ -23,10 +23,18 @@ export function SortableItem(props: TSortableItemProps) {
   };
 
   return (
-    <div ref={setNodeRef} style={style} className="flex items-center gap-2">
-      <div className=" h-14 w-full px-4 rounded-lg border shadow-sm flex justify-between items-center">
+    <div
+      ref={setNodeRef}
+      style={style}
+      className="flex items-center gap-2 bg-white"
+    >
+      <div className=" flex h-14 w-full items-center justify-between rounded-lg border px-4 shadow-sm">
         <p className=" text-sm text-neutral-900">{props.item.name}</p>
-        <button className=" cursor-grab" {...attributes} {...listeners}>
+        <button
+          className=" cursor-grab"
+          {...attributes}
+          {...listeners}
+        >
           <RiDraggable />
         </button>
       </div>

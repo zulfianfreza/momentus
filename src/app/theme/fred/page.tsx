@@ -30,6 +30,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import Divider from '@/components/theme/shared/divider';
 
 type TPageParams = {
   searchParams: {
@@ -188,15 +189,53 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
 
       <div className=" flex w-full">
         {/* begin: left */}
-        <div className=" fixed hidden h-screen w-[calc(100%-472px)] flex-1 bg-[url(/images/dummy/dummy-7.jpeg)] bg-cover bg-center text-white lg:block">
-          <div className=" flex h-full w-full items-center justify-center bg-gradient-to-b from-black/60 p-20">
+        <div className=" fixed hidden h-screen w-[calc(100%-472px)] flex-1 bg-[url(/images/dummy/dummy-7.jpeg)] bg-cover bg-center text-[#D0CABA] lg:block">
+          <div className=" relative flex h-full w-full items-center justify-center bg-[#546595] p-20">
+            <p
+              className={cn(
+                'fred-text-stroke-cream absolute right-10 top-10 z-[5] text-[120px] leading-none',
+              )}
+            >
+              *
+            </p>
+            <p
+              className={cn(
+                'fred-text-stroke-cream absolute left-10 top-1/2 z-[5] -translate-y-1/2 text-[120px] leading-none',
+              )}
+            >
+              *
+            </p>
+            <Divider />
             <div className="flex flex-col items-center">
-              <h1 className={cn(fontTitle, ' text-[56px]')}>Rachel & Ross</h1>
+              <div className=" relative">
+                {/* <div className=" absolute top-0 z-[1] h-[560px] w-[533px] bg-[url(/images/dummy/decoration-7.png)] bg-contain bg-center"></div> */}
+                <div
+                  className=" z-[2] h-[450px] w-[410px]"
+                  style={{
+                    maskImage: 'url(/images/mask/mask-4.png)',
+                    maskSize: '100%',
+                    maskRepeat: 'no-repeat',
+                  }}
+                >
+                  <div className=" relative h-full w-full">
+                    <Image
+                      src="/images/dummy/dummy-16.jpeg"
+                      alt=""
+                      fill
+                      className=" object-cover object-center"
+                    />
+                  </div>
+                </div>
+              </div>
+              <p className=" text-sm">The Wedding of</p>
+              <h1 className={cn(fontTitle, ' text-[56px] leading-none')}>
+                Rachel & Ross
+              </h1>
             </div>
           </div>
         </div>
         {/* end: left */}
-        <div className=" flex w-full justify-center bg-[#D0CABA] text-[#546595] lg:justify-end">
+        <div className=" flex w-full justify-center bg-[#2f2f2f] text-[#546595] lg:justify-end">
           {/* <div className=" fixed block h-screen  w-full bg-[url(/images/dummy/dummy-7.jpeg)] bg-cover bg-center lg:hidden">
             <div className=" h-full w-full bg-[#EBDEC8]/60 backdrop-blur-lg" />
           </div> */}
@@ -236,7 +275,8 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
             <section id="opening">
               <div className=" min-h-screen w-full">
                 <div className=" flex min-h-screen w-full flex-col items-center bg-[#D0CABA] px-6 py-20">
-                  <div className=" flex w-full flex-col items-center">
+                  <p className=" text-sm leading-none">The Wedding of</p>
+                  <div className=" -mt-2 flex w-full flex-col items-center">
                     <svg
                       viewBox="0 0 500 500"
                       xmlns="http://www.w3.org/2000/svg"
@@ -279,13 +319,13 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
                           textAnchor="middle"
                           // className={cn(notable.className, 'text-[#546595]')}
                         >
-                          THE WEDDING OF DECLAN & AIDEEN
+                          WIRAATMAJA & PANDUWINATA
                         </textPath>
                       </text>
                     </svg>
                     <div className=" relative w-full ">
                       <Image
-                        src="/images/dummy/decoration-6.png"
+                        src="/images/decoration/decoration-6.png"
                         height={40}
                         width={40}
                         alt=""
@@ -308,7 +348,7 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
             <section id="quote">
               <div className=" relative w-full p-6">
                 <Image
-                  src="/images/dummy/decoration-6.png"
+                  src="/images/decoration/decoration-6.png"
                   height={50}
                   width={50}
                   alt=""
@@ -350,7 +390,8 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
                     <div
                       className=" relative h-[373px] w-[204px] overflow-hidden"
                       style={{
-                        maskImage: 'url(/images/dummy/decoration-mask-3.png)',
+                        maskImage:
+                          'url(/images/decoration/decoration-mask-3.png)',
                         maskSize: '100%',
                         maskRepeat: 'no-repeat',
                       }}
@@ -401,7 +442,8 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
                     <div
                       className=" relative h-[373px] w-[204px] scale-x-[-1] overflow-hidden"
                       style={{
-                        maskImage: 'url(/images/dummy/decoration-mask-3.png)',
+                        maskImage:
+                          'url(/images/decoration/decoration-mask-3.png)',
                         maskSize: '100%',
                         maskRepeat: 'no-repeat',
                       }}

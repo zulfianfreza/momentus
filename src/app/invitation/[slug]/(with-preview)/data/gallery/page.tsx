@@ -3,6 +3,7 @@
 import HeadingConfigurationSection from '@/components/common/heading-configuration-section';
 import InputItem from '@/components/common/input-item';
 import CustomBreadcrumb from '@/components/custom/custom-breadcrumb';
+import CustomTabsList from '@/components/custom/custom-tabs-list';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -69,17 +70,7 @@ export default function GalleryPage() {
         defaultValue="configuration"
         className=" mt-4 w-full"
       >
-        <TabsList className=" my-0 w-full justify-start rounded-none border-b bg-transparent px-0">
-          {TABS_MENU.map((menu) => (
-            <TabsTrigger
-              key={menu.value}
-              value={menu.value}
-              className=" h-10 rounded-none border-b-2 border-transparent px-2.5 data-[state=active]:border-pink-600"
-            >
-              {menu.label}
-            </TabsTrigger>
-          ))}
-        </TabsList>
+        <CustomTabsList tabs={TABS_MENU} />
         <div className=" mt-4">
           <TabsContent value="configuration">
             <div className=" flex flex-col gap-6">

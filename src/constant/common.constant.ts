@@ -185,10 +185,10 @@ export const getSidebarMenu = (slug: string) => {
         },
       ],
     },
-    {
-      title: 'Pengaturan',
-      icon: IoSettingsOutline,
-      path: prefix + '/setting',
-    },
+    // {
+    //   title: 'Pengaturan',
+    //   icon: IoSettingsOutline,
+    //   path: prefix + '/setting',
+    // },
   ] as Array<TMenu>;
 };

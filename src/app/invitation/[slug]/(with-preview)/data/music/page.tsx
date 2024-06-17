@@ -23,7 +23,7 @@ export default function MusicPage() {
           <Label>Gunakan Latar Musik</Label>
         </div>
 
-        <div className="mt-4 flex flex-col gap-6">
+        <div className="mt-4 flex flex-col gap-4">
           {MUSIC_FAKER.map((music, i) => (
             <div
               className=" flex flex-col items-start space-y-2 rounded-xl border p-4 shadow-sm"

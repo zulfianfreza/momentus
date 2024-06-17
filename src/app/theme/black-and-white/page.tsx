@@ -141,6 +141,14 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
     }
   }, [searchParams]);
 
+  useEffect(() => {
+    if (showCover) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [showCover]);
+
   const coverVariants: Variants = {
     initial: {
       translateY: '0%',
