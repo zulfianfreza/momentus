@@ -9,7 +9,7 @@
 }
 @media (min-width: 1400px) {
   .container {
-    max-width: 1400px;
+    max-width: 1360px;
   }
 }
 
@@ -81,4 +81,11 @@
   -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: #546595;
+}
+
+.fred-text-stroke-cream {
+  color: black;
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #d0caba;
 }

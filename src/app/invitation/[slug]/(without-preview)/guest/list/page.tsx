@@ -103,7 +103,7 @@ export default function SettingPage() {
               />
             </div>
           </div>
-          <div className=" mt-2 overflow-hidden rounded-xl border">
+          <div className=" mt-2 overflow-hidden rounded-lg border">
             <Table>
               <TableHeader>
                 <TableRow className=" bg-neutral-100">

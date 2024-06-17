@@ -52,7 +52,7 @@ const CustomNodes = () => {
             ></iframe>
           </div>
         ) : type === 'tablet' ? (
-          <div className=" relative aspect-[127/177] w-[424px] overflow-hidden  bg-[url(/images/ipad-frame.png)] bg-contain bg-center bg-no-repeat px-[18px] pb-[35px] pt-[37px]">
+          <div className=" relative aspect-[127/177] w-[424px] overflow-hidden  bg-[url(/images/ipad-frame.png)] bg-contain bg-center bg-no-repeat px-[18px] pb-[35px] pt-[35px]">
             <iframe
               src={url}
               className=" h-[calc(100%*1.75)] w-[calc(100%*1.75)] -translate-x-[21.5%] -translate-y-[21.5%] scale-[0.5712] overflow-hidden rounded-xl bg-black"

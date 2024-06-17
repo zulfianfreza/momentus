@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { RiDraggable } from "react-icons/ri";
+import { useState } from 'react';
+import { RiDraggable } from 'react-icons/ri';
 import {
   DndContext,
   closestCenter,
@@ -10,44 +10,45 @@ import {
   useSensor,
   useSensors,
   DragEndEvent,
-} from "@dnd-kit/core";
+} from '@dnd-kit/core';
 import {
   arrayMove,
   SortableContext,
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-import { SortableItem } from "@/components/common/sortable-item";
+} from '@dnd-kit/sortable';
+import { SortableItem } from '@/components/common/sortable-item';
+import HeadingConfigurationSection from '@/components/common/heading-configuration-section';
 
 export default function OrderPage() {
   const [items, setItems] = useState([
     {
-      name: "Quotes",
+      name: 'Quotes',
       id: 1,
       order: 1,
     },
     {
-      name: "Couple",
+      name: 'Couple',
       id: 2,
       order: 2,
     },
     {
-      name: "Story",
+      name: 'Story',
       id: 3,
       order: 3,
     },
     {
-      name: "Gallery",
+      name: 'Gallery',
       id: 4,
       order: 4,
     },
     {
-      name: "Date",
+      name: 'Date',
       id: 5,
       order: 5,
     },
     {
-      name: "Location",
+      name: 'Location',
       id: 6,
       order: 6,
     },
@@ -56,7 +57,7 @@ export default function OrderPage() {
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
-    })
+    }),
   );
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
@@ -76,8 +77,8 @@ export default function OrderPage() {
               item.order === active.id
                 ? newIndex + 1
                 : item.order === over.id
-                ? oldIndex + 1
-                : item.order,
+                  ? oldIndex + 1
+                  : item.order,
           }));
 
           return arrayMove(newItems, oldIndex, newIndex);
@@ -86,22 +87,28 @@ export default function OrderPage() {
     }
   }
   return (
-    <div className=" p-5 w-full">
-      <h1 className=" text-neutral-900 text-xl font-medium">Urutan</h1>
+    <div className=" w-full p-5">
+      <HeadingConfigurationSection title="Urutan" />
 
-      {JSON.stringify(items)}
-
-      <DndContext
-        sensors={sensors}
-        collisionDetection={closestCenter}
-        onDragEnd={handleDragEnd}
-      >
-        <SortableContext items={items} strategy={verticalListSortingStrategy}>
-          {items.map((item) => (
-            <SortableItem key={item.id} item={item} />
-          ))}
-        </SortableContext>
-      </DndContext>
+      <div className=" mt-4 space-y-2">
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCenter}
+          onDragEnd={handleDragEnd}
+        >
+          <SortableContext
+            items={items}
+            strategy={verticalListSortingStrategy}
+          >
+            {items.map((item) => (
+              <SortableItem
+                key={item.id}
+                item={item}
+              />
+            ))}
+          </SortableContext>
+        </DndContext>
+      </div>
     </div>
   );
 }

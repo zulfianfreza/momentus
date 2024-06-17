@@ -21,22 +21,42 @@ import {
 export const THEME_FAKER: Array<TTheme> = [
   {
     id: 1,
-    cover: '/images/theme/simple-clean.jpeg',
-    name: 'Simple Clean',
+    cover: '/images/theme/basic-flamingo.png',
+    name: 'Basic Flamingo',
     code: 'F001',
     plan: {
       id: 1,
-      name: 'Splendid',
+      name: 'Basic',
     },
   },
   {
-    id: 1,
-    cover: '/images/theme/traditional-java.jpg',
+    id: 2,
+    cover: '/images/theme/basic-emerald.png',
     code: 'F002',
-    name: 'Traditional Java',
+    name: 'Basic Emerald',
     plan: {
       id: 1,
-      name: 'Splendid',
+      name: 'Basic',
+    },
+  },
+  {
+    id: 3,
+    cover: '/images/theme/basic-bluesky.png',
+    code: 'F002',
+    name: 'Basic Bluesky',
+    plan: {
+      id: 1,
+      name: 'Basic',
+    },
+  },
+  {
+    id: 4,
+    cover: '/images/theme/basic-sweet-Brown.png',
+    code: 'F002',
+    name: 'Basic Sweet Brown',
+    plan: {
+      id: 1,
+      name: 'Basic',
     },
   },
 ];

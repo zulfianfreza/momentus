@@ -16,7 +16,7 @@ export default function InvitationLayout({
     <>
       <div
         className={cn(
-          ' h-screen w-full overflow-hidden bg-neutral-100 text-neutral-900',
+          ' h-screen w-full overflow-hidden bg-slate-50 text-neutral-900',
         )}
       >
         <ConfigurationHeader />

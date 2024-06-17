@@ -3,6 +3,7 @@
 /* eslint-disable @next/next/no-img-element */
 import HeadingConfigurationSection from '@/components/common/heading-configuration-section';
 import InputItem from '@/components/common/input-item';
+import CustomTabsList from '@/components/custom/custom-tabs-list';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -17,6 +18,7 @@ import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Textarea } from '@/components/ui/textarea';
+import { TTabMenu } from '@/types/common.type';
 import { GalleryAdd } from 'iconsax-react';
 import { useState } from 'react';
 import Dropzone from 'react-dropzone';
@@ -35,7 +37,7 @@ export default function ProfilePage({ params }: TPageParams) {
   const [brideImage, setBrideImage] = useState<File | undefined>();
 
   // tabs menu
-  const TABS_MENU = [
+  const TABS_MENU: Array<TTabMenu> = [
     {
       label: 'Konfigurasi',
       value: 'configuration',
@@ -61,17 +63,8 @@ export default function ProfilePage({ params }: TPageParams) {
         defaultValue="configuration"
         className=" mt-4 w-full"
       >
-        <TabsList className=" my-0 w-full justify-start gap-2 rounded-none border-b bg-transparent px-0">
-          {TABS_MENU.map((menu) => (
-            <TabsTrigger
-              key={menu.value}
-              value={menu.value}
-              className=" h-10 rounded-none border-b-2 border-transparent px-2.5 data-[state=active]:border-pink-600"
-            >
-              {menu.label}
-            </TabsTrigger>
-          ))}
-        </TabsList>
+        <CustomTabsList tabs={TABS_MENU} />
+
         <div className=" mt-4">
           <TabsContent value="configuration">
             <div className=" flex flex-col gap-4">
