@@ -21,9 +21,12 @@ import {
 } from 'next/font/google';
 import localFont from 'next/font/local';
 
-// font title
+// LOCAL FONT
 export const javassoul = localFont({
   src: '../../public/fonts/javassoul/Javassoul.ttf',
+});
+export const otomanopeeOne = localFont({
+  src: '../../public/fonts/otomanopee-one/otomanopee-one.woff2',
 });
 export const italianno = Italianno({ subsets: ['latin'], weight: ['400'] });
 export const italiana = Italiana({ subsets: ['latin'], weight: ['400'] });

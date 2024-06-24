@@ -8,7 +8,13 @@ import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Textarea } from '@/components/ui/textarea';
 import { NAVIGATIONS } from '@/constant/common.constant';
-import { italianno, jost, notable, poppins } from '@/constant/font.constant';
+import {
+  italianno,
+  jost,
+  notable,
+  otomanopeeOne,
+  poppins,
+} from '@/constant/font.constant';
 import {
   INVITATION_GALLERIES_FAKER,
   INVITATION_WISHES_FAKER,
@@ -163,7 +169,7 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
               </h1>
               <h1 className={cn(fontTitle, '  mt-[72px] ')}>R</h1>
             </div>
-            <p className=" text-sm">12 Desember 2024</p>
+            <p className={cn(' text-sm')}>12 Desember 2024</p>
           </div>
           <div className=" mt-auto space-y-4 text-center">
             <div>
@@ -333,8 +339,8 @@ export default function GreenCurvaNord({ searchParams, params }: TPageParams) {
                       />
                       <h1
                         className={cn(
-                          fontTitle,
-                          ' fred-text-stroke stroke-black text-center text-[20px]',
+                          otomanopeeOne,
+                          ' fred-text-stroke stroke-black text-center text-[20px] uppercase',
                         )}
                       >
                         Selasa <br /> 10 Oktober 2024
