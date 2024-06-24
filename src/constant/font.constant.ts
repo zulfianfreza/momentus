@@ -1,12 +1,14 @@
 import {
   Abhaya_Libre,
   Comfortaa,
+  Inika,
   Inter,
   Italiana,
   Italianno,
   Josefin_Sans,
   Jost,
   Judson,
+  Kumar_One,
   Meow_Script,
   Montserrat,
   Notable,
@@ -19,9 +21,12 @@ import {
 } from 'next/font/google';
 import localFont from 'next/font/local';
 
-// font title
+// LOCAL FONT
 export const javassoul = localFont({
   src: '../../public/fonts/javassoul/Javassoul.ttf',
+});
+export const otomanopeeOne = localFont({
+  src: '../../public/fonts/otomanopee-one/otomanopee-one.woff2',
 });
 export const italianno = Italianno({ subsets: ['latin'], weight: ['400'] });
 export const italiana = Italiana({ subsets: ['latin'], weight: ['400'] });
@@ -35,6 +40,7 @@ export const abhayaLibre = Abhaya_Libre({
 });
 export const meowScript = Meow_Script({ subsets: ['latin'], weight: ['400'] });
 export const notable = Notable({ subsets: ['latin'], weight: ['400'] });
+export const kumarOne = Kumar_One({ subsets: ['latin'], weight: ['400'] });
 
 // font text
 export const overlock = Overlock({
@@ -59,6 +65,7 @@ export const jost = Jost({ subsets: ['latin'] });
 export const judson = Judson({ subsets: ['latin'], weight: ['400', '700'] });
 export const montserrat = Montserrat({ subsets: ['latin'] });
 export const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ['latin'] });
+export const inika = Inika({ subsets: ['latin'], weight: ['400', '700'] });
 
 export const LIST_FONT_TITLE = [
   {
