@@ -58,7 +58,7 @@ export default function MainHeader() {
             <h1
               className={cn(
                 comfortaa.className,
-                ' text-xl font-bold text-pink-600',
+                ' text-primary text-xl font-bold',
               )}
             >
               Momentus

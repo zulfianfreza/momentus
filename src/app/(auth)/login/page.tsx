@@ -53,7 +53,7 @@ export default function LoginPage() {
         <div className=" h-full w-full overflow-hidden rounded-xl bg-[url(/images/bg-3d-abstract.jpg)] bg-cover bg-center"></div>
       </div>
       <div className=" flex min-h-screen w-1/2 flex-col items-center justify-center">
-        <div className=" flex w-full max-w-sm flex-col bg-white">
+        <div className=" flex w-full max-w-md flex-col bg-white">
           <div className="">
             <h1 className=" text-lg font-medium">Welcome Back 👋</h1>
             <p className=" text-sm text-neutral-500">
@@ -150,7 +150,7 @@ export default function LoginPage() {
             Belum punya akun?{' '}
             <Link
               href="/register"
-              className=" font-medium text-pink-600"
+              className=" text-primary font-medium"
             >
               Buat Sekarang
             </Link>

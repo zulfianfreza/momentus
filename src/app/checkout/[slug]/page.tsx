@@ -134,7 +134,7 @@ export default function CheckoutPage() {
                                 key={i}
                                 className="flex items-center gap-2"
                               >
-                                <LuCheck className=" text-pink-600" />
+                                <LuCheck className=" text-primary" />
                                 <p className=" text-sm">{feature}</p>
                               </div>
                             ))}
@@ -159,7 +159,7 @@ export default function CheckoutPage() {
                         className={cn(
                           ' relative flex h-full w-full flex-col gap-8 rounded-2xl border p-6',
                           {
-                            'border-none bg-pink-600 text-white': isRecommended(
+                            'bg-primary border-none text-white': isRecommended(
                               plan.name,
                             ),
                           },
@@ -193,7 +193,7 @@ export default function CheckoutPage() {
                                   className="flex items-center gap-2"
                                 >
                                   <LuCheck
-                                    className={cn(' text-pink-600', {
+                                    className={cn(' text-primary', {
                                       'text-white':
                                         plan.name.toLowerCase() === 'medieval',
                                     })}
@@ -207,7 +207,7 @@ export default function CheckoutPage() {
                         <div className=" mt-auto">
                           <Button
                             className={cn(' w-full', {
-                              'bg-white text-pink-600 hover:bg-white/90':
+                              'text-primary bg-white hover:bg-white/90':
                                 isRecommended(plan.name),
                             })}
                             onClick={() => handleSelectPlan(plan.name)}
@@ -244,7 +244,7 @@ export default function CheckoutPage() {
                                 key={i}
                                 className="flex items-center gap-2"
                               >
-                                <LuCheck className=" text-pink-600" />
+                                <LuCheck className=" text-primary" />
                                 <p className=" text-sm">{feature}</p>
                               </div>
                             ))}
@@ -380,7 +380,7 @@ export default function CheckoutPage() {
               <Input placeholder="Voucher code" />
               <Button>Apply</Button>
             </div>
-            <p className=" mt-1 text-sm text-pink-600 underline">Lihat promo</p>
+            <p className=" text-primary mt-1 text-sm underline">Lihat promo</p>
             <div className=" mt-4 rounded-xl border p-6">
               <div className=" flex flex-col gap-2">
                 <h1 className=" text-lg font-medium">Order Summary</h1>
@@ -411,7 +411,7 @@ export default function CheckoutPage() {
                 <hr />
                 <div className="flex items-center justify-between">
                   <p className=" text-xl">Total</p>
-                  <p className=" text-xl font-semibold text-pink-600">
+                  <p className=" text-primary text-xl font-semibold">
                     Rp 250.000
                   </p>
                 </div>
@@ -424,7 +424,7 @@ export default function CheckoutPage() {
                 className=" font-normal"
               >
                 Saya setuju dengan{' '}
-                <span className=" font-semibold text-pink-600">
+                <span className=" text-primary font-semibold">
                   Terms & Conditions
                 </span>
               </Label>

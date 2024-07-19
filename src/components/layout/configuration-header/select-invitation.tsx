@@ -55,7 +55,7 @@ export default function SelectInvitation({ setOpen }: TProps) {
               className=" justify-start"
               size="sm"
             >
-              <LuCheck className=" visible text-pink-600" />
+              <LuCheck className=" text-primary visible" />
               <p>sekar-hilman</p>
               <Badge
                 variant="rarely"

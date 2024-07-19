@@ -62,7 +62,7 @@ export default function CustomControls() {
           <IoPhonePortraitOutline
             size={16}
             className={cn({
-              ' text-pink-600': type === 'smartphone',
+              ' text-primary': type === 'smartphone',
             })}
           />
         </Button>
@@ -74,7 +74,7 @@ export default function CustomControls() {
         >
           <BsTablet
             size={16}
-            className={cn({ ' text-pink-600': type === 'tablet' })}
+            className={cn({ ' text-primary': type === 'tablet' })}
           />
         </Button>
         <Button
@@ -85,7 +85,7 @@ export default function CustomControls() {
         >
           <BsLaptop
             size={16}
-            className={cn({ ' text-pink-600': type === 'laptop' })}
+            className={cn({ ' text-primary': type === 'laptop' })}
           />
         </Button>
       </div>

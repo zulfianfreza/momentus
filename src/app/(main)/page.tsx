@@ -1,63 +1,66 @@
-import Container from "@/components/common/container";
-import { Button } from "@/components/ui/button";
-import { FAQ_FAKER, FEATURE_WEB_FAKER } from "@/constant/faker.constant";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { LuCheck } from "react-icons/lu";
+import Container from '@/components/common/container';
+import { Button } from '@/components/ui/button';
+import { FAQ_FAKER, FEATURE_WEB_FAKER } from '@/constant/faker.constant';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import { LuCheck } from 'react-icons/lu';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import TestimonialsSection from "@/components/common/testimonials";
+} from '@/components/ui/accordion';
+import TestimonialsSection from '@/components/common/testimonials';
 
 export default function HomePage() {
   const FEATURE_FAKER = [
-    "Akses semua fitur premium",
-    "Akses semua tema preium",
-    "Unlimited tamu undangan",
-    "Gallery (Max 10 photo)",
-    "Background Music",
-    "Quotes",
-    "Love Stories",
-    "Kirim Ucapan",
-    "RSVP",
+    'Akses semua fitur premium',
+    'Akses semua tema preium',
+    'Unlimited tamu undangan',
+    'Gallery (Max 10 photo)',
+    'Background Music',
+    'Quotes',
+    'Love Stories',
+    'Kirim Ucapan',
+    'RSVP',
   ];
 
   return (
     <>
       {/* begin: hero */}
-      <div className=" lg:flex w-full items-center justify-between mx-auto lg:px-20 md:px-10 px-5 lg:py-16 lg:mt-0 -mt-10 overflow-visible">
-        <div className=" w-full py-24 flex flex-col justify-center gap-6">
+      <div className=" mx-auto -mt-10 w-full items-center justify-between overflow-visible px-5 md:px-10 lg:mt-0 lg:flex lg:px-20 lg:py-16">
+        <div className=" flex w-full flex-col justify-center gap-6 py-24">
           <div className=" max-w-3xl">
-            <h1 className=" text-3xl lg:text-5xl font-bold text-left lg:leading-tight">
+            <h1 className=" text-left text-3xl font-bold lg:text-5xl lg:leading-tight">
               Platform Undangan Website, Buku Tamu Digital, dan Wedding Planner.
             </h1>
           </div>
           <div className="max-w-lg">
-            <p className=" text-neutral-500 text-left">
+            <p className=" text-left text-neutral-500">
               Jadikan pernikahan impianmu lebih modern dan efisien dengan
               Momentus, Solusi digital pernikahan terlengkap!
             </p>
           </div>
-          <div className="flex justify-start items-center gap-2">
+          <div className="flex items-center justify-start gap-2">
             <Button className=" rounded-full">Coba Sekarang</Button>
-            <Button className=" rounded-full" variant="secondary-primary">
+            <Button
+              className=" rounded-full"
+              variant="secondary-primary"
+            >
               Konsultasi
             </Button>
           </div>
         </div>
 
-        <div className=" w-full lg:max-w-lg max-w-72 items-center lg:justify-self-end justify-center overflow-visible">
-          <div className=" flex w-full items-start justify-between gap-x-4 bg-[url('/images/state/backdrop-mockup.png')] bg-contain bg-no-repeat bg-center ">
+        <div className=" w-full max-w-72 items-center justify-center overflow-visible lg:max-w-lg lg:justify-self-end">
+          <div className=" flex w-full items-start justify-between gap-x-4 bg-[url('/images/state/backdrop-mockup.png')] bg-contain bg-center bg-no-repeat ">
             <Image
               src="/images/baner-mockup.png"
               alt=""
               width={1080}
               height={1080}
-              className=" w-full h-full z-10 relative object-center left-32 sm:left-0 sm:bottom-0 bottom-10 aspect-[6/7]"
+              className=" relative bottom-10 left-32 z-10 aspect-[6/7] h-full w-full object-center sm:bottom-0 sm:left-0"
             />
           </div>
         </div>
@@ -65,53 +68,53 @@ export default function HomePage() {
       {/* end: hero */}
 
       {/* begin: dashboard image */}
-      <div className=" lg:flex w-full items-center justify-center">
-        <div className=" flex w-full lg:max-w-6xl aspect-[5/2.5] relative">
+      <div className=" w-full items-center justify-center lg:flex">
+        <div className=" relative flex aspect-[5/2.5] w-full lg:max-w-6xl">
           <Image
             src="/images/preview-porto.png"
             alt=""
             width={1080}
             height={768}
-            className=" w-full h-full"
+            className=" h-full w-full"
           />
         </div>
         <Container>
-          <div className=" flex flex-col justify-self-start mr-20 relative">
+          <div className=" relative mr-20 flex flex-col justify-self-start">
             <h1 className=" text-3xl font-medium text-neutral-500">
-              <span className=" font-bold text-neutral-900">5.029+</span>{" "}
-              Pasangan telah merayakan bersama{" "}
-              <span className=" font-bold text-pink-600">Momentus</span>.
+              <span className=" font-bold text-neutral-900">5.029+</span>{' '}
+              Pasangan telah merayakan bersama{' '}
+              <span className=" text-primary font-bold">Momentus</span>.
             </h1>
-            <div className=" flex w-full mt-4 gap-4 items-center justify-center">
-              <div className=" flex w-full relative h-60 rounded-2xl">
+            <div className=" mt-4 flex w-full items-center justify-center gap-4">
+              <div className=" relative flex h-60 w-full rounded-2xl">
                 <Image
                   src="/images/dummy/gallery-10.jpg"
                   alt=" fill"
-                  className=" object-cover object-center rounded-2xl"
+                  className=" rounded-2xl object-cover object-center"
                   fill
                 />
               </div>
-              <div className=" flex w-full relative h-60 rounded-2xl">
+              <div className=" relative flex h-60 w-full rounded-2xl">
                 <Image
                   src="/images/dummy/gallery-11.jpg"
                   alt=" fill"
-                  className=" object-cover object-center rounded-2xl"
+                  className=" rounded-2xl object-cover object-center"
                   fill
                 />
               </div>
-              <div className=" flex w-full relative h-60 rounded-2xl">
+              <div className=" relative flex h-60 w-full rounded-2xl">
                 <Image
                   src="/images/dummy/gallery-12.jpg"
                   alt=" fill"
-                  className=" object-cover object-center rounded-2xl"
+                  className=" rounded-2xl object-cover object-center"
                   fill
                 />
               </div>
-              <div className=" flex w-full relative h-60 rounded-2xl">
+              <div className=" relative flex h-60 w-full rounded-2xl">
                 <Image
                   src="/images/dummy/gallery-13.jpg"
                   alt=" fill"
-                  className=" object-cover object-center rounded-2xl"
+                  className=" rounded-2xl object-cover object-center"
                   fill
                 />
               </div>
@@ -122,23 +125,23 @@ export default function HomePage() {
       {/* end: dashboard image */}
 
       {/* begin : feature  */}
-      <div className=" w-full bg-neutral-50/70 my-20">
+      <div className=" my-20 w-full bg-neutral-50/70">
         <Container>
-          <div className=" grid md:grid-cols-2 lg:grid-cols-3 w-full gap-8 py-20 items-stretch">
+          <div className=" grid w-full items-stretch gap-8 py-20 md:grid-cols-2 lg:grid-cols-3">
             <div className=" flex w-full md:col-span-2 lg:col-span-1 ">
-              <h1 className=" font-bold text-3xl text-pink-600 lg:max-w-xs max-w-full">
+              <h1 className=" text-primary max-w-full text-3xl font-bold lg:max-w-xs">
                 Fitur Undangan Digital Yang Lengkap & Keren.
               </h1>
             </div>
             {FEATURE_WEB_FAKER.map((feature, i) => (
               <>
-                <div className=" flex flex-col w-full  bg-pink-200/50 p-10 gap-1 rounded-2xl shadow-lg">
+                <div className=" flex w-full flex-col  gap-1 rounded-2xl bg-pink-200/50 p-10 shadow-lg">
                   <feature.icon
                     size="56"
                     variant="Bulk"
-                    className=" text-pink-600"
+                    className=" text-primary"
                   />
-                  <h3 className=" text-lg font-medium mt-3">
+                  <h3 className=" mt-3 text-lg font-medium">
                     {feature.feature_name}
                   </h3>
                   <p className=" text-neutral-500">
@@ -153,7 +156,7 @@ export default function HomePage() {
       {/* end : feature */}
       <Container>
         {/* begin: pricing */}
-        <div className=" w-full my-20">
+        <div className=" my-20 w-full">
           <div className=" text-center">
             <h1 className=" text-3xl font-semibold leading-relaxed">
               Harga Terbaik Buat Kamu
@@ -162,55 +165,70 @@ export default function HomePage() {
               Temukan Rencana yang Tepat untuk Acara Istimewa Anda
             </p>
           </div>
-          <div className=" mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-            <div className=" w-full p-6 py-16 rounded-2xl border shadow-lg">
-              <div className=" text-center space-y-2">
+          <div className=" mt-16 grid grid-cols-1 items-start gap-8 lg:grid-cols-3">
+            <div className=" w-full rounded-2xl border p-6 py-16 shadow-lg">
+              <div className=" space-y-2 text-center">
                 <p className="">Emberglow</p>
                 <h1 className=" text-3xl font-bold">Rp 99.000</h1>
               </div>
               <div className=" mt-8 flex flex-col gap-2">
                 {FEATURE_FAKER.map((feature) => (
-                  <div className=" flex items-center gap-2" key={feature}>
+                  <div
+                    className=" flex items-center gap-2"
+                    key={feature}
+                  >
                     <LuCheck />
-                    <p key={feature} className=" text-sm ">
+                    <p
+                      key={feature}
+                      className=" text-sm "
+                    >
                       {feature}
                     </p>
                   </div>
                 ))}
               </div>
             </div>
-            <div className=" w-full p-6 py-16 pt-[88px] mt-0 lg:-mt-6 rounded-2xl overflow-hidden border shadow-lg bg-pink-600 relative">
-              <div className=" px-4 py-1.5 bg-yellow-500 absolute top-0 left-4 rounded-b-xl">
-                <p className=" text-white text-xs">Best Deal!</p>
+            <div className=" bg-primary relative mt-0 w-full overflow-hidden rounded-2xl border p-6 py-16 pt-[88px] shadow-lg lg:-mt-6">
+              <div className=" absolute left-4 top-0 rounded-b-xl bg-yellow-500 px-4 py-1.5">
+                <p className=" text-xs text-white">Best Deal!</p>
               </div>
-              <div className=" text-center space-y-2 text-white">
+              <div className=" space-y-2 text-center text-white">
                 <p className="">Moonbeam</p>
                 <h1 className=" text-3xl font-bold">Rp 159.000</h1>
               </div>
               <div className=" mt-8 flex flex-col gap-2">
                 {FEATURE_FAKER.map((feature) => (
                   <div
-                    className=" flex items-center text-white gap-2"
+                    className=" flex items-center gap-2 text-white"
                     key={feature}
                   >
                     <LuCheck />
-                    <p key={feature} className=" text-sm ">
+                    <p
+                      key={feature}
+                      className=" text-sm "
+                    >
                       {feature}
                     </p>
                   </div>
                 ))}
               </div>
             </div>
-            <div className=" w-full p-6 py-16 rounded-2xl border shadow-lg">
-              <div className=" text-center space-y-2">
+            <div className=" w-full rounded-2xl border p-6 py-16 shadow-lg">
+              <div className=" space-y-2 text-center">
                 <p className="">Stardust</p>
                 <h1 className=" text-3xl font-bold">Rp 199.000</h1>
               </div>
               <div className=" mt-8 flex flex-col gap-2">
                 {FEATURE_FAKER.map((feature) => (
-                  <div className=" flex items-center gap-2" key={feature}>
+                  <div
+                    className=" flex items-center gap-2"
+                    key={feature}
+                  >
                     <LuCheck />
-                    <p key={feature} className=" text-sm ">
+                    <p
+                      key={feature}
+                      className=" text-sm "
+                    >
                       {feature}
                     </p>
                   </div>
@@ -218,12 +236,15 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className=" mt-8 w-full rounded-lg border h-12 bg-neutral-100 flex items-center justify-center">
+          <div className=" mt-8 flex h-12 w-full items-center justify-center rounded-lg border bg-neutral-100">
             <p className=" text-center text-sm">
-              Ingin mencobanya terlebih dulu? Cobalah{" "}
-              <Link href="/" className=" text-pink-600 font-medium underline">
+              Ingin mencobanya terlebih dulu? Cobalah{' '}
+              <Link
+                href="/"
+                className=" text-primary font-medium underline"
+              >
                 Free Trial
-              </Link>{" "}
+              </Link>{' '}
               untuk membuat undangan di Momentus.
             </p>
           </div>
@@ -231,7 +252,7 @@ export default function HomePage() {
         {/* end: pricing */}
 
         {/* begin: testimonial */}
-        <div className=" flex flex-col w-full items-center justify-center my-20">
+        <div className=" my-20 flex w-full flex-col items-center justify-center">
           <div className=" text-center">
             <h1 className=" text-3xl font-semibold leading-relaxed">
               Apa Kata Mereka?
@@ -243,17 +264,24 @@ export default function HomePage() {
 
         {/* begin: faq */}
 
-        <div className=" flex-1 w-full my-20">
+        <div className=" my-20 w-full flex-1">
           <div className=" text-center">
             <h1 className=" text-3xl font-semibold leading-relaxed">FAQ</h1>
             <p className=" text-neutral-500">
               Pertanyaan yang sering ditanyakan
             </p>
           </div>
-          <Accordion type="single" collapsible className=" mt-16">
+          <Accordion
+            type="single"
+            collapsible
+            className=" mt-16"
+          >
             {FAQ_FAKER.map((faq, i) => (
               <>
-                <AccordionItem value={"item-" + faq.item} key={i}>
+                <AccordionItem
+                  value={'item-' + faq.item}
+                  key={i}
+                >
                   <AccordionTrigger>{faq.trigger}</AccordionTrigger>
                   <AccordionContent>{faq.content}</AccordionContent>
                 </AccordionItem>
