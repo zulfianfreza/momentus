@@ -1,0 +1,21 @@
+@keyframes flower1 {
+  0% {
+    transform: rotate(5deg);
+    transition: 2s;
+  }
+  50% {
+    transform: rotate(-5deg);
+    transition: 1s;
+  }
+  100% {
+    transform: rotate(5deg);
+    transition: 2s;
+  }
+}
+
+.animation-flower1 {
+  animation: flower1 4s infinite ease-in-out;
+}
+.animation-flower12 {
+  animation: flower1 6s infinite ease-in-out;
+}

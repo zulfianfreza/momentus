@@ -50,10 +50,10 @@ export default function LoginPage() {
   return (
     <div className="">
       <div className=" fixed right-0 h-screen w-1/2 p-2 pl-0">
-        <div className=" h-full w-full overflow-hidden rounded-xl bg-[url(/images/bg-3d-abstract.jpg)] bg-cover bg-center"></div>
+        <div className=" bg-primary-100/50 h-full w-full overflow-hidden rounded-xl"></div>
       </div>
       <div className=" flex min-h-screen w-1/2 flex-col items-center justify-center">
-        <div className=" flex w-full max-w-sm flex-col bg-white">
+        <div className=" flex w-full max-w-md flex-col bg-white">
           <div className="">
             <h1 className=" text-lg font-medium">Welcome Back 👋</h1>
             <p className=" text-sm text-neutral-500">
@@ -63,7 +63,7 @@ export default function LoginPage() {
 
           <Button
             variant="outline"
-            className=" mt-8"
+            className=" mt-8 h-12 rounded-full"
           >
             <FcGoogle />
             Masuk dengan Google
@@ -90,7 +90,7 @@ export default function LoginPage() {
                         <Input
                           {...field}
                           placeholder="Email"
-                          className=" pl-10"
+                          className=" h-12 pl-10"
                         />
                       </div>
                     </FormControl>
@@ -124,7 +124,7 @@ export default function LoginPage() {
                           {...field}
                           type={showPassword ? 'text' : 'password'}
                           placeholder="password"
-                          className=" px-10"
+                          className=" h-12 px-10"
                         />
                       </div>
                     </FormControl>
@@ -136,21 +136,21 @@ export default function LoginPage() {
           <div className="my-4 flex justify-between">
             <div className="flex items-center gap-1">
               <Checkbox />
-              <Label className=" text-xs font-normal">Remember me</Label>
+              <Label className=" text-sm font-normal">Remember me</Label>
             </div>
             <Link
               href="/forgot-password"
-              className=" text-xs font-medium underline"
+              className=" text-sm font-medium underline"
             >
               Forgot Password?
             </Link>
           </div>
-          <Button>Masuk</Button>
+          <Button className=" h-12 rounded-full">Masuk</Button>
           <p className=" mt-4 text-center text-sm">
             Belum punya akun?{' '}
             <Link
               href="/register"
-              className=" font-medium text-pink-600"
+              className=" font-medium text-primary"
             >
               Buat Sekarang
             </Link>

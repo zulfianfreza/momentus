@@ -1,8 +1,9 @@
+import Provider from '@/components/common/provider';
+import { workSans } from '@/constant/font.constant';
 import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
-import './globals.css';
-import Provider from '@/components/common/provider';
-import { GeistSans } from 'geist/font/sans';
+import '@/styles/globals.css';
+import '@/styles/animation.css';
 
 export const metadata: Metadata = {
   title: 'Momentus',
@@ -18,8 +19,8 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          GeistSans.className,
-          'from-neutral-900 tracking-tight antialiased',
+          workSans.className,
+          'from-neutral-900 tracking-tighter antialiased',
         )}
       >
         <Provider>{children}</Provider>

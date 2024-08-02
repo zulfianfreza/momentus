@@ -4,9 +4,11 @@ export default function WithoutPreviewLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className=" pl-14 w-full flex h-screen">
-      <div className=" w-full h-screen flex left-14 lg:left-[72px] bg-white pt-14 lg:pt-[72px]">
-        <div className=" overflow-y-auto w-full">{children}</div>
+    <div className=" flex h-screen w-full pl-[72px]">
+      <div className=" left-[88px] flex h-screen w-full p-2 pt-14 lg:left-[88px] lg:pt-[80px]">
+        <div className=" h-full w-full overflow-y-auto rounded-xl bg-white">
+          {children}
+        </div>
       </div>
     </div>
   );

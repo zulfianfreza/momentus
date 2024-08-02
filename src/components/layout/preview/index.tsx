@@ -42,7 +42,7 @@ export default function PreviewCanvas() {
           className=" relative"
         >
           <CustomControls />
-          <Background />
+          {/* <Background /> */}
         </ReactFlow>
       </ReactFlowProvider>
     </div>

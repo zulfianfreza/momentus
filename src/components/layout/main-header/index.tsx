@@ -15,6 +15,7 @@ import {
 } from '@clerk/nextjs';
 import Container from '@/components/common/container';
 import { Button } from '@/components/ui/button';
+import Logo from '@/components/common/logo';
 
 export default function MainHeader() {
   const MENUS = [
@@ -43,26 +44,8 @@ export default function MainHeader() {
       <div className=" flex w-full items-center justify-between py-5">
         {/* begin: left */}
         <div className=" flex-1">
-          <Link
-            href="/"
-            className="flex w-fit items-center gap-2"
-          >
-            <div className=" relative aspect-square w-10">
-              <Image
-                src="/images/logo.png"
-                fill
-                alt=""
-                className=" object-contain object-center"
-              />
-            </div>
-            <h1
-              className={cn(
-                comfortaa.className,
-                ' text-xl font-bold text-pink-600',
-              )}
-            >
-              Momentus
-            </h1>
+          <Link href="/">
+            <Logo />
           </Link>
         </div>
         {/* end: left */}
@@ -88,13 +71,7 @@ export default function MainHeader() {
         {/* end: center */}
 
         {/* begin: right */}
-        <div className=" flex flex-1 justify-end gap-2">
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
+        <div className=" flex flex-1 justify-end gap-4">
           <Button className=" rounded-full">
             Daftar <span className=" hidden lg:block">& Coba Gratis</span>
           </Button>

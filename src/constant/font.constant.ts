@@ -2,6 +2,7 @@ import {
   Abhaya_Libre,
   Comfortaa,
   Inika,
+  Inknut_Antiqua,
   Inter,
   Italiana,
   Italianno,
@@ -18,6 +19,7 @@ import {
   Roboto,
   Rubik,
   The_Nautigal,
+  Work_Sans,
 } from 'next/font/google';
 import localFont from 'next/font/local';
 
@@ -66,6 +68,11 @@ export const judson = Judson({ subsets: ['latin'], weight: ['400', '700'] });
 export const montserrat = Montserrat({ subsets: ['latin'] });
 export const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ['latin'] });
 export const inika = Inika({ subsets: ['latin'], weight: ['400', '700'] });
+export const workSans = Work_Sans({ subsets: ['latin'] });
+export const inknutAntiqua = Inknut_Antiqua({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+});
 
 export const LIST_FONT_TITLE = [
   {
