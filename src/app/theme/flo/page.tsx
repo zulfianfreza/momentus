@@ -1,6 +1,10 @@
 import FloTheme from '@/components/theme/flo';
-import React from 'react';
+import React, { Suspense } from 'react';
 
 export default function FloPage() {
-  return <FloTheme />;
+  return (
+    <Suspense>
+      <FloTheme />
+    </Suspense>
+  );
 }
