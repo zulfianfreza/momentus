@@ -15,9 +15,9 @@ export default function InvitationLayout({
   return (
     <>
       <div
-        className={cn(
-          ' h-screen w-full overflow-hidden bg-slate-50 text-neutral-900',
-        )}
+        className={
+          ' relative h-screen w-full overflow-hidden bg-neutral-100 text-neutral-900 bg-dot-black/[0.2]'
+        }
       >
         <ConfigurationHeader />
         <ConfigurationSidebar />

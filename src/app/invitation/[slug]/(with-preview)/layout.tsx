@@ -8,11 +8,13 @@ export default function WithPreviewLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className=" flex h-screen w-full pl-14">
+    <div className=" flex h-screen w-full pl-20">
       <PreviewCanvas />
 
-      <div className=" hidden h-screen w-[400px] border-l bg-white pt-14 md:flex lg:w-[512px] lg:pt-[72px]">
-        <div className=" w-full overflow-y-auto">{children}</div>
+      <div className=" hidden h-screen w-[400px] p-2 pl-0 pt-14 md:flex lg:w-[512px] lg:pt-[80px]">
+        <div className=" h-full w-full overflow-y-auto rounded-xl bg-white">
+          {children}
+        </div>
       </div>
     </div>
   );

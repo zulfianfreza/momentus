@@ -31,7 +31,7 @@ export default function CustomBreadcrumb({ items }: TProps) {
                 <BreadcrumbPage>{item.label}</BreadcrumbPage>
               ) : (
                 <BreadcrumbLink asChild>
-                  <Link href={item.link ?? './'}>{item.label}</Link>
+                  <Link href={item.link || './'}>{item.label}</Link>
                 </BreadcrumbLink>
               )}
             </BreadcrumbItem>

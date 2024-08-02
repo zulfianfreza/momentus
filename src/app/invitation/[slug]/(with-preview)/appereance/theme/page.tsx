@@ -73,7 +73,7 @@ export default function ThemePage({ searchParams, params }: TPageParams) {
             <div
               className={cn(
                 ' flex aspect-square w-4 justify-center rounded-full bg-neutral-800 text-[10px] text-white',
-                { 'bg-white text-pink-600': plan === 'all' },
+                { 'text-primary bg-white': plan === 'all' },
               )}
             >
               {THEME_FAKER.length}
@@ -91,7 +91,7 @@ export default function ThemePage({ searchParams, params }: TPageParams) {
             <div
               className={cn(
                 ' flex aspect-square w-4 justify-center rounded-full bg-neutral-800 text-[10px] text-white',
-                { 'bg-white text-pink-600': plan === 'basic' },
+                { 'text-primary bg-white': plan === 'basic' },
               )}
             >
               {
@@ -113,7 +113,7 @@ export default function ThemePage({ searchParams, params }: TPageParams) {
             <div
               className={cn(
                 ' flex aspect-square w-4 justify-center rounded-full bg-neutral-800 text-[10px] text-white',
-                { 'bg-white text-pink-600': plan === 'splendid' },
+                { 'text-primary bg-white': plan === 'splendid' },
               )}
             >
               {
@@ -138,7 +138,7 @@ export default function ThemePage({ searchParams, params }: TPageParams) {
               className={cn(
                 ' z-[2] flex aspect-square w-4 justify-center rounded-full bg-neutral-800 text-[10px] text-white',
                 {
-                  ' bg-white text-pink-600': plan === 'luxury',
+                  ' text-primary bg-white': plan === 'luxury',
                 },
               )}
             >

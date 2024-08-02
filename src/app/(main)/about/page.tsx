@@ -1,21 +1,21 @@
-import Container from "@/components/common/container";
-import { ABOUT_FAKER } from "@/constant/faker.constant";
-import Image from "next/image";
-import React from "react";
+import Container from '@/components/common/container';
+import { ABOUT_FAKER } from '@/constant/faker.constant';
+import Image from 'next/image';
+import React from 'react';
 
 export default function AboutPage() {
   return (
     <Container>
-      <div className=" flex flex-col w-full items-center justify-center my-10">
+      <div className=" my-10 flex w-full flex-col items-center justify-center">
         <div className=" text-center">
           <h1 className=" text-5xl font-semibold leading-relaxed">Tentang</h1>
           {/* <p className=" text-neutral-500">
             Pasangan berbahagia yang sudah merayakan bersama{" "}
-            <span className=" font-bold text-pink-600">momentus</span>, sekarang
+            <span className=" font-bold text-primary">momentus</span>, sekarang
             giliran kamu
           </p> */}
         </div>
-        <div className="  flex flex-col leading-relaxed text-slate-800 gap-2 text-justify my-10">
+        <div className="  my-10 flex flex-col gap-2 text-justify leading-relaxed text-slate-800">
           <h1 className=" text-xl font-semibold">
             Platofrm undangan pernikahan online
           </h1>
@@ -30,24 +30,24 @@ export default function AboutPage() {
             online gratis dan berkualitas.
           </p>
         </div>
-        <div className=" flex flex-col w-full items-center justify-center my-20">
+        <div className=" my-20 flex w-full flex-col items-center justify-center">
           <h1 className="text-2xl font-semibold leading-relaxed">
             Yang Membuat Kami Berbeda
           </h1>
-          <div className=" grid lg:grid-cols-3 w-full items-center justify-center gap-20 mt-10">
+          <div className=" mt-10 grid w-full items-center justify-center gap-20 lg:grid-cols-3">
             {ABOUT_FAKER.map((about) => (
               <>
-                <div className=" flex flex-col w-full items-center justify-center">
-                  <div className=" flex w-full aspect-video max-w-72 relative">
+                <div className=" flex w-full flex-col items-center justify-center">
+                  <div className=" relative flex aspect-video w-full max-w-72">
                     <Image
                       src={about.thumbnail}
                       alt=""
                       fill
-                      className=" w-full h-full"
+                      className=" h-full w-full"
                     />
                   </div>
-                  <div className=" flex flex-col gap-4 mt-4 text-center">
-                    <h1 className=" text-slate-800 font-medium text-lg">
+                  <div className=" mt-4 flex flex-col gap-4 text-center">
+                    <h1 className=" text-lg font-medium text-slate-800">
                       {about.title}
                     </h1>
                     <p className=" leading-relaxed text-slate-600">

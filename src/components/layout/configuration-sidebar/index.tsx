@@ -80,257 +80,261 @@ export default function ConfigurationSidebar() {
   };
 
   return (
-    <aside
-      className=" fixed left-0 z-[11] flex h-screen w-14 flex-col border-r bg-white pt-14 shadow-sm lg:pt-[72px]"
-      id="first-step"
-    >
-      <Joyride
-        run={run}
-        callback={handleJoyrideCallback}
-        disableOverlayClose
-        steps={steps}
-        styles={{
-          options: {},
-          buttonNext: {
-            backgroundColor: '#db2777',
-            fontSize: '14px',
-          },
-          buttonBack: {
-            color: '#db2777',
-            fontSize: '14px',
-          },
-        }}
-        continuous
-        showSkipButton
-        scrollToFirstStep
-        showProgress
-      />
-      <div className=" mt-2 flex h-full w-full flex-1 flex-col items-center">
-        <Button
-          variant="ghost"
-          size="icon"
-        >
-          <PiArrowLeft size={20} />
-        </Button>
-        <p className=" mt-4 text-center text-[10px] text-neutral-500">Menu</p>
-        <div className="mt-2 flex flex-col items-center gap-1">
-          {sidebarMenu.map((menu) => {
-            if (isWithForm) {
-              return (
-                <TooltipProvider
-                  key={menu.path}
-                  delayDuration={0}
-                >
-                  <Tooltip>
-                    <TooltipTrigger asChild>
+    <aside className=" fixed left-0 z-[11] h-screen p-2 pt-14 lg:pt-[80px]">
+      <div
+        className=" flex h-full w-16 flex-col rounded-xl bg-white shadow-sm "
+        id="first-step"
+      >
+        <Joyride
+          run={run}
+          callback={handleJoyrideCallback}
+          disableOverlayClose
+          steps={steps}
+          styles={{
+            options: {},
+            buttonNext: {
+              backgroundColor: '#db2777',
+              fontSize: '14px',
+            },
+            buttonBack: {
+              color: '#db2777',
+              fontSize: '14px',
+            },
+          }}
+          continuous
+          showSkipButton
+          scrollToFirstStep
+          showProgress
+        />
+        <div className=" mt-2 flex h-full w-full flex-1 flex-col items-center">
+          <Button
+            variant="ghost"
+            size="icon"
+          >
+            <PiArrowLeft size={20} />
+          </Button>
+          <p className=" mt-4 text-center text-[10px] text-neutral-500">Menu</p>
+          <div className="mt-2 flex flex-col items-center gap-1">
+            {sidebarMenu.map((menu) => {
+              if (isWithForm) {
+                return (
+                  <TooltipProvider
+                    key={menu.path}
+                    delayDuration={0}
+                  >
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button
+                          size="icon"
+                          variant={activeMenu(menu.path) ? 'default' : 'ghost'}
+                          asChild
+                          className={cn(' rounded-full', {
+                            '': activeMenu(menu.path),
+                          })}
+                        >
+                          <Link href={menu.path}>
+                            <menu.icon
+                              size={20}
+                              variant={
+                                activeMenu(menu.path) ? 'Outline' : 'Outline'
+                              }
+                              className={cn(' ', {
+                                ' ': activeMenu(menu.path),
+                              })}
+                            />
+                          </Link>
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent
+                        side="right"
+                        align={menu.submenu ? 'start' : 'center'}
+                        className=" rounded-lg p-2"
+                      >
+                        <p className=" text-neutral-900">{menu.title}</p>
+                        {menu.submenu && (
+                          <div className="mt-2 flex flex-col gap-2">
+                            {menu.submenu.map((submenu) => (
+                              <Button
+                                key={submenu.title}
+                                size="sm"
+                                variant={
+                                  activeMenu(submenu.path)
+                                    ? 'default'
+                                    : 'secondary'
+                                }
+                                className=" justify-start "
+                                asChild
+                              >
+                                <Link href={submenu.path}>
+                                  <submenu.icon
+                                    size={16}
+                                    className={cn(' ', {
+                                      'text-white': activeMenu(submenu.path),
+                                    })}
+                                  />
+                                  {submenu.title}
+                                </Link>
+                              </Button>
+                            ))}
+                          </div>
+                        )}
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                );
+              } else {
+                return menu.submenu ? (
+                  <Popover key={menu.path}>
+                    <PopoverTrigger asChild>
                       <Button
+                        key={menu.path}
                         size="icon"
                         variant={activeMenu(menu.path) ? 'default' : 'ghost'}
-                        asChild
                         className={cn('', {
                           '': activeMenu(menu.path),
                         })}
                       >
-                        <Link href={menu.path}>
-                          <menu.icon
-                            size={20}
-                            variant={
-                              activeMenu(menu.path) ? 'Outline' : 'Outline'
-                            }
-                            className={cn(' ', {
-                              ' ': activeMenu(menu.path),
-                            })}
-                          />
-                        </Link>
+                        <menu.icon
+                          size={20}
+                          variant={
+                            activeMenu(menu.path) ? 'Outline' : 'Outline'
+                          }
+                          className={cn(' ', {
+                            ' ': activeMenu(menu.path),
+                          })}
+                        />
                       </Button>
-                    </TooltipTrigger>
-                    <TooltipContent
+                    </PopoverTrigger>
+                    <PopoverContent
                       side="right"
-                      align={menu.submenu ? 'start' : 'center'}
-                      className=" rounded-lg p-2"
+                      align="start"
+                      className=" w-64"
                     >
-                      <p className=" text-neutral-900">{menu.title}</p>
-                      {menu.submenu && (
-                        <div className="mt-2 flex flex-col gap-2">
-                          {menu.submenu.map((submenu) => (
-                            <Button
-                              key={submenu.title}
-                              size="sm"
+                      <p className="">{menu.title}</p>
+                      <div className=" mt-2 grid grid-cols-3 gap-2">
+                        {menu.submenu.map((submenu) => (
+                          <PopoverClose
+                            key={submenu.path}
+                            className="flex flex-col items-center justify-center gap-1 rounded-lg border p-2 shadow-sm"
+                          >
+                            <submenu.icon
+                              size={16}
                               variant={
-                                activeMenu(submenu.path)
-                                  ? 'default'
-                                  : 'secondary'
+                                activeMenu(menu.path) ? 'Outline' : 'Outline'
                               }
-                              className=" justify-start"
-                              asChild
-                            >
-                              <Link href={submenu.path}>
-                                <submenu.icon
-                                  size={16}
-                                  className={cn(' ', {
-                                    'text-white': activeMenu(submenu.path),
-                                  })}
-                                />
-                                {submenu.title}
-                              </Link>
-                            </Button>
-                          ))}
-                        </div>
-                      )}
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-              );
-            } else {
-              return menu.submenu ? (
-                <Popover key={menu.path}>
-                  <PopoverTrigger asChild>
+                              className={cn(' ', {
+                                ' ': activeMenu(menu.path),
+                              })}
+                            />
+                            <p className=" text-center text-xs">
+                              {submenu.title}
+                            </p>
+                          </PopoverClose>
+                        ))}
+                      </div>
+                    </PopoverContent>
+                  </Popover>
+                ) : (
+                  <TooltipProvider
+                    key={menu.path}
+                    delayDuration={0}
+                  >
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button
+                          size="icon"
+                          variant={activeMenu(menu.path) ? 'default' : 'ghost'}
+                          asChild
+                          className={cn('', {
+                            '': activeMenu(menu.path),
+                          })}
+                        >
+                          <Link href={menu.path}>
+                            <menu.icon
+                              size={20}
+                              variant={
+                                activeMenu(menu.path) ? 'Outline' : 'Outline'
+                              }
+                              className={cn(' ', {
+                                ' ': activeMenu(menu.path),
+                              })}
+                            />
+                          </Link>
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent
+                        side="right"
+                        align={menu.submenu ? 'start' : 'center'}
+                        className=" rounded-lg p-2"
+                      >
+                        <p className=" text-neutral-900">{menu.title}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                );
+              }
+            })}
+            <div className=" block lg:hidden">
+              <TooltipProvider delayDuration={0}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
                     <Button
-                      key={menu.path}
                       size="icon"
-                      variant={activeMenu(menu.path) ? 'default' : 'ghost'}
-                      className={cn('', {
-                        '': activeMenu(menu.path),
-                      })}
+                      variant="ghost"
+                      className=" w-14 rounded-none"
                     >
-                      <menu.icon
-                        size={20}
-                        variant={activeMenu(menu.path) ? 'Outline' : 'Outline'}
-                        className={cn(' ', {
-                          ' ': activeMenu(menu.path),
-                        })}
-                      />
+                      <BsTablet size={20} />
                     </Button>
-                  </PopoverTrigger>
-                  <PopoverContent
+                  </TooltipTrigger>
+                  <TooltipContent
                     side="right"
                     align="start"
-                    className=" w-64"
+                    className=" p-2"
                   >
-                    <p className="">{menu.title}</p>
-                    <div className=" mt-2 grid grid-cols-3 gap-2">
-                      {menu.submenu.map((submenu) => (
-                        <PopoverClose
-                          key={submenu.path}
-                          className="flex flex-col items-center justify-center gap-1 rounded-lg border p-2 shadow-sm"
-                        >
-                          <submenu.icon
-                            size={16}
-                            variant={
-                              activeMenu(menu.path) ? 'Outline' : 'Outline'
-                            }
-                            className={cn(' ', {
-                              ' ': activeMenu(menu.path),
-                            })}
-                          />
-                          <p className=" text-center text-xs">
-                            {submenu.title}
-                          </p>
-                        </PopoverClose>
-                      ))}
-                    </div>
-                  </PopoverContent>
-                </Popover>
-              ) : (
-                <TooltipProvider
-                  key={menu.path}
-                  delayDuration={0}
-                >
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button
-                        size="icon"
-                        variant={activeMenu(menu.path) ? 'default' : 'ghost'}
-                        asChild
-                        className={cn('', {
-                          '': activeMenu(menu.path),
-                        })}
-                      >
-                        <Link href={menu.path}>
-                          <menu.icon
-                            size={20}
-                            variant={
-                              activeMenu(menu.path) ? 'Outline' : 'Outline'
-                            }
-                            className={cn(' ', {
-                              ' ': activeMenu(menu.path),
-                            })}
-                          />
-                        </Link>
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent
-                      side="right"
-                      align={menu.submenu ? 'start' : 'center'}
-                      className=" rounded-lg p-2"
-                    >
-                      <p className=" text-neutral-900">{menu.title}</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-              );
-            }
-          })}
-          <div className=" block lg:hidden">
+                    <p className=" text-neutral-900">Preview</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
+          </div>
+          <p className=" mt-4 text-center text-[10px] text-neutral-500">
+            Bantuan
+          </p>
+          <div className="mt-2 flex flex-col gap-1">
             <TooltipProvider delayDuration={0}>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button
                     size="icon"
                     variant="ghost"
-                    className=" w-14 rounded-none"
                   >
-                    <BsTablet size={20} />
+                    <RiCustomerService2Line size={20} />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent
                   side="right"
-                  align="start"
+                  align="center"
                   className=" p-2"
                 >
-                  <p className=" text-neutral-900">Preview</p>
+                  <p className=" text-neutral-900">Support</p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
+            <Button
+              size="icon"
+              variant="ghost"
+              onClick={(e) => {
+                e.preventDefault();
+                setState((prev) => ({ ...prev, run: !prev.run }));
+              }}
+            >
+              <InfoCircle
+                size={20}
+                variant="Outline"
+                className={cn(' ml-[2px]', {})}
+              />
+            </Button>
           </div>
-        </div>
-        <p className=" mt-4 text-center text-[10px] text-neutral-500">
-          Bantuan
-        </p>
-        <div className="mt-2 flex flex-col gap-1">
-          <TooltipProvider delayDuration={0}>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  size="icon"
-                  variant="ghost"
-                >
-                  <RiCustomerService2Line size={20} />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent
-                side="right"
-                align="center"
-                className=" p-2"
-              >
-                <p className=" text-neutral-900">Support</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-          <Button
-            size="icon"
-            variant="ghost"
-            onClick={(e) => {
-              e.preventDefault();
-              setState((prev) => ({ ...prev, run: !prev.run }));
-            }}
-          >
-            <InfoCircle
-              size={20}
-              variant="Outline"
-              className={cn(' ml-[2px]', {})}
-            />
-          </Button>
         </div>
       </div>
       {/* <div className="flex flex-col gap-2 p-2"></div> */}
