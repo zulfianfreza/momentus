@@ -25,7 +25,7 @@ export default function DashboardPage() {
 
         <div className=" grid grid-cols-1 gap-4 lg:grid-cols-3">
           <div className=" flex w-full flex-col items-start gap-4 rounded-xl border p-4 shadow-sm">
-            <div className=" flex h-10 w-10 items-center justify-center rounded-xl bg-pink-100/80">
+            <div className=" bg-primary-100/80 flex h-10 w-10 items-center justify-center rounded-xl">
               <People
                 className=" text-primary"
                 size={24}
@@ -68,7 +68,7 @@ export default function DashboardPage() {
           <h1 className=" font-medium">Do&apos;a & Ucapan</h1>
           <Link
             href="/"
-            className=" text-primary text-sm"
+            className=" text-sm text-primary"
           >
             Lihat semua
           </Link>

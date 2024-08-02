@@ -16,7 +16,7 @@ export default function MainLayout({
           target="_blank"
           className=" relative flex aspect-square h-12 items-center justify-center rounded-full bg-green-500"
         >
-          <div className=" bg-primary absolute right-[2px] top-[2px] aspect-square w-2.5 rounded-full" />
+          <div className=" absolute right-[2px] top-[2px] aspect-square w-2.5 rounded-full bg-primary" />
           <SiWhatsapp
             className=" text-white"
             size={24}

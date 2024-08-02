@@ -15,7 +15,7 @@ export default function CustomTabsList({ tabs }: TProps) {
         <TabsTrigger
           key={menu.value}
           value={menu.value}
-          className=" h-10 rounded-none border-b-2 border-transparent px-2.5 data-[state=active]:border-pink-600"
+          className=" h-10 rounded-none border-b-2 border-transparent px-2.5 data-[state=active]:border-primary"
         >
           {menu.label}
         </TabsTrigger>

@@ -41,7 +41,7 @@ export default function ForgotPasswordPage() {
         <div className=" h-full w-full rounded-xl bg-pink-100"></div>
       </div>
       <div className=" flex min-h-screen w-1/2 flex-col items-center justify-center">
-        <div className=" flex w-full max-w-sm flex-col bg-white">
+        <div className=" flex w-full max-w-md flex-col bg-white">
           <div className="">
             <h1 className=" text-lg font-medium">Lupa Password?</h1>
             <p className=" text-sm text-neutral-500">
@@ -67,7 +67,7 @@ export default function ForgotPasswordPage() {
                         <Input
                           {...field}
                           placeholder="Email"
-                          className=" pl-10"
+                          className=" h-12 pl-10"
                         />
                       </div>
                     </FormControl>
@@ -76,7 +76,9 @@ export default function ForgotPasswordPage() {
               />
             </form>
           </Form>
-          <Button className=" mt-4">Request Reset Password</Button>
+          <Button className=" mt-4 h-12 rounded-full">
+            Request Reset Password
+          </Button>
           <div className=" mx-auto mt-4">
             <Link
               href="/login"

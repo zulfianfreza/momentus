@@ -9,8 +9,46 @@ import { LuFocus, LuMinus, LuPlus } from 'react-icons/lu';
 import { useReactFlow, useStoreApi } from 'reactflow';
 import { Button } from '../../ui/button';
 import { useCallback, useEffect } from 'react';
+import { IconType } from 'react-icons/lib';
+
+type TDeviceList = {
+  name: TPreviewDeviceType;
+  icon: IconType;
+};
 
 export default function CustomControls() {
+  const DEVICE_LIST: Array<TDeviceList> = [
+    {
+      name: 'smartphone',
+      icon: IoPhonePortraitOutline,
+    },
+    {
+      name: 'tablet',
+      icon: BsTablet,
+    },
+    {
+      name: 'laptop',
+      icon: BsLaptop,
+    },
+  ];
+
+  const CONTROL_LIST = [
+    {
+      name: 'zoom-in',
+      icon: LuPlus,
+      action: () => zoomIn({ duration: 1000 }),
+    },
+    {
+      name: 'zoom-out',
+      icon: LuMinus,
+      action: () => zoomOut({ duration: 1000 }),
+    },
+    {
+      name: 'focus',
+      icon: LuFocus,
+      action: () => focusNode(),
+    },
+  ];
   const store = useStoreApi();
   const { type, setType } = usePreviewDeviceTypeStore();
   const { zoomIn, zoomOut, setCenter } = useReactFlow();
@@ -51,69 +89,39 @@ export default function CustomControls() {
   }, [focusNode]);
 
   return (
-    <div className="absolute right-4 top-4 z-[99] flex flex-col gap-2">
+    <div className="absolute right-2 top-2 z-[99] flex flex-col gap-2">
       <div className="flex flex-col items-center gap-1 rounded-full bg-white p-1 shadow-sm">
-        <Button
-          variant="ghost"
-          size="icon-sm"
-          onClick={() => handleChangeType('smartphone')}
-          className=" rounded-full"
-        >
-          <IoPhonePortraitOutline
-            size={16}
-            className={cn({
-              ' text-primary': type === 'smartphone',
+        {DEVICE_LIST.map((device) => (
+          <Button
+            key={device.name}
+            variant="ghost"
+            size="icon-sm"
+            onClick={() => handleChangeType(device.name)}
+            className={cn('rounded-full', {
+              'bg-neutral-100': type === device.name,
             })}
-          />
-        </Button>
-        <Button
-          variant="ghost"
-          size="icon-sm"
-          onClick={() => handleChangeType('tablet')}
-          className=" rounded-full"
-        >
-          <BsTablet
-            size={16}
-            className={cn({ ' text-primary': type === 'tablet' })}
-          />
-        </Button>
-        <Button
-          variant="ghost"
-          size="icon-sm"
-          onClick={() => handleChangeType('laptop')}
-          className=" rounded-full"
-        >
-          <BsLaptop
-            size={16}
-            className={cn({ ' text-primary': type === 'laptop' })}
-          />
-        </Button>
+          >
+            <device.icon
+              size={16}
+              className={cn({
+                ' text-primary': type === device.name,
+              })}
+            />
+          </Button>
+        ))}
       </div>
       <div className=" flex flex-col items-center gap-1  rounded-full bg-white p-1">
-        <Button
-          variant="ghost"
-          size="icon-sm"
-          onClick={() => zoomIn({ duration: 1000 })}
-          className=" rounded-full"
-        >
-          <LuPlus />
-        </Button>
-        <Button
-          variant="ghost"
-          size="icon-sm"
-          className=" rounded-full"
-          onClick={() => zoomOut({ duration: 1000 })}
-        >
-          <LuMinus />
-        </Button>
-        <Button
-          variant="ghost"
-          size="icon-sm"
-          className=" rounded-full"
-          onClick={() => focusNode()}
-        >
-          <LuFocus />
-        </Button>
+        {CONTROL_LIST.map((control) => (
+          <Button
+            key={control.name}
+            variant="ghost"
+            size="icon-sm"
+            onClick={control.action}
+            className=" rounded-full"
+          >
+            <control.icon />
+          </Button>
+        ))}
       </div>
     </div>
   );

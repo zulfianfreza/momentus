@@ -49,10 +49,10 @@ export default function RegisterPage() {
   return (
     <div className="">
       <div className=" fixed right-0 h-screen w-1/2 p-2 pl-0">
-        <div className=" h-full w-full rounded-xl bg-pink-100"></div>
+        <div className=" bg-primary-100 h-full w-full rounded-xl"></div>
       </div>
       <div className=" flex min-h-screen w-1/2 flex-col items-center justify-center">
-        <div className=" flex w-full max-w-sm flex-col bg-white">
+        <div className=" flex w-full max-w-md flex-col bg-white">
           <div className="">
             <h1 className=" text-lg font-medium">Gabung Sekarang</h1>
             <p className=" text-sm text-neutral-500">
@@ -63,7 +63,7 @@ export default function RegisterPage() {
 
           <Button
             variant="outline"
-            className=" mt-8"
+            className=" mt-8 h-12 rounded-full"
           >
             <FcGoogle />
             Masuk dengan Google
@@ -76,7 +76,7 @@ export default function RegisterPage() {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(actualSubmit)}
-              className=" space-y-2"
+              className=" space-y-4"
             >
               <FormField
                 control={form.control}
@@ -90,7 +90,7 @@ export default function RegisterPage() {
                         <Input
                           {...field}
                           placeholder="Nama"
-                          className=" pl-10"
+                          className=" h-12 pl-10"
                         />
                       </div>
                     </FormControl>
@@ -109,7 +109,7 @@ export default function RegisterPage() {
                         <Input
                           {...field}
                           placeholder="Email"
-                          className=" pl-10"
+                          className=" h-12 pl-10"
                         />
                       </div>
                     </FormControl>
@@ -143,7 +143,7 @@ export default function RegisterPage() {
                           {...field}
                           type={showPassword ? 'text' : 'password'}
                           placeholder="password"
-                          className=" px-10"
+                          className=" h-12 px-10"
                         />
                       </div>
                     </FormControl>
@@ -152,12 +152,12 @@ export default function RegisterPage() {
               />
             </form>
           </Form>
-          <Button className=" mt-4">Daftar</Button>
+          <Button className=" mt-4 h-12 rounded-full">Daftar</Button>
           <p className=" mt-4 text-center text-sm">
             Sudah punya akun?{' '}
             <Link
               href="/login"
-              className=" text-primary font-medium"
+              className=" font-medium text-primary"
             >
               Masuk Sekarang
             </Link>
