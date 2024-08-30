@@ -41,6 +41,7 @@ import Divider from '@/components/theme/shared/divider';
 import { useParams, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { createFlowerVariant } from '@/utils/animation';
+import AnimationWrapper from '@/components/common/animation-wrapper';
 
 type TPageParams = {
   searchParams: {
@@ -166,7 +167,7 @@ export default function FloTheme() {
       {/* begin: cover */}
       <div
         className={cn(
-          ' fixed inset-0 z-[39] h-screen w-full bg-[url(/images/dummy/dummy-7.jpeg)] bg-cover bg-center transition-all duration-1000',
+          ' fixed inset-0 z-[39] hidden h-[100dvh] w-full bg-[url(/images/dummy/dummy-7.jpeg)] bg-cover bg-center transition-all duration-1000',
           { ' -translate-y-full opacity-0': !showCover },
         )}
       >
@@ -253,7 +254,7 @@ export default function FloTheme() {
               <div className=" min-h-screen w-full">
                 <div className=" flex min-h-screen w-full flex-col items-center bg-[url(/images/bg/bg-texture-1.jpeg)] bg-cover bg-center px-6 py-14">
                   <div className=" relative ">
-                    <div className="  absolute -left-10 bottom-0 z-[2]">
+                    {/* <div className="  absolute -left-10 bottom-0 z-[2]">
                       <motion.div
                         variants={createFlowerVariant({
                           initial: 1,
@@ -261,7 +262,7 @@ export default function FloTheme() {
                           duration: 4,
                         })}
                         animate="animate"
-                        className=" relative aspect-[97/220] w-[97px]"
+                        className=" relative aspect-[97/220] w-[97px] origin-bottom"
                       >
                         <Image
                           src="/images/decoration/FLW04.png"
@@ -270,61 +271,32 @@ export default function FloTheme() {
                           className=" rotate-[-7deg] object-contain object-center"
                         />
                       </motion.div>
-                    </div>
-                    <div className="  absolute -bottom-12 -right-4 z-[3]">
-                      <motion.div
-                        variants={createFlowerVariant({
-                          initial: -68,
-                          to: -72,
-                          duration: 8,
-                        })}
-                        animate="animate"
-                        className=" relative h-[184px] w-[146px]"
-                      >
-                        <Image
-                          src="/images/decoration/FLW02.png"
-                          fill
-                          alt=""
-                          className=" object-contain object-center"
-                        />
-                      </motion.div>
-                    </div>
-                    <div className="  absolute -right-8 bottom-0 z-[2]">
-                      <motion.div
-                        variants={createFlowerVariant({
-                          initial: 2,
-                          to: -2,
-                          duration: 6,
-                        })}
-                        animate="animate"
-                        className=" relative h-[282px] w-[81px]"
-                      >
-                        <Image
-                          src="/images/decoration/FLW06.png"
-                          fill
-                          alt=""
-                          className=" object-contain object-center"
-                        />
-                      </motion.div>
-                    </div>
-                    <div className="  absolute -bottom-12 -left-8 z-[2] ">
-                      <motion.div
-                        variants={createFlowerVariant({
-                          initial: -164,
-                          to: -160,
-                          duration: 8,
-                        })}
-                        animate="animate"
-                        className=" relative h-[182px] w-[206px]"
-                      >
-                        <Image
-                          src="/images/decoration/FLW09.png"
-                          fill
-                          alt=""
-                          className=" object-contain object-center"
-                        />
-                      </motion.div>
-                    </div>
+                    </div> */}
+                    <AnimationWrapper
+                      imageSrc="/images/decoration/FLW04.png"
+                      variant={[1, -1, 4]}
+                      wrapperClassName="-left-10 bottom-0 z-[2]"
+                      motionClassName="aspect-[97/220] w-[97px] origin-bottom"
+                      imageClassName=" rotate-[-7deg] "
+                    />
+                    <AnimationWrapper
+                      imageSrc="/images/decoration/FLW02.png"
+                      wrapperClassName="-bottom-12 -right-4 z-[3]"
+                      motionClassName="h-[184px] w-[146px]"
+                      imageClassName="rotate-[-70deg]"
+                    />
+                    <AnimationWrapper
+                      variant={[2, -2, 6]}
+                      imageSrc="/images/decoration/FLW06.png"
+                      wrapperClassName="-right-8 bottom-0 z-[2]"
+                      motionClassName="h-[282px] w-[81px] origin-bottom"
+                    />
+                    <AnimationWrapper
+                      imageSrc="/images/decoration/FLW09.png"
+                      wrapperClassName="-bottom-12 -left-8 z-[2]"
+                      motionClassName="h-[182px] w-[206px]"
+                      imageClassName="rotate-[162deg]"
+                    />
                     <div className=" aspect-[293/564] w-[293px] overflow-hidden rounded-t-full bg-[url(/images/decoration/decoration-9.png)] bg-contain bg-center p-3">
                       <div className=" relative h-full w-full overflow-hidden rounded-t-full">
                         <Image
@@ -365,44 +337,22 @@ export default function FloTheme() {
               <div className=" flex w-full flex-col items-center gap-10 overflow-hidden bg-[url(/images/bg/bg-texture-1.jpeg)] bg-cover bg-center p-8 py-20">
                 <h1 className=" text-[20px]">The Wedding of</h1>
                 <div className="flex flex-col items-center gap-8">
-                  <div className="flex flex-col gap-4">
+                  <div className="flex flex-col items-center gap-4">
                     <div className=" relative">
-                      <div className=" absolute -right-20 bottom-0">
-                        <motion.div
-                          variants={createFlowerVariant({
-                            initial: 22,
-                            to: 25,
-                            duration: 4,
-                          })}
-                          animate="animate"
-                          className=" relative aspect-[173/197] w-[173px] rotate-[24deg]"
-                        >
-                          <Image
-                            src="/images/decoration/FLW10.png"
-                            fill
-                            alt=""
-                            className=" object-contain object-center"
-                          />
-                        </motion.div>
-                      </div>
-                      <div className=" absolute -left-16 rotate-[-67deg]">
-                        <motion.div
-                          variants={createFlowerVariant({
-                            initial: 2,
-                            to: -1,
-                            duration: 6,
-                          })}
-                          animate="animate"
-                          className=" relative aspect-[150/133] w-[150px]"
-                        >
-                          <Image
-                            src="/images/decoration/FLW11.png"
-                            fill
-                            alt=""
-                            className=" object-contain object-center"
-                          />
-                        </motion.div>
-                      </div>
+                      <AnimationWrapper
+                        imageSrc="/images/decoration/FLW10.png"
+                        variant={[-2, 1, 4]}
+                        wrapperClassName="-right-20 bottom-0"
+                        motionClassName="aspect-[173/197] w-[173px] origin-left"
+                        imageClassName=" rotate-[24deg]"
+                      />
+                      <AnimationWrapper
+                        imageSrc="/images/decoration/FLW11.png"
+                        variant={[2, -1, 6]}
+                        wrapperClassName="-left-16"
+                        motionClassName="aspect-[150/133] w-[150px] origin-right"
+                        imageClassName=" rotate-[-67deg]"
+                      />
                       <div className=" aspect-[233/318] w-[233px] rounded-t-full bg-[url(/images/decoration/decoration-8.png)] bg-contain bg-center p-3">
                         <div className=" relative h-full w-full overflow-hidden rounded-t-full ">
                           <Image
@@ -426,44 +376,22 @@ export default function FloTheme() {
                     </div>
                   </div>
                   <h1 className=" text-5xl text-[#D6A2AD]">&</h1>
-                  <div className="flex flex-col gap-4">
+                  <div className="flex flex-col items-center gap-4">
                     <div className=" relative">
-                      <div className=" absolute -left-20 bottom-0">
-                        <motion.div
-                          variants={createFlowerVariant({
-                            initial: -21,
-                            to: -25,
-                            duration: 3,
-                          })}
-                          animate="animate"
-                          className=" relative aspect-[173/197] w-[173px]  scale-x-[-1]"
-                        >
-                          <Image
-                            src="/images/decoration/FLW10.png"
-                            fill
-                            alt=""
-                            className=" object-contain object-center"
-                          />
-                        </motion.div>
-                      </div>
-                      <div className=" absolute -right-16 rotate-[67deg] scale-x-[-1]">
-                        <motion.div
-                          variants={createFlowerVariant({
-                            initial: 1,
-                            to: -3,
-                            duration: 4,
-                          })}
-                          animate="animate"
-                          className=" relative aspect-[150/133] w-[150px]"
-                        >
-                          <Image
-                            src="/images/decoration/FLW11.png"
-                            fill
-                            alt=""
-                            className=" object-contain object-center"
-                          />
-                        </motion.div>
-                      </div>
+                      <AnimationWrapper
+                        imageSrc="/images/decoration/FLW10.png"
+                        variant={[-3, 1, 8]}
+                        wrapperClassName="-left-20 bottom-0"
+                        motionClassName="aspect-[173/197] w-[173px] origin-right"
+                        imageClassName=" rotate-[-24deg] scale-x-[-1]"
+                      />
+                      <AnimationWrapper
+                        imageSrc="/images/decoration/FLW11.png"
+                        variant={[2, -1, 6]}
+                        wrapperClassName="-right-16"
+                        motionClassName="aspect-[150/133] w-[150px] origin-left"
+                        imageClassName=" rotate-[67deg] scale-x-[-1]"
+                      />
                       <div className=" aspect-[233/318] w-[233px] rounded-t-full bg-[url(/images/decoration/decoration-8.png)] bg-contain bg-center p-3">
                         <div className=" relative h-full w-full overflow-hidden rounded-t-full ">
                           <Image
@@ -499,78 +427,34 @@ export default function FloTheme() {
                   </h1>
 
                   <div className=" relative mt-7">
-                    <div className=" absolute -left-24 top-10">
-                      <motion.div
-                        variants={createFlowerVariant({
-                          initial: -58,
-                          to: -61,
-                          duration: 6,
-                        })}
-                        animate="animate"
-                        className=" relative aspect-square w-[256px] "
-                      >
-                        <Image
-                          src="/images/decoration/FLW03.png"
-                          fill
-                          alt=""
-                          className=" object-contain object-center"
-                        />
-                      </motion.div>
-                    </div>
-                    <div className=" absolute -right-20 top-10">
-                      <motion.div
-                        variants={createFlowerVariant({
-                          initial: 56,
-                          to: 62,
-                          duration: 4,
-                        })}
-                        animate="animate"
-                        className=" relative aspect-square w-[256px] "
-                      >
-                        <Image
-                          src="/images/decoration/FLW08.png"
-                          fill
-                          alt=""
-                          className=" object-contain object-center"
-                        />
-                      </motion.div>
-                    </div>
-                    <div className=" absolute -left-20 bottom-4">
-                      <motion.div
-                        variants={createFlowerVariant({
-                          initial: -102,
-                          to: -97,
-                          duration: 4,
-                        })}
-                        animate="animate"
-                        className=" relative aspect-square w-[296px] "
-                      >
-                        <Image
-                          src="/images/decoration/FLW09.png"
-                          fill
-                          alt=""
-                          className=" object-contain object-center"
-                        />
-                      </motion.div>
-                    </div>
-                    <div className=" absolute -right-20 bottom-4">
-                      <motion.div
-                        variants={createFlowerVariant({
-                          initial: -57,
-                          to: -62,
-                          duration: 4,
-                        })}
-                        animate="animate"
-                        className=" relative aspect-square w-[296px] scale-y-[-1]"
-                      >
-                        <Image
-                          src="/images/decoration/FLW11.png"
-                          fill
-                          alt=""
-                          className=" object-contain object-center"
-                        />
-                      </motion.div>
-                    </div>
+                    <AnimationWrapper
+                      imageSrc="/images/decoration/FLW03.png"
+                      variant={[2, -1, 6]}
+                      wrapperClassName="-left-24 top-10"
+                      motionClassName="aspect-square w-[256px] "
+                      imageClassName=" rotate-[-60deg]"
+                    />
+                    <AnimationWrapper
+                      imageSrc="/images/decoration/FLW08.png"
+                      variant={[-2, 2, 4]}
+                      wrapperClassName="-right-20 top-10"
+                      motionClassName="aspect-square w-[256px] "
+                      imageClassName=" rotate-[60deg]"
+                    />
+                    <AnimationWrapper
+                      imageSrc="/images/decoration/FLW09.png"
+                      variant={[-2, 1, 4]}
+                      wrapperClassName="-left-20 bottom-4"
+                      motionClassName="aspect-square w-[296px] origin-right"
+                      imageClassName=" rotate-[-100deg]"
+                    />
+                    <AnimationWrapper
+                      imageSrc="/images/decoration/FLW11.png"
+                      variant={[-3, 2, 6]}
+                      wrapperClassName="-right-20 bottom-4"
+                      motionClassName="aspect-square w-[296px] origin-left"
+                      imageClassName=" rotate-[-60deg] scale-y-[-1]"
+                    />
                     <div className=" flex w-[277px] flex-col items-center gap-7 rounded-b-full rounded-t-full bg-white/40 py-16 backdrop-blur-md">
                       <div className="flex flex-col items-center gap-6 text-center">
                         <p className=" text-sm">Akad Nikah</p>

@@ -1,23 +1,29 @@
 'use client';
 
-import { comfortaa } from '@/constant/font.constant';
-import { cn } from '@/lib/utils';
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
-import { HambergerMenu } from 'iconsax-react';
-import {
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-  useAuth,
-} from '@clerk/nextjs';
 import Container from '@/components/common/container';
-import { Button } from '@/components/ui/button';
 import Logo from '@/components/common/logo';
+import { Button } from '@/components/ui/button';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import { logout } from '@/services/http/auth.service';
+import { TUser } from '@/types/user.type';
+import { getInitials } from '@/utils/string';
+import { PopoverClose } from '@radix-ui/react-popover';
+import { HambergerMenu, LogoutCurve } from 'iconsax-react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
-export default function MainHeader() {
+type TProps = {
+  user: TUser;
+};
+
+export default function MainHeader({ user }: TProps) {
+  // hooks
+  const router = useRouter();
+
   const MENUS = [
     {
       label: 'Tema',
@@ -36,8 +42,6 @@ export default function MainHeader() {
       path: '/blog',
     },
   ];
-
-  const { getToken } = useAuth();
 
   return (
     <Container>
@@ -72,9 +76,49 @@ export default function MainHeader() {
 
         {/* begin: right */}
         <div className=" flex flex-1 justify-end gap-4">
-          <Button className=" rounded-full">
-            Daftar <span className=" hidden lg:block">& Coba Gratis</span>
-          </Button>
+          {user ? (
+            <Popover>
+              <PopoverTrigger asChild>
+                <div className=" flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-primary text-sm text-white">
+                  {getInitials(user.name)}
+                </div>
+              </PopoverTrigger>
+              <PopoverContent
+                side="bottom"
+                align="end"
+                className=" w-64 rounded-xl p-2"
+              >
+                <div className="flex items-center gap-2 p-2">
+                  <div className=" flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm text-white">
+                    {getInitials(user.name)}
+                  </div>
+                  <div className="flex flex-col">
+                    <h1 className=" text-sm font-medium">{user.name}</h1>
+                    <p className=" text-xs text-neutral-500">{user.email}</p>
+                  </div>
+                </div>
+                <hr className=" my-2" />
+                <PopoverClose asChild>
+                  <Button
+                    variant="ghost"
+                    className=" w-full justify-start"
+                    size="sm"
+                    onClick={() => {
+                      logout();
+                      router.replace('/login');
+                    }}
+                  >
+                    <LogoutCurve size={16} />
+                    Logout
+                  </Button>
+                </PopoverClose>
+              </PopoverContent>
+            </Popover>
+          ) : (
+            <Button className=" rounded-full">
+              Daftar <span className=" hidden lg:block">& Coba Gratis</span>
+            </Button>
+          )}
           <Button
             variant="secondary"
             size="icon"

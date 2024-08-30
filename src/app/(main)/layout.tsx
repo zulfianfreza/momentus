@@ -1,13 +1,15 @@
 import MainFooter from '@/components/layout/main-footer';
 import MainHeader from '@/components/layout/main-header';
+import { getMe } from '@/services/http/auth.service';
 import Link from 'next/link';
 import { SiWhatsapp } from 'react-icons/si';
 
-export default function MainLayout({
+export default async function MainLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const user = await getMe();
   return (
     <div className=" w-full">
       <div className=" fixed bottom-20 right-4">
@@ -23,7 +25,7 @@ export default function MainLayout({
           />
         </Link>
       </div>
-      <MainHeader />
+      <MainHeader user={user.data} />
       {children}
       <MainFooter />
     </div>

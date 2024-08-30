@@ -12,7 +12,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { getSidebarMenu } from '@/constant/common.constant';
+import { getSidebarMenu } from '@/constant/navigation.constant';
 import useMediaQuery from '@/hooks/use-media-query';
 import { cn } from '@/lib/utils';
 import { PopoverClose } from '@radix-ui/react-popover';
