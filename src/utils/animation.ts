@@ -1,6 +1,6 @@
 import { Variants } from 'framer-motion';
 
-type TCreateAnimationProps = {
+export type TCreateAnimationProps = {
   initial: number;
   to: number;
   duration: number;

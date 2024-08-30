@@ -1,8 +1,7 @@
 import Container from '@/components/common/container';
-import React from 'react';
 import { LuPlus } from 'react-icons/lu';
 
-export default function page() {
+export default async function page() {
   return (
     <Container>
       <h1 className=" text-lg font-medium text-neutral-900">Daftar Undangan</h1>

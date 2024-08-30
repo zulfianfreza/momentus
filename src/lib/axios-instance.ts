@@ -1,23 +1,28 @@
-import axios from 'axios';
+import { COOKIE_KEY } from '@/constant/common.constant';
+import { getCookie } from '@/utils/cookie';
+import axios, { InternalAxiosRequestConfig } from 'axios';
+import Cookies from 'js-cookie';
 
-const url = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 const axiosInstance = axios.create({
-  baseURL: url,
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
 axiosInstance.interceptors.request.use(
-  async (config) => {
-    try {
-      return config;
-    } catch (error) {
-      return Promise.reject(error);
+  async (
+    config: InternalAxiosRequestConfig,
+  ): Promise<InternalAxiosRequestConfig> => {
+    const token = await getCookie(COOKIE_KEY.ACCESS_TOKEN);
+    if (token) {
+      config.headers.Authorization = 'Bearer ' + token;
     }
+    return config;
   },
   (error) => {
     return Promise.reject(error);
   },
 );
+
 export default axiosInstance;
