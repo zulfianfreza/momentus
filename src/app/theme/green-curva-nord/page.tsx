@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Textarea } from '@/components/ui/textarea';
-import { NAVIGATIONS } from '@/constant/common.constant';
+import { NAVIGATIONS } from '@/constant/navigation.constant';
 import { abhayaLibre, judson } from '@/constant/font.constant';
 import { INVITATION_GALLERIES_FAKER } from '@/constant/invitation-faker.constant';
 import useScrollspy from '@/hooks/use-scroll-spy';

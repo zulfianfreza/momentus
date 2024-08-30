@@ -1,6 +1,6 @@
 'use client';
 
-import { getSidebarMenu } from '@/constant/common.constant';
+import { getSidebarMenu } from '@/constant/navigation.constant';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 
