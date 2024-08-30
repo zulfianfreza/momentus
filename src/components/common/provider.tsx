@@ -1,19 +1,32 @@
 'use client';
 
-import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
-import { Toaster } from '../ui/sonner';
-import { Danger, TickSquare, Warning2 } from 'iconsax-react';
-import { ClerkProvider } from '@clerk/nextjs';
-import AOS from 'aos';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import 'aos/dist/aos.css';
-import { useEffect } from 'react';
+import { Danger, TickSquare, Warning2 } from 'iconsax-react';
+import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
+import { useState } from 'react';
+import { Toaster } from '../ui/sonner';
 
 export default function Provider({ children }: { children: React.ReactNode }) {
-  useEffect(() => {
-    AOS.init();
-  }, []);
+  const [client] = useState(
+    new QueryClient({
+      defaultOptions: {
+        queries: {
+          refetchOnWindowFocus: false,
+        },
+      },
+      // mutationCache: new MutationCache({
+      //   onError: (error) => {
+      //     if (axios.isAxiosError(error)) {
+      //       toast.error(error.response?.data?.message);
+      //     }
+      //   },
+      // }),
+    }),
+  );
+
   return (
-    <ClerkProvider>
+    <QueryClientProvider client={client}>
       {children}
       <ProgressBar
         height="4px"
@@ -30,6 +43,6 @@ export default function Provider({ children }: { children: React.ReactNode }) {
           error: <Danger />,
         }}
       />
-    </ClerkProvider>
+    </QueryClientProvider>
   );
 }
